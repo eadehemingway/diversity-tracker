@@ -6,9 +6,9 @@ export class GenderTile extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            men: 0.4,
-            women: 0.3,
-            other: 0.3
+            men: 0,
+            women: 0,
+            other: 0
         }
     }
 
