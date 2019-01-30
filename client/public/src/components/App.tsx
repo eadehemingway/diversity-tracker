@@ -1,6 +1,8 @@
 import * as React from 'react';
-import {Donut} from './Donut'
 import './../../../style.css'
+import { GenderTile } from './GenderTile';
+
+
 export class App extends React.Component{
     constructor(props){
         super(props)
@@ -19,7 +21,7 @@ export class App extends React.Component{
             <React.Fragment>
 
                 <div>tha app</div>
-                <Donut></Donut>
+                <GenderTile></GenderTile>
             </React.Fragment>
 
         )
