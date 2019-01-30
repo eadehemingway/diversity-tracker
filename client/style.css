@@ -2,10 +2,37 @@ body{
 
 background: papayawhip;
 font-family: sans-serif;
-margin: 10rem 20rem
+margin: 10rem 10rem;
+
 }
 
-#donut {
-margin-top: 5rem ;
+.donuts {
+margin: 5rem auto ;
+align-content: center;
+display: flex;
+}
+
+.svg{
+margin: auto;
+align-content: center;
+justify-content: center;
+
+}
+
+#form {
+width: 6rem
+}
+
+.tile{
+background: hsl(40, 70%, 89%);
+padding: 2rem;
+margin: 2rem;
+width: 10rem;
+border: 2px solid grey;
+}
+
+.tile-container {
+    display: flex;
+
 
 }

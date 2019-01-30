@@ -15,25 +15,18 @@ export class Form extends React.Component{
     render(){
         return(
             <React.Fragment>
+            <div id='form'>
 
-                <p>Form</p>
+                <p>{this.props.title}</p>
                     <form onSubmit={e=> e.preventDefault() }>
-                    <label>{this.props.firstLabel}
-
-                        <input type="text" onChange={this.props.handleFirstChange}></input>
+                    {this.props.labels.map(l=> (
+                    <label key={l}>{l}
+                        <input type="text"  onChange={(e)=>this.props.handleChange(e, l)}></input>
                     </label>
-                    <label>{this.props.secondLabel}
-
-                        <input type="text" onChange={this.props.handleSecondChange}></input>
-                    </label>
-                    <label>{this.props.thirdLabel}
-
-                        <input type="text" onChange={this.props.handleThirdChange}></input>
-                    </label>
-        
-
+                    ))}
                     </form>
 
+            </div>
             </React.Fragment>
         )
     }

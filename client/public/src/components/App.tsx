@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './../../../style.css'
 import { GenderTile } from './GenderTile';
+import { RaceTile } from './RaceTile'
 
 
 export class App extends React.Component{
@@ -19,9 +20,11 @@ export class App extends React.Component{
     render(){
         return(
             <React.Fragment>
+            <div className='tile-container'>
+                <GenderTile/>
+                <RaceTile/>
 
-                <div>tha app</div>
-                <GenderTile></GenderTile>
+            </div>
             </React.Fragment>
 
         )
