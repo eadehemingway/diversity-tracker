@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { pie, arc } from "d3-shape";
 import { select } from "d3-selection";
+import {interpolate } from "d3-interpolate"
+
 
 
 
@@ -8,7 +10,8 @@ export class Donut extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            data:[{'label':null, 'value': 100}, {'label':null, 'value': 100}, {'label':null, 'value': 100}]
+            data:[{'label':null, 'value': 100}, {'label':null, 'value': 100}, {'label':null, 'value': 100}],
+            prevData: [{'label':null, 'value': 100}, {'label':null, 'value': 100}, {'label':null, 'value': 100}]
         }
     }
 
@@ -19,9 +22,8 @@ export class Donut extends React.Component{
             const secondSegment= {'label': this.props.secondLabel, 'value':nextProps.secondAmount}
             const thirdSegment= {'label': this.props.thirdLabel, 'value':nextProps.thirdAmount}
             const data = [firstSegment, secondSegment, thirdSegment]
-            // console.log('data pre state', data)
-            this.setState({data: data}, ()=> {
-                this.updateDonut()
+            this.setState({data, prevData:this.state.data}, ()=>{
+            this.updateDonut()
             })
         }
     }
@@ -32,16 +34,11 @@ export class Donut extends React.Component{
 
     updateDonut = () =>{
         const radius = 50;
-
-
-        console.log('this.state.data', this.state.data)
         const donut = pie()
             .value(function(d){
                 return d.value
                 })
                 (this.state.data)
-
-        console.log(donut)
 
         const theArc = arc()
             .outerRadius(radius)
@@ -52,9 +49,7 @@ export class Donut extends React.Component{
             .selectAll('path')
             .data(donut)
 
-        // path.exit().remove() 
         path.attr("d", theArc)
-        
 
 
     }
@@ -89,6 +84,7 @@ export class Donut extends React.Component{
                     .append('path')
                     .attr('d', theArc)
                     .attr('fill', function(d,i){return color[i]})
+                    .each(function(d) { this._current = d; });
 
 
                 }
@@ -96,7 +92,6 @@ export class Donut extends React.Component{
 
 
     render(){
-        // console.log(this.props)
         return(
             <React.Fragment>
                 <div id={`donut-${this.props.tileName}`} className='donuts'></div>
