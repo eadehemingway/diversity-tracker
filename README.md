@@ -1,4 +1,11 @@
 # diversity
+to start:
+cd client, run npm run build:front:watch 
+cd server, run npm run build:back:watch
+cd server, run npm start
+
+go to localhost:3000
+
 
 next steps:
 
@@ -7,6 +14,7 @@ next steps:
 
 
 
+- find the readme i wrote for the starter pack (on other laptop)
 
 
 - implement appropriate enter / exit / update functions
