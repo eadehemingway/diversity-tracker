@@ -15,7 +15,7 @@ export class GenderTile extends React.Component<{}, GenderTileState>{
 
 
     handleChange = (value: number, key:string)=>{
-       
+       console.log('HANDLING CHANGE')
         this.setState({[key]: value})
     }
 

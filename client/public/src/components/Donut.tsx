@@ -18,7 +18,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
     componentWillReceiveProps(nextProps){
-        // console.log(this.props, nextProps)
+
         if(nextProps !== this.props){
             const firstSegment= {'label': this.props.firstLabel, 'value': nextProps.firstAmount}
             const secondSegment= {'label': this.props.secondLabel, 'value':nextProps.secondAmount}
@@ -36,7 +36,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
     updateDonut = () =>{
         const radius = 50;
-        const color = ['pink', 'salmon', 'white']
 
         const oldDonut = pie()
             .value(function(d){
@@ -58,28 +57,14 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         })
         const theArc = arc()
             .outerRadius(radius)
-            .innerRadius(radius * 0.75);
+            .innerRadius(33);
 
 
         const path = select(`#donut-${this.props.tileName}`)
             .selectAll('path')
             .data(newDonutWithPrevArc)
 
-        // path.enter().append("path")
-        //     .attr("fill", function (d, i) {
-        //       return color[i];
-        //     })
-        //     .attr("d", theArc)
-        //     .transition()
-        //     .duration(750)
-        //     .attrTween("d", createInterpolator)
-           
-        // path.exit()
-        //     .transition()
-        //     .duration(750)
-        //     .attrTween('d', createInterpolator)
-        //     .remove() 
-        path.attr("d", theArc).transition().duration(750).attrTween("d", createInterpolator)
+        path.attr("d", theArc).transition().duration(1000).attrTween("d", createInterpolator)
 
         function createInterpolator(d) {
             // here interpolate is taking two objects (the previous arc object and the new arc object),
@@ -112,7 +97,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         // console.log('DONUT ORIG', donut)
         const theArc = arc()
             .outerRadius(radius)
-            .innerRadius(radius * 0.75);
+            .innerRadius(33);
  
 
         const g = svg.selectAll('path')

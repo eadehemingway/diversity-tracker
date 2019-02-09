@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { FormProps } from './types';
+import {DebounceInput} from 'react-debounce-input';
 
 
 export class Form extends React.Component<FormProps>{
@@ -15,10 +16,13 @@ export class Form extends React.Component<FormProps>{
                     <form onSubmit={e=> e.preventDefault() }>
                     {this.props.labels.map(l=> (
                     <label key={l}>{l}
-                        <input type="text"  onChange={(e)=>{
+                        <DebounceInput 
+                        type="text"  
+                        debounceTimeout = {200}
+                        onChange={(e)=>{
                              const value = parseFloat(e.target.value)
-                            return this.props.handleChange(value, l)
-                        }}></input>
+                             this.props.handleChange(value, l)
+                        }}></DebounceInput>
                     </label>
                     ))}
                     </form>
