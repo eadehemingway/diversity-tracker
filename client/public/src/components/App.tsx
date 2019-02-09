@@ -11,18 +11,12 @@ export class App extends React.Component{
 
         }
     }
-
-
-
-
-
-
     render(){
         return(
             <React.Fragment>
             <div className='tile-container'>
                 <GenderTile/>
-                <RaceTile/>
+                {/* <RaceTile/> */}
 
             </div>
             </React.Fragment>

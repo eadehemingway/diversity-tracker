@@ -1,17 +1,11 @@
 import * as React from 'react'
+import { FormProps } from './types';
 
 
-
-
-
-export class Form extends React.Component{
+export class Form extends React.Component<FormProps>{
     constructor(props){
         super(props)
     }
-
-
-
-
     render(){
         return(
             <React.Fragment>
@@ -21,7 +15,10 @@ export class Form extends React.Component{
                     <form onSubmit={e=> e.preventDefault() }>
                     {this.props.labels.map(l=> (
                     <label key={l}>{l}
-                        <input type="text"  onChange={(e)=>this.props.handleChange(e, l)}></input>
+                        <input type="text"  onChange={(e)=>{
+                             const value = parseFloat(e.target.value)
+                            return this.props.handleChange(value, l)
+                        }}></input>
                     </label>
                     ))}
                     </form>

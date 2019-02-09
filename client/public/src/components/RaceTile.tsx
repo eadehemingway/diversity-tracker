@@ -24,7 +24,7 @@ export class RaceTile extends React.Component{
         return(
             <React.Fragment>
                 <div className='tile'>
-                {/* <Form 
+                <Form 
                 handleChange={this.handleChange}
                 labels={['White', 'Black', 'Asian', 'Mixed', 'Other']}
                 title='Race'
@@ -39,7 +39,7 @@ export class RaceTile extends React.Component{
                 thirdLabel='Other'
                 thirdAmount={this.state.other}
                 tileName='Race'
-                ></Donut> */}
+                ></Donut>
                 </div>
             </React.Fragment>
 

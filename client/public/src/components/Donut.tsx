@@ -2,11 +2,13 @@ import * as React from 'react'
 import { pie, arc } from "d3-shape";
 import { select } from "d3-selection";
 import {interpolate } from "d3-interpolate"
+import 'd3-transition';
+import { DonutState, DonutProps } from './types';
 
 
 
 
-export class Donut extends React.Component{
+export class Donut extends React.Component<DonutProps, DonutState>{
     constructor(props){
         super(props)
         this.state={
@@ -34,12 +36,26 @@ export class Donut extends React.Component{
 
     updateDonut = () =>{
         const radius = 50;
-        const donut = pie()
+        const color = ['pink', 'salmon', 'white']
+
+        const oldDonut = pie()
+            .value(function(d){
+                return d.value
+            })(this.state.prevData)
+
+        const newDonut = pie()
             .value(function(d){
                 return d.value
                 })
                 (this.state.data)
 
+        const newDonutWithPrevArc = newDonut.map((arc, i)=>{
+            const prevArc = oldDonut[i]
+            return {
+                ...arc,
+                prevArc
+            }
+        })
         const theArc = arc()
             .outerRadius(radius)
             .innerRadius(radius * 0.75);
@@ -47,12 +63,36 @@ export class Donut extends React.Component{
 
         const path = select(`#donut-${this.props.tileName}`)
             .selectAll('path')
-            .data(donut)
+            .data(newDonutWithPrevArc)
 
-        path.attr("d", theArc)
+        // path.enter().append("path")
+        //     .attr("fill", function (d, i) {
+        //       return color[i];
+        //     })
+        //     .attr("d", theArc)
+        //     .transition()
+        //     .duration(750)
+        //     .attrTween("d", createInterpolator)
+           
+        // path.exit()
+        //     .transition()
+        //     .duration(750)
+        //     .attrTween('d', createInterpolator)
+        //     .remove() 
+        path.attr("d", theArc).transition().duration(750).attrTween("d", createInterpolator)
 
+        function createInterpolator(d) {
+            // here interpolate is taking two objects (the previous arc object and the new arc object),
+            // it can then use these to determine a sort of scale ...
+            const i =interpolate(d.prevArc, d);
+            return function(t) {
+              return theArc(i(t))
+            }
+          
+          }
 
     }
+
     drawFirstDonut=()=>{
         const width = 100;
         const height = 100;
@@ -69,25 +109,24 @@ export class Donut extends React.Component{
         const donut = pie()
             .value(function(d){
                 return d.value})(this.state.data)
-            
+        // console.log('DONUT ORIG', donut)
         const theArc = arc()
             .outerRadius(radius)
             .innerRadius(radius * 0.75);
  
 
-       const g = svg.selectAll('path')
+        const g = svg.selectAll('path')
                     .data(donut)
 
-            g.enter()
-                    .append('g')
-                    .attr('class', 'arc')
-                    .append('path')
-                    .attr('d', theArc)
-                    .attr('fill', function(d,i){return color[i]})
-                    .each(function(d) { this._current = d; });
+        g.enter()
+            .append('g')
+            .attr('class', 'arc')
+            .append('path')
+            .attr('d', theArc)
+            .attr('fill', function(d,i){return color[i]})
 
 
-                }
+    }
                 
 
 

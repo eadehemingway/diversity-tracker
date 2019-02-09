@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {Donut} from './Donut'
 import {Form} from './Form'
+import { GenderTileState } from './types';
 
-export class GenderTile extends React.Component{
+export class GenderTile extends React.Component<{}, GenderTileState>{
     constructor(props){
         super(props)
         this.state={
@@ -13,9 +14,9 @@ export class GenderTile extends React.Component{
     }
 
 
-    handleChange = (e, k)=>{
-        const value = parseFloat(e.target.value)
-        this.setState({[k]: value})
+    handleChange = (value: number, key:string)=>{
+       
+        this.setState({[key]: value})
     }
 
 
