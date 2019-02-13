@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Donut} from '../YourOverview/Donut'
 import {donutType } from '../YourOverview/types'
 
-export const LondonGenderRaceDonuts =()=> {
+export const LondonDonutCollumn =()=> {
 
         
         return(
@@ -14,14 +14,16 @@ export const LondonGenderRaceDonuts =()=> {
                 donutName='london-overview-gender'
                 className="overview-donut"
                 radius = {30}
-                data={{Men: 31, Women:32, other:12}}
+                data={{Men: 31000000, Women:32000000, other:12000}}
+                template={false}
                 ></Donut>
                  <Donut
                 donutType={donutType.race}
                 className="overview-donut"
                 donutName='london-overview-race'
                 radius = {30}
-                data={{White:310, Black:400, SouthAsian:100, EastAsian:100}}
+                template={false}
+                data={{White:4887435, Asian:1511546, Black:1088640, Mixed:405279, Other: 175021}}
                 ></Donut>
                 </div>
             </React.Fragment>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LondonGenderRaceDonuts } from './LondonGenderRaceDonut';
+import { LondonDonutCollumn } from './LondonDonutCollumn';
 import { OverviewDonutColumn } from './OverviewDonutColumn';
 import {map} from "lodash";
 
@@ -41,7 +41,7 @@ export class OurOverview extends React.Component{
 
         
 
-            <LondonGenderRaceDonuts/>
+            <LondonDonutCollumn/>
             </div>
             </React.Fragment>
         )

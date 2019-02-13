@@ -61,13 +61,14 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .value(function(d){
                 return d.value
             })(this.state.prevData)
-
+        
         const newDonut = pie()
         .padAngle(.03)
             .value(function(d){
                 return d.value
                 })
                 (this.state.data)
+
 
         const newDonutWithPrevArc = newDonut.map((arc, i)=>{
             const prevArc = oldDonut[i]
@@ -97,19 +98,40 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
         
         path.exit()
-            .transition()
-            .duration(750)
-            .attrTween('d', createInterpolator)
             .remove()
 
         path.transition().duration(1000).attrTween("d", createInterpolator)
+        const tooltip = select(`#svgWrapper-${this.props.donutName}`)
+            .select('.arc')
+            .append('text')
+            .style('position', 'absolute')
+            .style('visibility', 'hidden')
+
+    
+
+
+        select(`#svgWrapper-${this.props.donutName}`)
+            .selectAll('path')
+            .on('mouseover', (d)=> {
+                tooltip.text(d.data.label)
+                tooltip.style('visibility', 'visible')
+            
+            
+                
+            })
+            .on('mouseout', (d)=> {
+                tooltip.text(d.data.label)
+                .style('visibility', 'hidden')
+
+            })
+        
 
         function createInterpolator(d) {
             // here interpolate is taking two objects (the previous arc object and the new arc object),
             // it can then use these to determine a sort of scale ...
             const i =interpolate(d.prevArc, d);
-            return function(t) {
-              return theArc(i(t))
+            return function(d) {
+              return theArc(i(d))
             }
           
           }
@@ -125,7 +147,11 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         const donut = pie()
             .padAngle(.03)
             .value(function(d){
-                return d.value})(this.state.data)
+                return d.value
+            })
+            (this.state.data)
+
+
 
         const theArc = arc()
         .outerRadius(radius)
@@ -134,20 +160,28 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         const svg = select(`#donut-${this.props.donutName}`)
             .attr('width', width)
             .attr('height', height)
-            .attr('class', 'svg')
             .append('g')
             .attr('id', `donut-group-${this.props.donutName}`)
             .attr('transform', 'translate(' + radius + ',' + radius + ')')
 
         const path = svg.selectAll('path')
-                    .data(donut)
-
-        path.enter()
+            .data(donut)
+            .enter()
             .append('g')
             .attr('class', 'arc')
             .append('path')
             .attr('d', theArc)
             .attr('fill', function(d,i){return color[i]})
+
+        // const tooltip = svg.selectAll(".arc")
+        //     .append('div')
+        //     .style('position', 'absolute')
+        //     .style('visibility', 'hidden')
+        //     .text('ttttttttttttttext')
+
+
+        // select('.arc')
+        //     .on('mouseover', ()=> tooltip.style('visibility', 'visible'))
 
 
     }
@@ -157,7 +191,10 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
         return(
             <React.Fragment>
+                <div id={`svgWrapper-${this.props.donutName}`}>
+
                 <svg id={`donut-${this.props.donutName}`} className={this.props.className}></svg>
+                </div>
             </React.Fragment>
         )
     }

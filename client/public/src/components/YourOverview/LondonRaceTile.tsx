@@ -34,6 +34,7 @@ export class LondonRaceTile extends React.Component{
                 <Donut
                 data={this.state}
                 tileName='Race'
+                template={false}
                 data={{White:310, Black:400, SouthAsian:100, EastAsian:100}}
                 ></Donut>
                 </div>

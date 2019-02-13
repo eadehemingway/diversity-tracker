@@ -31,8 +31,7 @@ export class UserRaceTile extends React.Component{
                 ></Form>
 
                 <Donut
-                thirdAmount={this.state.other}
-                londonDonut={false}
+                template={false}
                 data={{White:310, Black:400, SouthAsian:100, EastAsian:100}}
                 ></Donut>
                 </div>

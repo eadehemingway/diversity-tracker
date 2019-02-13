@@ -93,6 +93,8 @@ display: flex;
 .sub-heading{
 font-size: 1rem;
 margin-top: 0;
+width: 6rem;
+text-align: center;
 }
 
 .collumn-labels{
@@ -106,8 +108,8 @@ margin-top: 0;
 }
 
 .title {
-    width: 75%;
-    margin: 7rem auto 2rem auto;
+    width: 70%;
+    margin: 7rem auto 3rem auto;
 }
 
 .navbar{
@@ -136,5 +138,27 @@ border-bottom: 3px solid hsla(228, 25%, 40%, 0.4);
 }
 
 #root{
-margin-top: 11rem;
+margin-top: 14rem;
+}
+
+.role-tile-top-labels{
+    width:70%;
+    /* border: 2px solid red; */
+    margin: auto;
+    display:flex;
+    justify-content: space-around;
+}
+.role-tile-container{
+    width:70%;
+
+    margin: auto;
+    display:flex;
+    justify-content: space-around;
+    padding: 4rem;
+    /* box-shadow: 2px 5px 3px 10px black; */
+    /* background:  */
+}
+
+.arc:hover{
+    opacity: 0.5
 }

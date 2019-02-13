@@ -15,6 +15,7 @@ export const LondonGenderTile =()=> {
                 donutName={donutType.gender}
                 className='tileDonuts'
                 radius={50}
+                template={false}
                 data={{Men: 31000000, Women:3200000, other:0}}
                 ></Donut>
                 </div>

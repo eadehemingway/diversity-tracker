@@ -37,7 +37,7 @@ export class UserGenderTile extends React.Component<{}, GenderTileState>{
                 donutName={donutType.gender}
                 radius={50}
                 className='tileDonuts'
-                
+                template={false}
                 ></Donut>
                 </div>
             </React.Fragment>
