@@ -31,13 +31,9 @@ export class UserRaceTile extends React.Component{
                 ></Form>
 
                 <Donut
-                firstLabel='Men'
-                firstAmount={this.state.men}
-                secondLabel='Women'
-                secondAmount={this.state.women}
-                thirdLabel='Other'
                 thirdAmount={this.state.other}
                 londonDonut={false}
+                data={{White:310, Black:400, SouthAsian:100, EastAsian:100}}
                 ></Donut>
                 </div>
             </React.Fragment>

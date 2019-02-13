@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Donut} from './Donut'
 import {Form} from './Form'
-import { GenderTileState, donutName } from './types';
+import { GenderTileState, donutType } from './types';
 
 export const LondonGenderTile =()=> {
 
@@ -11,17 +11,11 @@ export const LondonGenderTile =()=> {
                 <div className='tile'>
             <h1>LONDONS GENDER DEMOGRAPHIC</h1>
                 <Donut
-                firstLabel='Men'
-                firstAmount={31000000}
-                secondLabel='Women'
-                secondAmount={32000000}
-                thirdLabel='Other'
-                thirdAmount={10}
                 londonDonut={true}
-                donutName={donutName.gender}
+                donutName={donutType.gender}
                 className='tileDonuts'
                 radius={50}
-
+                data={{Men: 31000000, Women:3200000, other:0}}
                 ></Donut>
                 </div>
             </React.Fragment>

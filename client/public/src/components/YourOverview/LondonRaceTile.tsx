@@ -32,13 +32,9 @@ export class LondonRaceTile extends React.Component{
                 ></Form>
 
                 <Donut
-                firstLabel='Men'
-                firstAmount={this.state.men}
-                secondLabel='Women'
-                secondAmount={this.state.women}
-                thirdLabel='Other'
-                thirdAmount={this.state.other}
+                data={this.state}
                 tileName='Race'
+                data={{White:310, Black:400, SouthAsian:100, EastAsian:100}}
                 ></Donut>
                 </div>
             </React.Fragment>

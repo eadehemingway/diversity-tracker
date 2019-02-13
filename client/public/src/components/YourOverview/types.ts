@@ -11,18 +11,12 @@ export enum donutType {
     race = 'race'
 }
 export interface DonutProps {
-    firstLabel: string;
-    secondLabel: string;
-    thirdLabel: string;
-    firstAmount: number;
-    secondAmount: number;
-    thirdAmount: number;
     londonDonut:Boolean;
     donutType: donutType;
     donutName:string;
     className?: string;
     radius: number;
-
+    data: {}
 
 }
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Donut} from './Donut'
 import {Form} from './Form'
-import { GenderTileState, donutName } from './types';
+import { GenderTileState, donutType } from './types';
 
 export class UserGenderTile extends React.Component<{}, GenderTileState>{
     constructor(props){
@@ -32,16 +32,12 @@ export class UserGenderTile extends React.Component<{}, GenderTileState>{
                 ></Form>
 
                 <Donut
-                firstLabel='Men'
-                firstAmount={this.state.Men}
-                secondLabel='Women'
-                secondAmount={this.state.Women}
-                thirdLabel='Other'
-                thirdAmount={this.state.Other}
+                data={this.state}
                 londonDonut={false}
-                donutName={donutName.gender}
+                donutName={donutType.gender}
                 radius={50}
                 className='tileDonuts'
+                
                 ></Donut>
                 </div>
             </React.Fragment>

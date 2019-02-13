@@ -5,7 +5,7 @@ import { select } from "d3-selection";
 import {interpolate } from "d3-interpolate"
 import 'd3-transition';
 import { DonutState, DonutProps, donutType } from './types';
-
+import {forEach} from 'lodash'
 
 
 
@@ -13,8 +13,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     constructor(props){
         super(props)
         this.state={
-            data:[{'label':null, 'value': 100}, {'label':null, 'value': 100}, {'label':null, 'value': 100}],
-            prevData: [{'label':null, 'value': 100}, {'label':null, 'value': 100}, {'label':null, 'value': 100}]
+            data:[{'label':null, 'value': 100}, {'label':null, 'value': 0}, {'label':null, 'value': 0},{'label':null, 'value': 0}],
+            prevData: [{'label':null, 'value': 100}]
         }
     }
 
@@ -28,9 +28,9 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
     componentDidMount(){
-        if(this.props.londonDonut) {
-            this.updateData(this.props)
-        }
+ 
+        this.updateData(this.props)
+    
 
         this.drawFirstDonut()
         
@@ -38,11 +38,11 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
 
     updateData =(newProps) =>{
-        console.log('uppppppppppppppp')
-        const firstSegment= {'label': this.props.firstLabel, 'value': newProps.firstAmount}
-        const secondSegment= {'label': this.props.secondLabel, 'value':newProps.secondAmount}
-        const thirdSegment= {'label': this.props.thirdLabel, 'value':newProps.thirdAmount}
-        const data = [firstSegment, secondSegment, thirdSegment]
+        const data = []
+        forEach(this.props.data, ( value, key)=> {
+            const arc = {label: key, value:value}
+           return data.push(arc)
+        })
         this.setState({data, prevData:this.state.data}, ()=>{
             this.updateDonut()
 
@@ -98,7 +98,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         const {radius} = this.props
         const width = radius * 2;
         const height = radius * 2;
-        const color = this.props.donutType === donutType.gender ? ['#57575E', '#D36543', '#4D577E'] : ['grey', '#D36543', 'pink']
+        const color = this.props.donutType === donutType.gender ? ['#57575E', '#D36543', '#4D577E', '#D36543'] : ['grey', '#D36543', 'pink', '#D36543']
         const svg = select(`#donut-${this.props.donutName}`)
             .append('svg')
             .attr('width', width)
@@ -133,6 +133,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
 
     render(){
+        console.log('data', this.props.data)
+
         return(
             <React.Fragment>
                 <div id={`donut-${this.props.donutName}`} className={this.props.className}></div>
