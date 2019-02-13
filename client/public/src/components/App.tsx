@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './../../../style.css'
-import { UserGenderTile } from './UserGenderTile';
-import { UserRaceTile } from './UserRaceTile'
-import { LondonGenderTile } from './LondonGenderTile';
+import { UserGenderTile } from './YourOverview/UserGenderTile';
+import { UserRaceTile } from './YourOverview/UserRaceTile'
+import { LondonGenderTile } from './YourOverview/LondonGenderTile';
 import { BrowserRouter ,Router,  Route} from 'react-router-dom'
 import { Link} from 'react-router-dom'
 import { Home } from './Home/Home'

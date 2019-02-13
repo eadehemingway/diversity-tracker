@@ -7,7 +7,7 @@ color: 	#4D577F;
 
 }
 
-.donuts {
+.tileDonuts {
 margin: 3rem auto ;
 align-content: center;
 display: flex;
@@ -23,10 +23,6 @@ justify-content: center;
 
 }
 
-.form {
-
-
-}
 
 .tile{
 background: #F3EAE5;
@@ -69,4 +65,37 @@ height: 1rem;
     justify-content: space-between;
     width: 50%;
     margin:0.5rem;
+}
+
+.overview-london-donut-collumn{
+width: 5rem;
+border-left: 5px solid #D36543;
+padding-left: 1rem;
+position: absolute;
+right: 0rem;
+top: 0rem;
+}
+
+.overview-donut-collum {
+    width: 5rem;
+    padding-left: 1rem;
+
+
+}
+
+.our-overview-container {
+position: relative;
+width: 100%;
+/* border: 3px solid pink; */
+height: 20rem;
+margin-top: 6rem;
+
+}
+.overview-donut{
+    padding:0.5rem;
+}
+.sub-heading{
+
+font-size: 1rem;
+margin-top: 0;
 }

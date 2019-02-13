@@ -6,6 +6,10 @@ export interface FormProps {
     handleChange: (value:number, key:string)=> void
 }
 
+export enum donutType {
+    gender = 'gender',
+    race = 'race'
+}
 export interface DonutProps {
     firstLabel: string;
     secondLabel: string;
@@ -13,7 +17,11 @@ export interface DonutProps {
     firstAmount: number;
     secondAmount: number;
     thirdAmount: number;
-    londonDonut:Boolean
+    londonDonut:Boolean;
+    donutType: donutType;
+    donutName:string;
+    className?: string;
+    radius: number;
 
 
 }
