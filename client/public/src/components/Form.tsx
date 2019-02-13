@@ -10,24 +10,27 @@ export class Form extends React.Component<FormProps>{
     render(){
         return(
             <React.Fragment>
-            <div id='form'>
+                <p className="tile-title">{this.props.title}</p>
 
-                <p>{this.props.title}</p>
-                    <form onSubmit={e=> e.preventDefault() }>
+                    <form onSubmit={e=> e.preventDefault() } className="form">
                     {this.props.labels.map(l=> (
-                    <label key={l}>{l}
+                    <div className="input-label-pair">
+
+                    <label key={l} className="labels">{l}
+                    </label>
                         <DebounceInput 
                         type="text"  
+                        className="input"
                         debounceTimeout = {200}
                         onChange={(e)=>{
-                             const value = parseFloat(e.target.value)
-                             this.props.handleChange(value, l)
+                            const value = parseFloat(e.target.value)
+                            this.props.handleChange(value, l)
                         }}></DebounceInput>
-                    </label>
+                        </div>
                     ))}
                     </form>
 
-            </div>
+
             </React.Fragment>
         )
     }

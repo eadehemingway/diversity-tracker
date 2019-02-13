@@ -1,7 +1,8 @@
 import * as React from 'react';
 import './../../../style.css'
-import { GenderTile } from './GenderTile';
-import { RaceTile } from './RaceTile'
+import { UserGenderTile } from './UserGenderTile';
+import { UserRaceTile } from './UserRaceTile'
+import { LondonGenderTile } from './LondonGenderTile';
 
 
 export class App extends React.Component{
@@ -15,8 +16,9 @@ export class App extends React.Component{
         return(
             <React.Fragment>
             <div className='tile-container'>
-                <GenderTile/>
-                {/* <RaceTile/> */}
+                <UserGenderTile/>
+                <LondonGenderTile/>
+                {/* <UserRaceTile/> */}
 
             </div>
             </React.Fragment>

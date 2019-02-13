@@ -1,7 +1,7 @@
 # diversity
 to start:
-cd client, run npm run build:front:watch 
-cd server, run npm run build:back:watch
+cd client, run npm run build
+cd server, run npm run build
 cd server, run npm start
 
 go to localhost:3000

@@ -1,44 +1,43 @@
 import * as React from 'react';
 import {Donut} from './Donut'
 import {Form} from './Form'
-import { GenderTileState } from './types';
 
-export class GenderTile extends React.Component<{}, GenderTileState>{
+export class UserRaceTile extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            Men: 0,
-            Women: 0,
+            White: 0,
+            Black: 0,
+            Asian: 0,
+            Mixed: 0,
             Other: 0
         }
     }
 
 
-    handleChange = (value: number, key:string)=>{
-       console.log('HANDLING CHANGE')
-        this.setState({[key]: value})
+    handleChange = (e, k)=>{
+        const value = parseFloat(e.target.value)
+        this.setState({[k]: value})
     }
 
-
     render(){
-        
         return(
             <React.Fragment>
                 <div className='tile'>
+                <h1> USER RACE DEMOGRAPHIC</h1>
                 <Form 
                 handleChange={this.handleChange}
-                labels={['Men', 'Women', 'Other']}
-                title='Gender'
+                labels={['White', 'Black', 'Asian', 'Mixed', 'Other']}
                 ></Form>
 
                 <Donut
                 firstLabel='Men'
-                firstAmount={this.state.Men}
+                firstAmount={this.state.men}
                 secondLabel='Women'
-                secondAmount={this.state.Women}
+                secondAmount={this.state.women}
                 thirdLabel='Other'
-                thirdAmount={this.state.Other}
-                tileName='Gender'
+                thirdAmount={this.state.other}
+                londonDonut={false}
                 ></Donut>
                 </div>
             </React.Fragment>

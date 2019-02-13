@@ -17,32 +17,46 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         }
     }
 
+
     componentWillReceiveProps(nextProps){
 
         if(nextProps !== this.props){
-            const firstSegment= {'label': this.props.firstLabel, 'value': nextProps.firstAmount}
-            const secondSegment= {'label': this.props.secondLabel, 'value':nextProps.secondAmount}
-            const thirdSegment= {'label': this.props.thirdLabel, 'value':nextProps.thirdAmount}
-            const data = [firstSegment, secondSegment, thirdSegment]
-            this.setState({data, prevData:this.state.data}, ()=>{
-            this.updateDonut()
-            })
+            this.updateData(nextProps)
+
         }
     }
 
     componentDidMount(){
+        if(this.props.londonDonut) {
+            this.updateData(this.props)
+        }
+
         this.drawFirstDonut()
+        
     }
 
+
+    updateData =(newProps) =>{
+        const firstSegment= {'label': this.props.firstLabel, 'value': newProps.firstAmount}
+        const secondSegment= {'label': this.props.secondLabel, 'value':newProps.secondAmount}
+        const thirdSegment= {'label': this.props.thirdLabel, 'value':newProps.thirdAmount}
+        const data = [firstSegment, secondSegment, thirdSegment]
+        this.setState({data, prevData:this.state.data}, ()=>{
+            this.updateDonut()
+
+        })
+    }
     updateDonut = () =>{
         const radius = 50;
 
         const oldDonut = pie()
+        .padAngle(.03)
             .value(function(d){
                 return d.value
             })(this.state.prevData)
 
         const newDonut = pie()
+        .padAngle(.03)
             .value(function(d){
                 return d.value
                 })
@@ -82,7 +96,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         const width = 100;
         const height = 100;
         const radius = 50;
-        const color = ['pink', 'salmon', 'white']
+        const color = ['#57575E', '#D36543', '	#4D577E']
         const svg = select(`#donut-${this.props.tileName}`)
             .append('svg')
             .attr('width', width)
@@ -92,6 +106,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .attr('transform', 'translate(' + radius + ',' + radius + ')')
 
         const donut = pie()
+            .padAngle(.03)
             .value(function(d){
                 return d.value})(this.state.data)
         // console.log('DONUT ORIG', donut)

@@ -1,15 +1,19 @@
 body{
 
-background: papayawhip;
+background:	#FFF7F2;
 font-family: sans-serif;
 margin: 10rem 10rem;
+color: 	#4D577F;
 
 }
 
 .donuts {
-margin: 5rem auto ;
+margin: 3rem auto ;
 align-content: center;
 display: flex;
+position: absolute;
+bottom: 5px;
+right: 50px;
 }
 
 .svg{
@@ -19,20 +23,50 @@ justify-content: center;
 
 }
 
-#form {
-width: 6rem
+.form {
+
+
 }
 
 .tile{
-background: hsl(40, 70%, 89%);
-padding: 2rem;
+background: #F3EAE5;
+padding: 1rem 1rem;
 margin: 2rem;
-width: 10rem;
-border: 2px solid grey;
+width: 15rem;
+height: 22rem;
+border: 1px solid 	#4D577F;
+position: relative;
+
 }
 
 .tile-container {
     display: flex;
 
 
+}
+
+.input {
+width: 2rem;
+height: 1rem;
+/* border: 2px solid red */
+
+}
+
+.tile-title{
+    /* border: 2px solid pink */
+}
+
+
+.labels {
+    /* border: 2px solid green; */
+    display: block;
+    /* padding:1rem; */
+
+}
+
+.input-label-pair{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin:0.5rem;
 }

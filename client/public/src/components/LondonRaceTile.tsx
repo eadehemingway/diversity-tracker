@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Donut} from './Donut'
 import {Form} from './Form'
 
-export class RaceTile extends React.Component{
+export class LondonRaceTile extends React.Component{
     constructor(props){
         super(props)
         this.state={
