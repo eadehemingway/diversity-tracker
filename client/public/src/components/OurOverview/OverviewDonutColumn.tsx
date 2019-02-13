@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Donut} from '../YourOverview/Donut'
 import {donutType } from '../YourOverview/types'
 
-export const OverviewDonutColumn =()=> {
+export const OverviewDonutColumn =(data)=> {
 
         
         return(
