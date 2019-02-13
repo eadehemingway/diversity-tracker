@@ -11,12 +11,13 @@ export enum donutType {
     race = 'race'
 }
 export interface DonutProps {
-    londonDonut:Boolean;
     donutType: donutType;
     donutName:string;
     className?: string;
     radius: number;
     data: {}
+    template:boolean
+
 
 }
 

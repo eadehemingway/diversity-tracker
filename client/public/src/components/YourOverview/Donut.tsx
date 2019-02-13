@@ -29,7 +29,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
     componentDidMount(){
- 
+
         this.updateData(this.props)
         this.drawFirstDonut()
         
@@ -50,8 +50,12 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
     updateDonut = () =>{
         const {radius } = this.props
-        const color = this.props.donutType === donutType.gender ? ['#57575E', '#D36543', '#4D577E', '#D36543'] : ['grey', '#D36543', 'pink', '#D36543']
-
+        let color;
+        if(this.props.template){
+            color=['hsla(240,100%,50%, 0.03)']
+        }else{
+         color = this.props.donutType === donutType.gender ? ['#57575E', '#D36543', '#4D577E', '#D36543'] : ['pink', 'pink', 'pink', '#D36543']
+        }
         const oldDonut = pie()
         .padAngle(.03)
             .value(function(d){

@@ -10,7 +10,6 @@ export const LondonGenderRaceDonuts =()=> {
                 <div className="overview-london-donut-collumn" >
             <h1 className="sub-heading">LONDON</h1>
                 <Donut
-                londonDonut={false}
                 donutType={donutType.gender}
                 donutName='london-overview-gender'
                 className="overview-donut"
@@ -18,7 +17,6 @@ export const LondonGenderRaceDonuts =()=> {
                 data={{Men: 31, Women:32, other:12}}
                 ></Donut>
                  <Donut
-                londonDonut={false}
                 donutType={donutType.race}
                 className="overview-donut"
                 donutName='london-overview-race'

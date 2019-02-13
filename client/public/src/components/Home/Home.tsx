@@ -14,7 +14,7 @@ export class Home extends React.Component{
         return(
             <React.Fragment>
 
-            <h1>HOME</h1>
+            <h1  className="title">HOME</h1>
 
             </React.Fragment>
 

@@ -11,7 +11,7 @@ export class OurApplicationTargets extends React.Component{
     }
     render(){
         return(
-            <h1>OUR APPLICATION TARGETS</h1>
+            <h1  className="title">OUR APPLICATION TARGETS</h1>
         )
     }
 }

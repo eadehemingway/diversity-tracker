@@ -1,14 +1,11 @@
 import * as React from 'react';
 import './../../../style.css'
-import { UserGenderTile } from './YourOverview/UserGenderTile';
-import { UserRaceTile } from './YourOverview/UserRaceTile'
-import { LondonGenderTile } from './YourOverview/LondonGenderTile';
 import { BrowserRouter ,Router,  Route} from 'react-router-dom'
-import { Link} from 'react-router-dom'
 import { Home } from './Home/Home'
 import {YourOverview } from './YourOverview/YourOverview'
 import {OurOverview} from './OurOverview/OurOverview'
 import {OurApplicationTargets} from './OurApplicationTargets/OurAppTargets'
+import { NavBar } from './NavBar/NavBar';
 
 
 
@@ -24,10 +21,7 @@ export class App extends React.Component{
         <BrowserRouter>
         
             <React.Fragment>
-            <Link to="youroverview"> YOUR OVERVIEW</Link>
-            <Link to="ouroverview"> OUR OVERVIEW</Link>
-            <Link to="ourapplicationtargets"> OUR APPLICATION TARGETS</Link>
-            <Link to="/"></Link>
+                <NavBar/>
 
                 <Route exact path="/" component={Home}/>
                 <Route path="/youroverview" component={YourOverview}/>

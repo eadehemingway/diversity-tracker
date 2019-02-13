@@ -17,7 +17,7 @@ export class YourOverview extends React.Component{
         return(
             <React.Fragment>
 
-            <h1>YOUR OVERVIEW</h1>
+            <h1  className="title">YOUR OVERVIEW</h1>
             < UserGenderTile/>
             < LondonGenderTile/> 
             {/* < UserRaceTile/>
