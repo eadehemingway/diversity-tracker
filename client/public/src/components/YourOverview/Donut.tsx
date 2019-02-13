@@ -14,8 +14,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         super(props)
         this.state={
             // data:[{'label':null, 'value': 100}, {'label':null, 'value': 100}],
-            data:[{'label':null, 'value': 100}],
-            prevData: [{'label':null, 'value': 0}]
+            data:[],
+            prevData: []
         }
     }
 
@@ -31,8 +31,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     componentDidMount(){
  
         this.updateData(this.props)
-    
-
         this.drawFirstDonut()
         
     }
@@ -50,14 +48,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         })
     }
 
-
-
-
-
-
-
     updateDonut = () =>{
-        console.log('UPDATE DONNNNNNNNNNNUT')
         const {radius } = this.props
         const color = this.props.donutType === donutType.gender ? ['#57575E', '#D36543', '#4D577E', '#D36543'] : ['grey', '#D36543', 'pink', '#D36543']
 
@@ -89,15 +80,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
 
 
-
-
-        // console.log('NEW DONUT DATA', newDonutWithPrevArc)
-
-
-
-
-
-
         const path = select(`#donut-group-${this.props.donutName}`)
             .selectAll('path')
             .data(newDonutWithPrevArc)
@@ -118,16 +100,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
         path.transition().duration(1000).attrTween("d", createInterpolator)
 
-
-
-
-
-
-
-
-
-
-
         function createInterpolator(d) {
             // here interpolate is taking two objects (the previous arc object and the new arc object),
             // it can then use these to determine a sort of scale ...
@@ -139,20 +111,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
           }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     drawFirstDonut=()=>{
         const {radius} = this.props
@@ -169,8 +127,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         .outerRadius(radius)
         .innerRadius(radius/1.6);
 
-
-
         const svg = select(`#donut-${this.props.donutName}`)
             .attr('width', width)
             .attr('height', height)
@@ -178,10 +134,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .append('g')
             .attr('id', `donut-group-${this.props.donutName}`)
             .attr('transform', 'translate(' + radius + ',' + radius + ')')
-
-
-
- 
 
         const path = svg.selectAll('path')
                     .data(donut)
@@ -196,14 +148,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
     }
             
-    
-
-
-
-
 
     render(){
-        console.log('data', this.props.data)
 
         return(
             <React.Fragment>
