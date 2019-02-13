@@ -13,8 +13,9 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     constructor(props){
         super(props)
         this.state={
-            data:[{'label':null, 'value': 100}, {'label':null, 'value': 0}, {'label':null, 'value': 0},{'label':null, 'value': 0}],
-            prevData: [{'label':null, 'value': 100}]
+            // data:[{'label':null, 'value': 100}, {'label':null, 'value': 100}],
+            data:[{'label':null, 'value': 100}],
+            prevData: [{'label':null, 'value': 0}]
         }
     }
 
@@ -48,8 +49,17 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
         })
     }
+
+
+
+
+
+
+
     updateDonut = () =>{
+        console.log('UPDATE DONNNNNNNNNNNUT')
         const {radius } = this.props
+        const color = this.props.donutType === donutType.gender ? ['#57575E', '#D36543', '#4D577E', '#D36543'] : ['grey', '#D36543', 'pink', '#D36543']
 
         const oldDonut = pie()
         .padAngle(.03)
@@ -71,16 +81,52 @@ export class Donut extends React.Component<DonutProps, DonutState>{
                 prevArc
             }
         })
+
+
         const theArc = arc()
             .outerRadius(radius)
             .innerRadius(radius/1.6);
 
 
-        const path = select(`#donut-${this.props.donutName}`)
+
+
+
+        // console.log('NEW DONUT DATA', newDonutWithPrevArc)
+
+
+
+
+
+
+        const path = select(`#donut-group-${this.props.donutName}`)
             .selectAll('path')
             .data(newDonutWithPrevArc)
 
-        path.attr("d", theArc).transition().duration(1000).attrTween("d", createInterpolator)
+        path.enter()
+            .append('g')
+            .attr('class', 'arc')
+            .append('path')
+            .attr('d', theArc)
+            .attr('fill', function(d,i){return color[i]})
+
+        
+        path.exit()
+            .transition()
+            .duration(750)
+            .attrTween('d', createInterpolator)
+            .remove()
+
+        path.transition().duration(1000).attrTween("d", createInterpolator)
+
+
+
+
+
+
+
+
+
+
 
         function createInterpolator(d) {
             // here interpolate is taking two objects (the previous arc object and the new arc object),
@@ -94,33 +140,53 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     drawFirstDonut=()=>{
         const {radius} = this.props
         const width = radius * 2;
         const height = radius * 2;
         const color = this.props.donutType === donutType.gender ? ['#57575E', '#D36543', '#4D577E', '#D36543'] : ['grey', '#D36543', 'pink', '#D36543']
-        const svg = select(`#donut-${this.props.donutName}`)
-            .append('svg')
-            .attr('width', width)
-            .attr('height', height)
-            .attr('class', 'svg')
-            .append('g')
-            .attr('transform', 'translate(' + radius + ',' + radius + ')')
-
+       
         const donut = pie()
             .padAngle(.03)
             .value(function(d){
                 return d.value})(this.state.data)
-        // console.log('DONUT ORIG', donut)
+
         const theArc = arc()
-            .outerRadius(radius)
-            .innerRadius(radius/1.5);
+        .outerRadius(radius)
+        .innerRadius(radius/1.6);
+
+
+
+        const svg = select(`#donut-${this.props.donutName}`)
+            .attr('width', width)
+            .attr('height', height)
+            .attr('class', 'svg')
+            .append('g')
+            .attr('id', `donut-group-${this.props.donutName}`)
+            .attr('transform', 'translate(' + radius + ',' + radius + ')')
+
+
+
  
 
-        const g = svg.selectAll('path')
+        const path = svg.selectAll('path')
                     .data(donut)
 
-        g.enter()
+        path.enter()
             .append('g')
             .attr('class', 'arc')
             .append('path')
@@ -129,7 +195,11 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
 
     }
-                
+            
+    
+
+
+
 
 
     render(){
@@ -137,7 +207,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
         return(
             <React.Fragment>
-                <div id={`donut-${this.props.donutName}`} className={this.props.className}></div>
+                <svg id={`donut-${this.props.donutName}`} className={this.props.className}></svg>
             </React.Fragment>
         )
     }

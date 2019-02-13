@@ -15,7 +15,7 @@ export const LondonGenderRaceDonuts =()=> {
                 donutName='london-overview-gender'
                 className="overview-donut"
                 radius = {30}
-                data={{Men: 31000000, Women:3200000, other:0}}
+                data={{Men: 31, Women:32, other:12}}
                 ></Donut>
                  <Donut
                 londonDonut={false}

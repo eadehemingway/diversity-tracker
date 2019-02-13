@@ -21,7 +21,7 @@ export class OurOverview extends React.Component{
 
             <h1>OUR OVERVIEW</h1>
             <div className="our-overview-container">
-             {map(this.state.data, (col, i)=>  <OverviewDonutColumn data={col} key={i}/>)}
+             {/* {map(this.state.data, (col, i)=>  <OverviewDonutColumn data={col} key={i}/>)} */}
 
         
 
