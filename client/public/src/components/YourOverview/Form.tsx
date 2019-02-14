@@ -22,8 +22,9 @@ export class Form extends React.Component<FormProps>{
                         className="input"
                         debounceTimeout = {200}
                         onChange={(e)=>{
+                            console.log('we are going through changes')
                             const value = parseFloat(e.target.value)
-                            this.props.handleChange(value, l)
+                            this.props.updateUserData(value, l, this.props.type)
                         }}></DebounceInput>
                         </div>
                     ))}

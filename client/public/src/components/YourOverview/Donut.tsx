@@ -50,7 +50,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
        const filteredData=  data.filter(d=>d.value !== 0)
         console.log('filter data', filteredData)
 
-        const padAngle = filteredData.length / 60
+        const padAngle = filteredData.length === 0 ? 0 :0.05
         this.setState({data:filteredData, prevData:this.state.data, padAngle}, ()=>{
             this.updateDonut()
 

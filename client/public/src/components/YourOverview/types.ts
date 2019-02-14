@@ -3,7 +3,7 @@
 export interface FormProps {
 
     labels: any[];
-    handleChange: (value:number, key:string)=> void
+    updateUserData: (value:number, key:string, diversityCategory:string)=> void
 }
 
 export enum donutType {

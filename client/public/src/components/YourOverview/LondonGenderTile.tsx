@@ -3,20 +3,20 @@ import {Donut} from './Donut'
 import {Form} from './Form'
 import { GenderTileState, donutType } from './types';
 
-export const LondonGenderTile =()=> {
+export const LondonTile =({type, title, data})=> {
 
         
         return(
             <React.Fragment>
                 <div className='tile'>
-                <h1 className="user-tile-sub-heading">LONDONS <br/>GENDER <br/>DEMOGRAPHIC</h1>
+                <h1 className="user-tile-sub-heading">LONDONS <br/>{title} <br/>DEMOGRAPHIC</h1>
                 <Donut
-                    donutName='londonGender'
-                    donutType={donutType.gender}
+                    donutName='london'
+                    donutType={}
                     className='tileDonuts'
                     radius={80}
                     template={false}
-                    data={{Men: 31000000, Women:3200000, other:0}}
+                    data={data}
                 ></Donut>
 
                 <div className="form">
