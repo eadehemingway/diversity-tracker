@@ -8,7 +8,7 @@ export const OverviewDonutColumn =({data, template})=> {
         return(
             <React.Fragment>
                 <div  className='overview-donut-collum'>
-            <h1 className="sub-heading">{data.title}</h1>
+            <h1 className="collumn-heading">{data.title}</h1>
                 <Donut
                 donutType={donutType.gender}
                 donutName={`gender-${data.uuid}`}

@@ -24,6 +24,9 @@ export class OurOverview extends React.Component{
                 // jan23: {gender: {t:1}, race: {t:1}, title:"01/23", uuid:"jan23"},
                 // june23: {gender: {t:1}, race: {t:1}, title: "06/23", uuid:"june23"}
             }
+            londonData: {
+                gender: {men: 2, women: 10}, race: {white:2, other:10}, title:"LONDON", uuid:"LONDON"
+            }
         }
     }
     render(){
@@ -33,15 +36,15 @@ export class OurOverview extends React.Component{
             <h1 className="title">OUR OVERVIEW</h1>
             <div className="our-overview-container">
             <div  className="overview-donut-collum collum-label-container">
-                <h1 className="sub-heading collumn-labels">GENDER</h1>
-                <h1 className="sub-heading collumn-labels">RACE</h1>
+                <h1 className="collumn-sub-heading collumn-labels">GENDER</h1>
+                <h1 className="collumn-sub-heading collumn-labels">RACE</h1>
             </div>
              {map(this.state.data, (col, i)=>  <OverviewDonutColumn data={col} key={col.title} template={false}/>)}
              {map(this.state.templateDonuts, (col, i)=>  <OverviewDonutColumn data={col} key={col.title} template={true}/>)}
+             <div className="overview-london-donut-collumn" >
+            <OverviewDonutColumn data={this.state.londonData} template={false}/>
 
-        
-
-            <LondonDonutCollumn/>
+</div>
             </div>
             </React.Fragment>
         )

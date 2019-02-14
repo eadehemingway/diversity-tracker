@@ -16,12 +16,13 @@ export class YourOverview extends React.Component{
     render(){
         return(
             <React.Fragment>
-
             <h1  className="title">YOUR OVERVIEW</h1>
+            <div className="user-overview-container">
             < UserGenderTile/>
             < LondonGenderTile/> 
             {/* < UserRaceTile/>
             < LondonRaceTile/> */}
+            </div>
             </React.Fragment>
 
 

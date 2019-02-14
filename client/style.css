@@ -22,21 +22,41 @@ justify-content: center;
 
 
 .tile{
-background: #F3EAE5;
+/* background: #F3EAE5; */
 padding: 1rem 1rem;
-margin: 2rem;
+margin: 2rem 2rem 0rem 2rem;
 width: 15rem;
 height: 22rem;
-border: 1px solid 	#4D577F;
+/* border: 1px solid 	#4D577F; */
 position: relative;
+
+}
+.form{
+    border-top: 3px solid #4D577F;
+/* background: #F3EAE5;
+padding: 1rem 1rem;
+margin:  0rem 2rem;
+width: 15rem;
+height: 7rem;
+
+position: relative; */
 
 }
 
 .tile-container {
     display: flex;
-
-
 }
+
+.user-tile-sub-heading{
+text-align: left;
+font-size: 1.35rem;
+margin-top: 0;
+width: 11rem;
+border-bottom: 3px solid #4D577F;
+padding-bottom: 0.5rem;
+}
+
+
 
 .input {
 width: 2rem;
@@ -90,21 +110,33 @@ display: flex;
 .overview-donut{
     padding:0.5rem;
 }
-.sub-heading{
+.collumn-sub-heading{
 font-size: 1rem;
 margin-top: 0;
 width: 6rem;
 text-align: center;
 }
 
+.collumn-heading{
+    font-size: 1rem;
+    text-align: center;
+    text-anchor:middle;
+}
+
 .collumn-labels{
-    height: 50px;
-    margin-right:1rem;
+    height: 69px;
+    width: 5rem;
+    margin-right:2rem;
     text-align: right;
+    text-anchor: end;
+    /* border: 2px solid black; */
+    margin-left: 0;
 }
 
 .collum-label-container{
-    margin-top: 3rem;
+    margin-top: 4rem;
+    /* border: 2px solid black; */
+
 }
 
 .title {
@@ -161,4 +193,15 @@ margin-top: 14rem;
 
 .arc:hover{
     opacity: 0.5
+}
+
+.user-overview-container{
+display: flex;
+width:100%;
+
+}
+
+
+.tile-donut-container{
+height: 18rem;
 }

@@ -10,7 +10,6 @@ export class Form extends React.Component<FormProps>{
     render(){
         return(
             <React.Fragment>
-                <p className="tile-title">{this.props.title}</p>
 
                     <form onSubmit={e=> e.preventDefault() } className="form">
                     {this.props.labels.map(l=> (

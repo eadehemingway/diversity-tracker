@@ -12,7 +12,7 @@ export class RoleTile extends React.Component{
     render(){
         return(
             <React.Fragment>
-            <h1 className="sub-heading">{this.props.title}</h1>
+            <h1 className="collumn-sub-heading">{this.props.title}</h1>
             <div className="role-tile-container">
             <Donut donutType={donutType.gender}
             donutName={`${this.props.techType}${this.props.data.date}-applications`}

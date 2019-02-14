@@ -1,7 +1,7 @@
 
 
 export interface FormProps {
-    title: string;
+
     labels: any[];
     handleChange: (value:number, key:string)=> void
 }
@@ -24,6 +24,10 @@ export interface DonutProps {
 export interface DonutState {
     data: any [];
     prevData: any[];
+    padAngle: number;
+    raceColors: string[];
+    genderColors: string[];
+    templateColors: string[]
 
 }
 

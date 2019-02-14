@@ -8,38 +8,42 @@ export class UserGenderTile extends React.Component<{}, GenderTileState>{
         super(props)
         this.state={
             Men: 0,
-            Women: 0,
-            Other: 0
+
         }
     }
 
 
     handleChange = (value: number, key:string)=>{
+        // console.log('val', value, key)
         this.setState({[key]: value})
     }
 
 
     render(){
+
         
         return(
             <React.Fragment>
                 <div className='tile'>
-                <h1> USER GENDER DEMOGRAPHIC</h1>
-                <Form 
+                <h1 className="user-tile-sub-heading"> USER<br/> GENDER<br/> DEMOGRAPHIC</h1>
+           
+
+                <Donut
+                data={this.state}
+                donutName="userGender"
+                donutType={donutType.gender}
+                radius={80}
+                className='tileDonuts'
+                template={false}
+                ></Donut>
+          
+           <Form 
                 handleChange={this.handleChange}
                 labels={['Men', 'Women', 'Other']}
                 
                 ></Form>
-
-                <Donut
-                data={this.state}
-                londonDonut={false}
-                donutName={donutType.gender}
-                radius={50}
-                className='tileDonuts'
-                template={false}
-                ></Donut>
                 </div>
+                
             </React.Fragment>
 
         )

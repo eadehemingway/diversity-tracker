@@ -61,8 +61,8 @@ export class OurApplicationTargets extends React.Component{
             <React.Fragment>
             <h1  className="title">OUR APPLICATION TARGETS</h1>
 
-            <div className="role-tile-top-labels"><h1 className="sub-heading">APPLICATIONS</h1>
-            <h1 className="sub-heading">HIRED</h1></div>
+            <div className="role-tile-top-labels"><h1 className="collumn-sub-heading">APPLICATIONS</h1>
+            <h1 className="collumn-sub-heading">HIRED</h1></div>
             <button onClick={()=>this.setState({diversityCategory:"Gender"})}>GENDER</button>
             <button onClick={()=>this.setState({diversityCategory:"Race"})}>RACE</button>
             

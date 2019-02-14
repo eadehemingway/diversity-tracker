@@ -9,16 +9,27 @@ export const LondonGenderTile =()=> {
         return(
             <React.Fragment>
                 <div className='tile'>
-            <h1>LONDONS GENDER DEMOGRAPHIC</h1>
+                <h1 className="user-tile-sub-heading">LONDONS <br/>GENDER <br/>DEMOGRAPHIC</h1>
                 <Donut
-                londonDonut={true}
-                donutName={donutType.gender}
-                className='tileDonuts'
-                radius={50}
-                template={false}
-                data={{Men: 31000000, Women:3200000, other:0}}
+                    donutName='londonGender'
+                    donutType={donutType.gender}
+                    className='tileDonuts'
+                    radius={80}
+                    template={false}
+                    data={{Men: 31000000, Women:3200000, other:0}}
                 ></Donut>
+
+                <div className="form">
+                    <p>Men: 310000000</p>
+                    <p>Women: 310000000</p>
+                    <p>Other: 310000000</p>
+
+
                 </div>
+                </div>
+     
+
+
             </React.Fragment>
 
         )

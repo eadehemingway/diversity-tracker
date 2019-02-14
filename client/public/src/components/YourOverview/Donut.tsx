@@ -15,13 +15,17 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         this.state={
             // data:[{'label':null, 'value': 100}, {'label':null, 'value': 100}],
             data:[],
-            prevData: []
+            prevData: [],
+            padAngle: 0.05, 
+            raceColors: ['#4D577F','#6D7596', '#9DA3B9'],
+            genderColors: ['#4D577F','#6D7596', '#9DA3B9'],
+            templateColors: ['hsla(240,100%,50%, 0.03)']
         }
     }
 
 
     componentWillReceiveProps(nextProps){
-
+        // console.log('recieved props') 
         if(nextProps !== this.props){
             this.updateData(nextProps)
 
@@ -38,11 +42,16 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
     updateData =(newProps) =>{
         const data = []
-        forEach(this.props.data, ( value, key)=> {
+        forEach(newProps.data, ( value, key)=> {
             const arc = {label: key, value:value}
            return data.push(arc)
         })
-        this.setState({data, prevData:this.state.data}, ()=>{
+        
+       const filteredData=  data.filter(d=>d.value !== 0)
+        console.log('filter data', filteredData)
+
+        const padAngle = filteredData.length / 60
+        this.setState({data:filteredData, prevData:this.state.data, padAngle}, ()=>{
             this.updateDonut()
 
         })
@@ -50,20 +59,21 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
     updateDonut = () =>{
         const {radius } = this.props
+        const { raceColors, genderColors, templateColors, padAngle} = this.state
         let color;
         if(this.props.template){
-            color=['hsla(240,100%,50%, 0.03)']
+            color=templateColors
         }else{
-         color = this.props.donutType === donutType.gender ? ['#57575E', '#D36543', '#4D577E', '#D36543'] : ['pink', 'pink', 'pink', '#D36543']
+         color = raceColors
         }
         const oldDonut = pie()
-        .padAngle(.03)
+        .padAngle(padAngle)
             .value(function(d){
                 return d.value
             })(this.state.prevData)
         
         const newDonut = pie()
-        .padAngle(.03)
+        .padAngle(padAngle)
             .value(function(d){
                 return d.value
                 })
@@ -101,21 +111,22 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .remove()
 
         path.transition().duration(1000).attrTween("d", createInterpolator)
-        const tooltip = select(`#svgWrapper-${this.props.donutName}`)
+        const tooltip = select(`#donut-${this.props.donutName}`)
             .select('.arc')
             .append('text')
-            .style('position', 'absolute')
-            .style('visibility', 'hidden')
+            // .style('position', 'absolute')
+
 
     
 
 
-        select(`#svgWrapper-${this.props.donutName}`)
+        select(`#donut-${this.props.donutName}`)
             .selectAll('path')
             .on('mouseover', (d)=> {
+                
                 tooltip.text(d.data.label)
                 tooltip.style('visibility', 'visible')
-            
+                console.log(tooltip)
             
                 
             })
@@ -140,12 +151,13 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
     drawFirstDonut=()=>{
         const {radius} = this.props
+        const {padAngle} = this.state
         const width = radius * 2;
         const height = radius * 2;
-        const color = this.props.donutType === donutType.gender ? ['#57575E', '#D36543', '#4D577E', '#D36543'] : ['grey', '#D36543', 'pink', '#D36543']
+        const color = this.state.raceColors
        
         const donut = pie()
-            .padAngle(.03)
+            .padAngle(padAngle)
             .value(function(d){
                 return d.value
             })
@@ -172,7 +184,11 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .append('path')
             .attr('d', theArc)
             .attr('fill', function(d,i){return color[i]})
-
+        
+            svg.selectAll('path')
+            .data(donut)
+            .enter()
+            .append("text")
         // const tooltip = svg.selectAll(".arc")
         //     .append('div')
         //     .style('position', 'absolute')
@@ -190,12 +206,14 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     render(){
 
         return(
-            <React.Fragment>
-                <div id={`svgWrapper-${this.props.donutName}`}>
+
+
+            <div className= "tile-donut-container">
 
                 <svg id={`donut-${this.props.donutName}`} className={this.props.className}></svg>
-                </div>
-            </React.Fragment>
+            </div>
+
+
         )
     }
 }
