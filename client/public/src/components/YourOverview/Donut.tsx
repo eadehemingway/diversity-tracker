@@ -50,7 +50,9 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         // console.log('data updating satae', dataWithNewValues)
         
         const filteredData=  dataWithNewValues.filter(d=>d.value !== 0)
-        const padAngle = filteredData.length > 1 ? 0.05 :0
+        const padAngle = filteredData.length > 1 ? filteredData.length/66 :0
+
+
 
         console.log('padangle', padAngle)
         let prevData=this.state.data
@@ -228,6 +230,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     render(){
         console.log('prevdata', this.state.prevData)
         console.log('currentdata', this.state.data)
+        console.log('padangle', this.state.padAngle)
+
         return(
 
 

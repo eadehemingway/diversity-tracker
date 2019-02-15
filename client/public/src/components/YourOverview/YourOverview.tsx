@@ -35,7 +35,7 @@ export class YourOverview extends React.Component<YourOverviewProps, YourOvervie
             <h1  className="title">YOUR OVERVIEW</h1>
             <div className="user-overview-container">
             < UserTile type={donutType.gender} title="GENDER" data={this.state.userData.gender} updateUserData={this.updateUserData}/>
-            {/* < LondonTile type={donutType.gender} title="GENDER" data={this.state.londonData.gender}/>  */}
+            < LondonTile type={donutType.gender} title="GENDER" data={this.state.londonData.gender}/> 
 
             </div>
             </React.Fragment>
