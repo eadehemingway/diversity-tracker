@@ -23,7 +23,7 @@ export class Home extends React.Component{
                 donutName={`one`}
                 radius={70}
                 data={{
-                    men: 12, women: 2
+                    Men: 12, Women: 2
                 }}
                 template={false}
                 className="small-donut"
@@ -33,7 +33,7 @@ export class Home extends React.Component{
                 donutName={`two`}
                 radius={100}
                 data={{
-                    men: 12, women: 6
+                    Men: 12, Women: 6
                 }}
                 template={false}
                 className="big-donut"
