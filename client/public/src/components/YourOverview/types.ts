@@ -17,7 +17,8 @@ export interface DonutProps {
     radius: number;
     data: {}
     template:boolean
-
+    padAngle: number
+    target?: boolean;
 
 }
 

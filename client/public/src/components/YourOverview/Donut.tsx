@@ -17,8 +17,9 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             prevData: [{'label':'Men', 'value':0}],
             data:[{'label':'Men', 'value':0}],
             padAngle: 0, 
-            raceColors: ['#4D577F','#6D7596', '#9DA3B9'],
+            raceColors: ['#6D7596','rgba(211, 101, 67, 1)', '#9DA3B9', '#D36543','#6D7596', '#9DA3B9'],
             genderColors: ['#4D577F','#6D7596', '#9DA3B9'],
+            targetColors: ['rgba( 109, 117, 150,0.3)', 'rgba(211, 101, 67,0.3)','rgba(157, 163, 185,0.3)', 'rgba(77, 87, 127,0.3)'],
             templateColors: ['hsla(240,100%,50%, 0.03)']
         }
     }
@@ -48,8 +49,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         })
         
         const filteredData=  dataWithNewValues.filter(d=>d.value !== 0)
-        const padAngle = filteredData.length > 1 ? filteredData.length/66 :0
 
+        const padAngle = this.props.padAngle
 
 
 
@@ -67,11 +68,12 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     updateDonut = () =>{
 
         const {radius } = this.props
-        const { raceColors, genderColors, templateColors, padAngle} = this.state
+        const { raceColors, genderColors, templateColors, padAngle, targetColors} = this.state
         let color;
         if(this.props.template){
             color=templateColors
-        }else{
+        }else if (this.props.target){
+            color= targetColors}else{
          color = raceColors
         }
 
@@ -144,8 +146,9 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .selectAll('path')
             .on('mouseover', (d)=> {
                 
-                tooltip.text(d.data.label)
+                tooltip.text(`${d.data.label}: ${d.data.value}`)
                 tooltip.style('visibility', 'visible')
+                tooltip.style('background', 'red')
 
             
                 
@@ -175,14 +178,19 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         const {padAngle} = this.state
         const width = radius * 2;
         const height = radius * 2;
-        const { raceColors, genderColors, templateColors} = this.state
+        const { raceColors, genderColors, templateColors, targetColors} = this.state
         let color;
+   
+
+
         if(this.props.template){
             color=templateColors
-        }else{
+        }else if (this.props.target){
+            color= targetColors}else{
          color = raceColors
         }
-       
+
+
         const donut = pie()
             .padAngle(padAngle)
             .value(function(d){
@@ -238,7 +246,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
             
 
-                <svg id={`donut-${this.props.donutName}`} className={this.props.className}></svg>
+                <svg id={`donut-${this.props.donutName}`} className={`${this.props.className}`}></svg>
 
 
 

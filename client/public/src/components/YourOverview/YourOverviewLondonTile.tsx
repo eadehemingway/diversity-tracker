@@ -18,6 +18,8 @@ export const YourOverviewLondonTile =({type, title, data})=> {
                     radius={80}
                     template={false}
                     data={data}
+                padAngle={0.03}
+
                 ></Donut>
                 </div>
                 <div className="Y-O-form">

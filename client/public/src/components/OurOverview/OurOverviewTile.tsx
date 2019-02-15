@@ -16,6 +16,8 @@ export const OurOverviewTile =({data, template})=> {
                 radius = {30}
                 data={data.gender}
                 template={template}
+                padAngle={0.03}
+
                 ></Donut>
                  <Donut
                 donutType={donutType.race}
@@ -24,6 +26,7 @@ export const OurOverviewTile =({data, template})=> {
                 radius = {30}
                 data={data.race}
                 template={template}
+                padAngle={0.03}
 
 
                 ></Donut>

@@ -285,9 +285,19 @@ margin-right: 0.5rem;
 
 
 
+.small-donut{
+z-index: 5;
+position:absolute;
+right:30px;
+top: 30px;
+}
+
+.big-donut{
+position:absolute;
+z-index: 0;
 
 
-
+}
 
 
 
