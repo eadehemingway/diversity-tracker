@@ -12,7 +12,7 @@ export class OurHiresTile extends React.Component{
     render(){
         return(
             <React.Fragment>
-            <h1 className="sub-heading">{this.props.title}</h1>
+            <h1 className="sub-heading O-H-vertical-sub-heading">{this.props.title}</h1>
             <div className="O-H-tile">
             <Donut donutType={donutType.gender}
             donutName={`${this.props.techType}${this.props.data.date}-applications`}

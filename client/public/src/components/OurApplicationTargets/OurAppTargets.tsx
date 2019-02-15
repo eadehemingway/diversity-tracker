@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {FourDonutTile} from "./FourDonutTile"
+import { OurHiresTile } from './OurHiresTile';
 
 
 
@@ -62,16 +63,18 @@ export class OurApplicationTargets extends React.Component{
             <div className="O-H-page-container">
             <h1  className="title">OUR <br/> APPLICATION <br/> TARGETS</h1>
             <div className="O-H-tile-container">
+            <div className="O-H-diversity-category-tab-container">
+
+            <button className="O-H-diversity-category-tab" onClick={()=>this.setState({diversityCategory:"Gender"})}>GENDER</button>
+            <button className="O-H-diversity-category-tab" onClick={()=>this.setState({diversityCategory:"Race"})}>RACE</button>
+            </div>
 
             <div className="O-H-horizontal-sub-headings">
             <h1 className="sub-heading">APPLICATIONS</h1>
             <h1 className="sub-heading">HIRED</h1>
             </div>
-
-            <button onClick={()=>this.setState({diversityCategory:"Gender"})}>GENDER</button>
-            <button onClick={()=>this.setState({diversityCategory:"Race"})}>RACE</button>
-            
-            <FourDonutTile data={data} selectedDate={this.state.selectedDate}></FourDonutTile>
+            <OurHiresTile techType='tech' title="TECH" data={data[this.state.selectedDate].tech}></OurHiresTile>
+            <OurHiresTile techType='nonTech' title="NON TECH" data={data[this.state.selectedDate].nonTech}></OurHiresTile>
             </div>
             </div>
             </React.Fragment>
