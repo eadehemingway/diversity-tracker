@@ -39,7 +39,7 @@ z-index: 10;
 .sub-heading{
 font-size: 1rem;
 margin-top: 0;
-width: 6rem;
+width: 8rem;
 text-align: center;
 }
 
@@ -239,7 +239,7 @@ position: relative;
 
 .O-H-tile{
     /* width:70%; */
-    margin: auto;
+    margin-left: 8rem;
     display:flex;
     justify-content: space-around;
     padding: 4rem;
@@ -249,13 +249,13 @@ position: relative;
     
 
 .O-H-horizontal-sub-headings{
-    /* width:70%; */
-    /* border: 2px solid red; */
-    margin: auto;
+
+    padding-left: 12rem;
     display:flex;
     justify-content: space-around;
     /* padding-bottom: 0.5rem; */
     border-bottom: 5px solid #D36543;
+    padding-right:4rem;
 
 }
 

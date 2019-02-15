@@ -20,9 +20,9 @@ export class OurHiresTile extends React.Component{
             data={this.props.data.applications}
             template={false}
             >
-            
             </Donut>
-            <Donut
+            
+            <Donut donutType={donutType.gender}
             donutName={`${this.props.techType}${this.props.data.date}-hired`}
             radius={70}
             data={this.props.data.hired}
