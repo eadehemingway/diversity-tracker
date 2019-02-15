@@ -33,8 +33,9 @@ export class OurOverview extends React.Component{
         return(
             <React.Fragment>
 
-            <h1 className="title">OUR OVERVIEW</h1>
-            <div className="O-O-page-content-container">
+            <div className="O-O-page-container">
+            <h1 className="title">OUR <br/> OVERVIEW</h1>
+            <div className="O-O-tile-container">
             <div  className="O-O-tile O-O-vertical-label-container">
                 <h1 className="sub-heading O-O-vertical-label">GENDER</h1>
                 <h1 className="sub-heading O-O-vertical-label">RACE</h1>
@@ -44,6 +45,7 @@ export class OurOverview extends React.Component{
              <div className="O-O-london-donut-collumn" >
             <OurOverviewTile data={this.state.londonData} template={false}/>
 
+</div>
 </div>
             </div>
             </React.Fragment>

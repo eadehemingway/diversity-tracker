@@ -32,11 +32,14 @@ export class YourOverview extends React.Component<YourOverviewProps, YourOvervie
     render(){
         return(
             <React.Fragment>
-            <h1  className="title">YOUR OVERVIEW</h1>
-            <div className="Y-O-page-content-container">
+            <div className="Y-O-page-container">
+
+            <h1  className="title">YOUR<br/>  OVERVIEW</h1>
+            <div className="Y-O-tile-container">
             < YourOverviewUserTile type={donutType.gender} title="GENDER" data={this.state.userData.gender} updateUserData={this.updateUserData}/>
             < YourOverviewLondonTile type={donutType.gender} title="GENDER" data={this.state.londonData.gender}/> 
 
+            </div>
             </div>
             </React.Fragment>
 

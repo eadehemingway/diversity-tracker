@@ -58,18 +58,21 @@ export class OurApplicationTargets extends React.Component{
 
         return(
             <React.Fragment>
+
             <div className="O-H-page-container">
+            <h1  className="title">OUR <br/> APPLICATION <br/> TARGETS</h1>
+            <div className="O-H-tile-container">
 
-            <h1  className="title">OUR APPLICATION TARGETS</h1>
-
-            <div className="O-H-sub-headings">
+            <div className="O-H-horizontal-sub-headings">
             <h1 className="sub-heading">APPLICATIONS</h1>
             <h1 className="sub-heading">HIRED</h1>
             </div>
+
             <button onClick={()=>this.setState({diversityCategory:"Gender"})}>GENDER</button>
             <button onClick={()=>this.setState({diversityCategory:"Race"})}>RACE</button>
             
             <FourDonutTile data={data} selectedDate={this.state.selectedDate}></FourDonutTile>
+            </div>
             </div>
             </React.Fragment>
       
