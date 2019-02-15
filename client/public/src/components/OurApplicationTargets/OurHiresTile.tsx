@@ -4,7 +4,7 @@ import { Donut } from '../YourOverview/Donut';
 
 
 
-export class RoleTile extends React.Component{
+export class OurHiresTile extends React.Component{
     constructor(props){
         super(props)
 
@@ -12,8 +12,8 @@ export class RoleTile extends React.Component{
     render(){
         return(
             <React.Fragment>
-            <h1 className="collumn-sub-heading">{this.props.title}</h1>
-            <div className="role-tile-container">
+            <h1 className="sub-heading">{this.props.title}</h1>
+            <div className="O-H-tile">
             <Donut donutType={donutType.gender}
             donutName={`${this.props.techType}${this.props.data.date}-applications`}
             radius={70}

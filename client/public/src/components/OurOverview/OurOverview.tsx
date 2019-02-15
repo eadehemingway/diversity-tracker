@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LondonDonutCollumn } from './LondonDonutCollumn';
-import { OverviewDonutColumn } from './OverviewDonutColumn';
+import { OurOverviewTile } from './OurOverviewTile';
 import {map} from "lodash";
 
 
@@ -23,7 +23,7 @@ export class OurOverview extends React.Component{
                 // june22: {gender: {t:1}, race: {t:1}, title:"06/22", uuid:"june22"},
                 // jan23: {gender: {t:1}, race: {t:1}, title:"01/23", uuid:"jan23"},
                 // june23: {gender: {t:1}, race: {t:1}, title: "06/23", uuid:"june23"}
-            }
+            },
             londonData: {
                 gender: {men: 2, women: 10}, race: {white:2, other:10}, title:"LONDON", uuid:"LONDON"
             }
@@ -34,15 +34,15 @@ export class OurOverview extends React.Component{
             <React.Fragment>
 
             <h1 className="title">OUR OVERVIEW</h1>
-            <div className="our-overview-container">
-            <div  className="overview-donut-collum collum-label-container">
-                <h1 className="collumn-sub-heading collumn-labels">GENDER</h1>
-                <h1 className="collumn-sub-heading collumn-labels">RACE</h1>
+            <div className="O-O-page-content-container">
+            <div  className="O-O-tile O-O-vertical-label-container">
+                <h1 className="sub-heading O-O-vertical-label">GENDER</h1>
+                <h1 className="sub-heading O-O-vertical-label">RACE</h1>
             </div>
-             {map(this.state.data, (col, i)=>  <OverviewDonutColumn data={col} key={col.title} template={false}/>)}
-             {map(this.state.templateDonuts, (col, i)=>  <OverviewDonutColumn data={col} key={col.title} template={true}/>)}
-             <div className="overview-london-donut-collumn" >
-            <OverviewDonutColumn data={this.state.londonData} template={false}/>
+             {map(this.state.data, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={false}/>)}
+             {map(this.state.templateDonuts, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={true}/>)}
+             <div className="O-O-london-donut-collumn" >
+            <OurOverviewTile data={this.state.londonData} template={false}/>
 
 </div>
             </div>

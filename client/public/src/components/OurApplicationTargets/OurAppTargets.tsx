@@ -55,18 +55,22 @@ export class OurApplicationTargets extends React.Component{
     }
     render(){
         const data = this.state.diversityCategory === 'Gender' ?  this.state.gender : this.state.race
-        console.log('{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{', data)
-        console.log('{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{', this.state.diversityCategory)
+
         return(
             <React.Fragment>
+            <div className="O-H-page-container">
+
             <h1  className="title">OUR APPLICATION TARGETS</h1>
 
-            <div className="role-tile-top-labels"><h1 className="collumn-sub-heading">APPLICATIONS</h1>
-            <h1 className="collumn-sub-heading">HIRED</h1></div>
+            <div className="O-H-sub-headings">
+            <h1 className="sub-heading">APPLICATIONS</h1>
+            <h1 className="sub-heading">HIRED</h1>
+            </div>
             <button onClick={()=>this.setState({diversityCategory:"Gender"})}>GENDER</button>
             <button onClick={()=>this.setState({diversityCategory:"Race"})}>RACE</button>
             
             <FourDonutTile data={data} selectedDate={this.state.selectedDate}></FourDonutTile>
+            </div>
             </React.Fragment>
       
         )

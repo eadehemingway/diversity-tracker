@@ -2,17 +2,17 @@ import * as React from 'react';
 import {Donut} from '../YourOverview/Donut'
 import {donutType } from '../YourOverview/types'
 
-export const OverviewDonutColumn =({data, template})=> {
+export const OurOverviewTile =({data, template})=> {
 
         
         return(
             <React.Fragment>
-                <div  className='overview-donut-collum'>
-            <h1 className="collumn-heading">{data.title}</h1>
+                <div  className='O-O-tile'>
+            <h1 className="O-O-collumn-heading">{data.title}</h1>
                 <Donut
                 donutType={donutType.gender}
                 donutName={`gender-${data.uuid}`}
-                className="overview-donut"
+                className="O-O-donut"
                 radius = {30}
                 data={data.gender}
                 template={template}
@@ -20,7 +20,7 @@ export const OverviewDonutColumn =({data, template})=> {
                  <Donut
                 donutType={donutType.race}
                 donutName={`race-${data.uuid}`}
-                className="overview-donut"
+                className="O-O-donut"
                 radius = {30}
                 data={data.race}
                 template={template}

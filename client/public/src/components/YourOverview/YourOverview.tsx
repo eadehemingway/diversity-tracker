@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { LondonTile } from './LondonTile';
-import { UserTile } from './UserGenderTile';
+import { YourOverviewLondonTile } from './YourOverviewLondonTile';
+import { YourOverviewUserTile } from './YourOverviewUserTile';
 import { donutType } from './types';
 
 interface YourOverviewProps {
@@ -33,9 +33,9 @@ export class YourOverview extends React.Component<YourOverviewProps, YourOvervie
         return(
             <React.Fragment>
             <h1  className="title">YOUR OVERVIEW</h1>
-            <div className="user-overview-container">
-            < UserTile type={donutType.gender} title="GENDER" data={this.state.userData.gender} updateUserData={this.updateUserData}/>
-            < LondonTile type={donutType.gender} title="GENDER" data={this.state.londonData.gender}/> 
+            <div className="Y-O-page-content-container">
+            < YourOverviewUserTile type={donutType.gender} title="GENDER" data={this.state.userData.gender} updateUserData={this.updateUserData}/>
+            < YourOverviewLondonTile type={donutType.gender} title="GENDER" data={this.state.londonData.gender}/> 
 
             </div>
             </React.Fragment>

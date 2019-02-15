@@ -18,8 +18,8 @@ export class NavBar extends React.Component{
         
             <React.Fragment>
             <div className= "navbar">
-            <Link to="youroverview" className="navbar-link"> YOUR <br/> OVERVIEW</Link>
             <Link to="ouroverview" className="navbar-link"> OUR <br/>OVERVIEW</Link>
+            <Link to="youroverview" className="navbar-link"> YOUR <br/> OVERVIEW</Link>
             <Link to="ourapplicationtargets" className="navbar-link"> OUR <br/>APPLICATION <br/>TARGETS</Link>
             <Link to="/"></Link>
 

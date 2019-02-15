@@ -1,10 +1,14 @@
+
+/* GENERAL */
 body{
 background:	#FFF7F2;
 font-family: sans-serif;
 color: 	#4D577F;
+max-width:100%;
+margin:0
 }
 
-.tileDonuts {
+.donut-svg {
 margin: 3rem auto ;
 align-content: center;
 display: flex;
@@ -20,128 +24,17 @@ justify-content: center;
 
 }
 
-
-.tile{
-/* background: #F3EAE5; */
-padding: 1rem 1rem;
-margin: 2rem 2rem 0rem 2rem;
-width: 15rem;
-height: 22rem;
-/* border: 1px solid 	#4D577F; */
-position: relative;
-
-}
-.form{
-    border-top: 3px solid #4D577F;
-/* background: #F3EAE5;
-padding: 1rem 1rem;
-margin:  0rem 2rem;
-width: 15rem;
-height: 7rem;
-
-position: relative; */
-
-}
-
-.tile-container {
-    display: flex;
-}
-
-.user-tile-sub-heading{
-text-align: left;
-font-size: 1.35rem;
-margin-top: 0;
-width: 11rem;
-border-bottom: 3px solid #4D577F;
-padding-bottom: 0.5rem;
+.title {
+width: 70%;
+margin: 7rem auto 3rem auto;
 }
 
 
-
-.input {
-width: 2rem;
-height: 1rem;
-/* border: 2px solid red */
-
-}
-
-
-
-
-.labels {
-    /* border: 2px solid green; */
-    display: block;
-    /* padding:1rem; */
-
-}
-
-.input-label-pair{
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    margin:0.5rem;
-}
-
-.overview-london-donut-collumn{
-width: 5rem;
-border-left: 5px solid #D36543;
-padding-left: 2rem;
-position: absolute;
-right: 3rem;
-top: 0rem;
-}
-
-.overview-donut-collum {
-    width: 5rem;
-    padding-left: 1rem;
-
-
-}
-
-.our-overview-container {
-position: relative;
-width: 80%;
-/* border: 3px solid pink; */
-height: 20rem;
-margin: 3rem 4rem;
-display: flex;
-
-}
-.overview-donut{
-    padding:0.5rem;
-}
-.collumn-sub-heading{
+.sub-heading{
 font-size: 1rem;
 margin-top: 0;
 width: 6rem;
 text-align: center;
-}
-
-.collumn-heading{
-    font-size: 1rem;
-    text-align: center;
-    text-anchor:middle;
-}
-
-.collumn-labels{
-    height: 69px;
-    width: 5rem;
-    margin-right:2rem;
-    text-align: right;
-    text-anchor: end;
-    /* border: 2px solid black; */
-    margin-left: 0;
-}
-
-.collum-label-container{
-    margin-top: 4rem;
-    /* border: 2px solid black; */
-
-}
-
-.title {
-    width: 70%;
-    margin: 7rem auto 3rem auto;
 }
 
 .navbar{
@@ -151,38 +44,162 @@ width: 100%;
 display: flex;
 justify-content: flex-end;
 border-bottom: 3px solid hsla(228, 25%, 40%, 0.4);
-
-
-
 }
 
 .navbar-link{
-    text-decoration: none;
-    margin: 1rem;
-    font-family: sans-serif;
-    color: hsla(228, 25%, 40%, 0.5);
-    font-size: 0.9rem;
-    padding: 0.5rem;
-    text-align: right;
-    display:flex;
-    align-items: flex-end;
-
+text-decoration: none;
+margin: 1rem;
+font-family: sans-serif;
+color: hsla(228, 25%, 40%, 0.5);
+font-size: 0.9rem;
+padding: 0.5rem;
+text-align: right;
+display:flex;
+align-items: flex-end;
 }
+
 
 #root{
 margin-top: 14rem;
 }
 
-.role-tile-top-labels{
-    width:70%;
-    /* border: 2px solid red; */
-    margin: auto;
-    display:flex;
-    justify-content: space-around;
+.arc:hover{
+opacity: 0.5
 }
-.role-tile-container{
-    width:70%;
 
+
+/* OUR OVERVIEW ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.O-O-page-content-container {
+    position: relative;
+    width: 80%;
+    /* border: 3px solid pink; */
+    height: 20rem;
+    margin: 3rem 4rem;
+    display: flex;
+    
+    }
+    
+.O-O-tile {
+    width: 5rem;
+    padding-left: 1rem;
+    }
+        
+.O-O-london-donut-collumn{
+width: 5rem;
+border-left: 5px solid #D36543;
+padding-left: 2rem;
+position: absolute;
+right: 3rem;
+top: 0rem;
+}
+
+
+
+
+.O-O-vertical-label-container{
+margin-top: 4rem;
+/* border: 2px solid black; */
+}
+
+
+.O-O-donut{
+padding:0.5rem;
+}
+
+.O-O-collumn-heading{
+font-size: 1rem;
+text-align: center;
+text-anchor:middle;
+}
+
+.O-O-vertical-label{
+height: 69px;
+width: 5rem;
+margin-right:2rem;
+text-align: right;
+text-anchor: end;
+/* border: 2px solid black; */
+margin-left: 0;
+}
+
+/* YOUR OVERVIEW ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.Y-O-page-content-container{
+display: flex;
+width:100%;
+
+}
+
+.Y-O-tile{
+/* background: #F3EAE5; */
+padding: 1rem 1rem;
+margin: 2rem 2rem 0rem 2rem;
+width: 15rem;
+height: 22rem;
+/* border: 1px solid 	#4D577F; */
+position: relative;
+
+}
+
+.Y-O-tile-title{
+    text-align: left;
+    font-size: 1.35rem;
+    margin-top: 0;
+    width: 11rem;
+    border-bottom: 3px solid #4D577F;
+    padding-bottom: 0.5rem;
+    }
+
+.Y-O-form{
+    border-top: 3px solid #4D577F;
+    /* background: #F3EAE5;
+    padding: 1rem 1rem;
+    margin:  0rem 2rem;
+    width: 15rem;
+    height: 7rem;
+    position: relative; */
+}
+
+.Y-O-input {
+    width: 2rem;
+    height: 1rem;
+    /* border: 2px solid red */
+
+}
+
+.Y-O-input-labels {
+    /* border: 2px solid green; */
+    display: block;
+    /* padding:1rem; */
+    
+    }
+    
+
+.Y-O-input-label-pair{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin:0.5rem;
+}
+
+.Y-O-donut-div{
+    height: 18rem;  
+}
+
+
+        
+
+/* OUR HIRES TO APPLICATIONS ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+.O-H-page-container{
+    width: 80%;
+    margin: auto;
+}
+
+.O-H-tile{
+    width:70%;
     margin: auto;
     display:flex;
     justify-content: space-around;
@@ -190,18 +207,36 @@ margin-top: 14rem;
     /* box-shadow: 2px 5px 3px 10px black; */
     /* background:  */
 }
+    
 
-.arc:hover{
-    opacity: 0.5
+.O-H-sub-headings{
+    width:70%;
+    /* border: 2px solid red; */
+    margin: auto;
+    display:flex;
+    justify-content: space-around;
+    border-bottom: 5px solid #D36543;
+
 }
 
-.user-overview-container{
-display: flex;
-width:100%;
-
-}
 
 
-.tile-donut-container{
-height: 18rem;
-}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
