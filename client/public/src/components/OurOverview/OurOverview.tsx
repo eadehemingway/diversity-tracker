@@ -18,11 +18,11 @@ export class OurOverview extends React.Component{
                 jan20: {gender: {t:1}, race: {t:1}, title:"01/20", uuid:"jan20"},
                 june20: {gender: {t:1}, race: {t:1}, title: "06/20", uuid:"june20"},
                 jan21: {gender: {t:1}, race: {t:1}, title:"01/21", uuid:"jan21"},
-                // june21: {gender: {t:1}, race: {t:1}, title:"06/21", uuid:"june21"},
-                // jan22: {gender: {t:1}, race: {t:1}, title: "01/22", uuid:"jan22"},
-                // june22: {gender: {t:1}, race: {t:1}, title:"06/22", uuid:"june22"},
-                // jan23: {gender: {t:1}, race: {t:1}, title:"01/23", uuid:"jan23"},
-                // june23: {gender: {t:1}, race: {t:1}, title: "06/23", uuid:"june23"}
+                june21: {gender: {t:1}, race: {t:1}, title:"06/21", uuid:"june21"},
+                jan22: {gender: {t:1}, race: {t:1}, title: "01/22", uuid:"jan22"},
+                june22: {gender: {t:1}, race: {t:1}, title:"06/22", uuid:"june22"},
+                jan23: {gender: {t:1}, race: {t:1}, title:"01/23", uuid:"jan23"},
+                june23: {gender: {t:1}, race: {t:1}, title: "06/23", uuid:"june23"}
             },
             londonData: {
                 gender: {men: 2, women: 10}, race: {white:2, other:10}, title:"LONDON", uuid:"LONDON"
@@ -42,11 +42,12 @@ export class OurOverview extends React.Component{
             </div>
              {map(this.state.data, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={false}/>)}
              {map(this.state.templateDonuts, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={true}/>)}
+             
              <div className="O-O-london-donut-collumn" >
             <OurOverviewTile data={this.state.londonData} template={false}/>
 
-</div>
-</div>
+            </div>
+            </div>
             </div>
             </React.Fragment>
         )
