@@ -26,10 +26,15 @@ justify-content: center;
 
 .title {
 /* width: 70%; */
-margin: 2rem auto 6rem auto;
+margin: 2rem auto 3rem auto;
 padding-left: 1rem;
+padding-bottom: 3rem;
 /* margin-top: 7rem;
 margin-left:3rem; */
+position: sticky;
+top: 130px;
+background:	#FFF7F2;
+z-index: 10;
 }
 
 
@@ -47,6 +52,9 @@ width: 100%;
 display: flex;
 justify-content: flex-end;
 border-bottom: 3px solid hsla(228, 25%, 40%, 0.4);
+background: #FFF7F2;
+z-index: 20;
+
 }
 
 .navbar-link{
@@ -64,6 +72,7 @@ align-items: flex-end;
 
 #root{
 margin-top: 8rem;
+/* position: relative; */
 
 }
 
