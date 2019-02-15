@@ -74,7 +74,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             color=templateColors
         }else if (this.props.target){
             color= targetColors}else{
-         color = raceColors
+         color = genderColors
         }
 
         const oldDonut = pie()
@@ -186,7 +186,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             color=templateColors
         }else if (this.props.target){
             color= targetColors}else{
-         color = raceColors
+         color = genderColors
         }
 
 
