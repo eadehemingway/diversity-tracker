@@ -14,9 +14,9 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         super(props)
         this.state={
             // data:[{'label':null, 'value': 100}, {'label':null, 'value': 100}],
-            data:[],
-            prevData: [],
-            padAngle: 0.05, 
+            prevData: [{'label':'Men', 'value':0}],
+            data:[{'label':'Men', 'value':0}],
+            padAngle: 0, 
             raceColors: ['#4D577F','#6D7596', '#9DA3B9'],
             genderColors: ['#4D577F','#6D7596', '#9DA3B9'],
             templateColors: ['hsla(240,100%,50%, 0.03)']
@@ -41,23 +41,32 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
 
     updateData =(newProps) =>{
-        const data = []
+        const dataWithNewValues = []
+        console.log('nnnn', newProps.data)
         forEach(newProps.data, ( value, key)=> {
             const arc = {label: key, value:value}
-           return data.push(arc)
+            return dataWithNewValues.push(arc)
         })
+        // console.log('data updating satae', dataWithNewValues)
         
-       const filteredData=  data.filter(d=>d.value !== 0)
-        console.log('filter data', filteredData)
+        const filteredData=  dataWithNewValues.filter(d=>d.value !== 0)
+        const padAngle = filteredData.length > 1 ? 0.05 :0
 
-        const padAngle = filteredData.length === 0 ? 0 :0.05
-        this.setState({data:filteredData, prevData:this.state.data, padAngle}, ()=>{
+        console.log('padangle', padAngle)
+        let prevData=this.state.data
+        // console.log('prev data updating satae', prevData)
+
+        // if(this.state.data.length === 0){
+        //     prevData = [{'label':'Men', 'value':NaN}]
+        // }
+        this.setState({data:dataWithNewValues, prevData, padAngle}, ()=>{
             this.updateDonut()
 
         })
     }
 
     updateDonut = () =>{
+        // console.log('update donut')
         const {radius } = this.props
         const { raceColors, genderColors, templateColors, padAngle} = this.state
         let color;
@@ -66,12 +75,15 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         }else{
          color = raceColors
         }
+        console.log('ppppppppppprev', this.state.prevData)
         const oldDonut = pie()
         .padAngle(padAngle)
             .value(function(d){
                 return d.value
             })(this.state.prevData)
         
+
+        console.log('oldDonut', oldDonut)
         const newDonut = pie()
         .padAngle(padAngle)
             .value(function(d){
@@ -85,9 +97,18 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             return {
                 ...arc,
                 prevArc
+                // {
+                //     data: {label: "label", value: "Men"},
+                //     endAngle: 0.05,
+                //     index: 0,
+                //     padAngle: 0.05,
+                //     startAngle: 0,
+                //     value: NaN
+                // }
             }
         })
 
+        console.log('newdonutiwthprevarc', newDonutWithPrevArc)
 
         const theArc = arc()
             .outerRadius(radius)
@@ -150,6 +171,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
     drawFirstDonut=()=>{
+        console.log('draw first donut')
         const {radius} = this.props
         const {padAngle} = this.state
         const width = radius * 2;
@@ -204,7 +226,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             
 
     render(){
-
+        console.log('prevdata', this.state.prevData)
+        console.log('currentdata', this.state.data)
         return(
 
 

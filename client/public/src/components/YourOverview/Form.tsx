@@ -3,17 +3,14 @@ import { FormProps } from './types';
 import {DebounceInput} from 'react-debounce-input';
 
 
-export class Form extends React.Component<FormProps>{
-    constructor(props){
-        super(props)
-    }
-    render(){
+export const Form =({type, labels, updateUserData}) => {
+ 
         return(
             <React.Fragment>
 
                     <form onSubmit={e=> e.preventDefault() } className="form">
-                    {this.props.labels.map(l=> (
-                    <div className="input-label-pair">
+                    {labels.map(l=> (
+                    <div className="input-label-pair" key={l}>
 
                     <label key={l} className="labels">{l}
                     </label>
@@ -24,7 +21,7 @@ export class Form extends React.Component<FormProps>{
                         onChange={(e)=>{
                             console.log('we are going through changes')
                             const value = parseFloat(e.target.value)
-                            this.props.updateUserData(value, l, this.props.type)
+                            updateUserData(value, l, type)
                         }}></DebounceInput>
                         </div>
                     ))}
@@ -34,4 +31,3 @@ export class Form extends React.Component<FormProps>{
             </React.Fragment>
         )
     }
-}

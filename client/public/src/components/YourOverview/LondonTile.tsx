@@ -2,10 +2,11 @@ import * as React from 'react';
 import {Donut} from './Donut'
 import {Form} from './Form'
 import { GenderTileState, donutType } from './types';
+import { map } from 'lodash'
 
 export const LondonTile =({type, title, data})=> {
 
-        
+        console.log('daaaaaaaaaaaaata', data)
         return(
             <React.Fragment>
                 <div className='tile'>
@@ -20,11 +21,8 @@ export const LondonTile =({type, title, data})=> {
                 ></Donut>
 
                 <div className="form">
-                    <p>Men: 310000000</p>
-                    <p>Women: 310000000</p>
-                    <p>Other: 310000000</p>
-
-
+                {map(data, (v, k)=> <p key={k}>{`${k}: ${v}`}</p>)}
+           
                 </div>
                 </div>
      
