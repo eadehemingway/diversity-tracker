@@ -42,7 +42,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
     updateData =(newProps) =>{
         const dataWithNewValues = []
-        console.log('nnnn', newProps.data)
+
         forEach(newProps.data, ( value, key)=> {
             const arc = {label: key, value:value}
             return dataWithNewValues.push(arc)
@@ -54,7 +54,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
 
 
-        console.log('padangle', padAngle)
+
         let prevData=this.state.data
         // console.log('prev data updating satae', prevData)
 
@@ -77,7 +77,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         }else{
          color = raceColors
         }
-        console.log('ppppppppppprev', this.state.prevData)
+
         const oldDonut = pie()
         .padAngle(padAngle)
             .value(function(d){
@@ -85,7 +85,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             })(this.state.prevData)
         
 
-        console.log('oldDonut', oldDonut)
+
         const newDonut = pie()
         .padAngle(padAngle)
             .value(function(d){
@@ -110,7 +110,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             }
         })
 
-        console.log('newdonutiwthprevarc', newDonutWithPrevArc)
+
 
         const theArc = arc()
             .outerRadius(radius)
@@ -173,12 +173,18 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
     drawFirstDonut=()=>{
-        console.log('draw first donut')
+
         const {radius} = this.props
         const {padAngle} = this.state
         const width = radius * 2;
         const height = radius * 2;
-        const color = this.state.raceColors
+        const { raceColors, genderColors, templateColors} = this.state
+        let color;
+        if(this.props.template){
+            color=templateColors
+        }else{
+         color = raceColors
+        }
        
         const donut = pie()
             .padAngle(padAngle)
@@ -235,10 +241,10 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         return(
 
 
-            <div className= "tile-donut-container">
+            
 
                 <svg id={`donut-${this.props.donutName}`} className={this.props.className}></svg>
-            </div>
+
 
 
         )

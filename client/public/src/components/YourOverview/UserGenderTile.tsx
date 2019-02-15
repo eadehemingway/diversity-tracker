@@ -12,6 +12,7 @@ export const UserTile =({updateUserData, type, title, data})=> {
             <React.Fragment>
                 <div className='tile'>
                 <h1 className="user-tile-sub-heading"> USER<br/> {title}<br/> DEMOGRAPHIC</h1>
+                <div className= "tile-donut-container">
                 <Donut
                     data={data}
                     donutName="userGender"
@@ -20,6 +21,7 @@ export const UserTile =({updateUserData, type, title, data})=> {
                     className='tileDonuts'
                     template={false}
                 ></Donut>
+                <div/>
           
                  <Form 
                     updateUserData={updateUserData}
@@ -28,7 +30,7 @@ export const UserTile =({updateUserData, type, title, data})=> {
                 ></Form>
                 </div>
                 
-            </React.Fragment>
+            <React.Fragment/>
 
         )
     
