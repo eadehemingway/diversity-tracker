@@ -19,7 +19,6 @@ export const Form =({type, labels, updateUserData}) => {
                         className="Y-O-input"
                         debounceTimeout = {200}
                         onChange={(e)=>{
-                            console.log('we are going through changes')
                             const value = parseFloat(e.target.value)
                             updateUserData(value, l, type)
                         }}></DebounceInput>

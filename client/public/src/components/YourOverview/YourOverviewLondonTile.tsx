@@ -6,7 +6,6 @@ import { map } from 'lodash'
 
 export const YourOverviewLondonTile =({type, title, data})=> {
 
-        console.log('daaaaaaaaaaaaata', data)
         return(
             <React.Fragment>
                 <div className='Y-O-tile'>

@@ -1,15 +1,14 @@
+import {values} from 'lodash'
 import * as React from 'react';
 import {Donut} from './Donut'
 import {Form} from './Form'
-import { GenderTileState, donutType } from './types';
 
 export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
 
+        const valuesNotEqualToZero = values(data).filter(v=> v !== 0)
+        const template = data.template === 1
 
-
-        
         return(
-
                 <div className='Y-O-tile'>
                 <h1 className="Y-O-tile-title"> USER<br/> {title}<br/> DEMOGRAPHIC</h1>
                 <div className= "Y-O-donut-div">
@@ -21,6 +20,15 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
                     className='donut-svg'
                     template={false}
                 ></Donut>
+                <Donut
+                    data={{"Men":1, "Women":0, "Other":0}}
+                    donutName="template"
+                    donutType={type}
+                    radius={80}
+                    className='donut-svg'
+                    template={true}
+                ></Donut>
+    
                 </div>
           
                  <Form 

@@ -25,7 +25,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
 
     componentWillReceiveProps(nextProps){
-        // console.log('recieved props') 
         if(nextProps !== this.props){
             this.updateData(nextProps)
 
@@ -47,7 +46,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             const arc = {label: key, value:value}
             return dataWithNewValues.push(arc)
         })
-        // console.log('data updating satae', dataWithNewValues)
         
         const filteredData=  dataWithNewValues.filter(d=>d.value !== 0)
         const padAngle = filteredData.length > 1 ? filteredData.length/66 :0
@@ -56,7 +54,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
 
         let prevData=this.state.data
-        // console.log('prev data updating satae', prevData)
 
         // if(this.state.data.length === 0){
         //     prevData = [{'label':'Men', 'value':NaN}]
@@ -68,7 +65,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
     updateDonut = () =>{
-        // console.log('update donut')
+
         const {radius } = this.props
         const { raceColors, genderColors, templateColors, padAngle} = this.state
         let color;
@@ -149,7 +146,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
                 
                 tooltip.text(d.data.label)
                 tooltip.style('visibility', 'visible')
-                console.log(tooltip)
+
             
                 
             })
@@ -219,6 +216,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .data(donut)
             .enter()
             .append("text")
+            .attr('class', 'tooltip-text')
         // const tooltip = svg.selectAll(".arc")
         //     .append('div')
         //     .style('position', 'absolute')
@@ -234,9 +232,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             
 
     render(){
-        console.log('prevdata', this.state.prevData)
-        console.log('currentdata', this.state.data)
-        console.log('padangle', this.state.padAngle)
 
         return(
 
