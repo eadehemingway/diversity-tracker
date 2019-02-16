@@ -50,7 +50,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         
         const filteredData=  dataWithNewValues.filter(d=>d.value !== 0)
 
-        const padAngle = this.props.padAngle
+        const padAngle = filteredData.length > 1 ? this.props.padAngle: 0
 
 
 
