@@ -86,40 +86,34 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .attr('id', `donut-group-${this.props.donutName}`)
             .attr('transform', 'translate(' + radius + ',' + radius + ')')
 
-        const path = svg.selectAll('path')
+        svg.selectAll('path')
             .data(donut)
             .enter()
             .append('g')
-            .attr('class', 'arc')
+            .attr('class', ()=> this.props.template ? null : 'arc')
             .append('path')
             .attr('d', theArc)
             .attr('fill', function(d,i){return color[i]})
-        
-            svg.selectAll('path')
+    
+    if(!this.props.template){
+            select(`#donut-${this.props.donutName}`).selectAll('text')
             .data(donut)
             .enter()
             .append("text")
-            .attr('class', 'tooltip-text')
+            .attr('class', `tooltip-${this.props.donutName}`)
+    }
 
     }
     updateData =(newProps) =>{
         // console.log('updating data')
         const dataWithNewValues = []
-
         forEach(newProps.data, ( value, key)=> {
             const arc = {label: key, value:value}
             return dataWithNewValues.push(arc)
         })
-        
         const filteredData=  dataWithNewValues.filter(d=>d.value !== 0 && !isNaN(d.value))
-
         const padAngle = filteredData.length > 1 ? this.props.padAngle: 0
-
-
-
         let prevData=this.state.data
-
-
         this.setState({data:dataWithNewValues, prevData, padAngle}, ()=>{
             this.updateDonut()
 
@@ -176,7 +170,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
         path.enter()
             .append('g')
-            .attr('class', 'arc')
+            .attr('class', ()=> this.props.template ? null : 'arc')
+            // .attr('class', 'arc')
             .append('path')
             .attr('d', theArc)
             .attr('fill', function(d,i){return color[i]})
@@ -186,9 +181,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .remove()
 
         path.transition().duration(1000).attrTween("d", createInterpolator)
-        const tooltip = select(`#donut-${this.props.donutName}`)
-            .append('text')
-            .attr('class', 'tooltip-text')
+        const tooltip = select(`.tooltip-${this.props.donutName}`)
+
 
 
     
@@ -197,16 +191,18 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         select(`#donut-${this.props.donutName}`)
             .selectAll('path')
             .on('mouseover', (d)=> {
-
+                console.log('ddddddddddddddddd')
                 tooltip.text(`${d.data.label}: ${d.data.value}`)
                 tooltip.style('visibility', 'visible')
-                tooltip.style('fill', '#4D577F')
-                tooltip.attr('dx', `15px`)
-                tooltip.attr('dy', `15px`)
+                tooltip.style('fill', '#D36543')
+
+                tooltip.style('text-anchor', 'middle')
+                tooltip.attr('dx', `${radius}`)
+                tooltip.attr('dy', `${radius}`)
 
             })
             .on('mouseout', (d)=> {
-                tooltip.text(d.data.label)
+                tooltip
                 .style('visibility', 'hidden')
 
             })

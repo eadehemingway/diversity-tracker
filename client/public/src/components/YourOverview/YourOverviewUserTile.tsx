@@ -19,7 +19,7 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
                     radius={80}
                     className='donut-svg'
                     template={false}
-                padAngle={0.03}
+                    padAngle={0.03}
 
                 ></Donut>
                 <Donut
@@ -27,7 +27,7 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
                     donutName="template"
                     donutType={type}
                     radius={80}
-                    className='donut-svg'
+                    className='donut-svg template-donut'
                     template={true}
                 padAngle={0.03}
 

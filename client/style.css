@@ -78,18 +78,13 @@ margin-top: 6rem;
 opacity: 0.5
 }
 
-.tooltip{
-    /* font-family: sans-serif;
-    color: 	#4D577F; */
-      /* position: absolute;
-  text-align: center;
-  width: 60px;
-  height: 12px;
-  padding: 8px;
-  margin-top: -20px;
-  font: 10px sans-serif;
-  background: #ddd;
-  pointer-events: none; */
+
+.template-donut{
+    z-index: -1;
+}
+
+.tooltip-text{
+    z-index: 5;
 }
 
 /* OUR OVERVIEW ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -229,7 +224,6 @@ position: relative;
 }
 
 
-        
 
 /* OUR HIRES TO APPLICATIONS ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
