@@ -1,7 +1,7 @@
 
 import * as React from 'react'
 import { pie, arc } from "d3-shape";
-import { select } from "d3-selection";
+import { select, event } from "d3-selection";
 import {interpolate } from "d3-interpolate"
 import 'd3-transition';
 import { DonutState, DonutProps, donutType } from './types';
@@ -96,10 +96,20 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .attr('fill', function(d,i){return color[i]})
     
     if(!this.props.template){
-            select(`#donut-${this.props.donutName}`).selectAll('text')
+            select(`#donut-${this.props.donutName}`).selectAll('rect')
             .data(donut)
             .enter()
-            .append("text")
+            .append('g')
+            .attr('class', `tooltip-group-${this.props.donutName}`)
+            .append("rect")
+            .attr('class', `tooltip-rect-${this.props.donutName}`)
+
+
+        select(`.tooltip-group-${this.props.donutName}`)
+            .selectAll('text')
+            .data(donut)
+            .enter()
+            .append('text')
             .attr('class', `tooltip-${this.props.donutName}`)
     }
 
@@ -181,32 +191,56 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .remove()
 
         path.transition().duration(1000).attrTween("d", createInterpolator)
-        const tooltip = select(`.tooltip-${this.props.donutName}`)
+        const tooltipText = select(`.tooltip-${this.props.donutName}`)
+        const tooltipRect = select(`.tooltip-rect-${this.props.donutName}`)
+        const tooltipGroup = select(`.tooltip-group-${this.props.donutName}`)
 
 
 
-    
+ 
+
+
+        const showTooltip = (d) => {
+
+            tooltipGroup.style('visibility', 'visible')
+
+            tooltipText
+                .style('fill', 'black')
+                .style('z-index', '100')
+                .style('font-size', '12px')
+                .attr('dx', `15`)
+                .attr('dy', `20`)
+
+            tooltipRect.attr('fill', 'white')
+                .style('width', '120')
+                .style('height', '30')
+                // .attr('x', `10`)
+                // .attr('y', `5`)
+
+        }
+
 
 
         select(`#donut-${this.props.donutName}`)
             .selectAll('path')
-            .on('mouseover', (d)=> {
-                console.log('ddddddddddddddddd')
-                tooltip.text(`${d.data.label}: ${d.data.value}`)
-                tooltip.style('visibility', 'visible')
-                tooltip.style('fill', '#D36543')
-
-                tooltip.style('text-anchor', 'middle')
-                tooltip.attr('dx', `${radius}`)
-                tooltip.attr('dy', `${radius}`)
-
-            })
-            .on('mouseout', (d)=> {
-                tooltip
-                .style('visibility', 'hidden')
-
-            })
+            .on("mouseover", function(d){
+                tooltipText.text(`${d.data.label}: ${d.data.value}`)
+                tooltipGroup.style("visibility", "visible")
+                tooltipText
+                .style('fill', 'black')
+                .style('z-index', '100')
+                .style('font-size', '12px')
+                .attr('dx', `15`)
+                .attr('dy', `20`)
+                tooltipRect.attr('fill', 'white')
+                .style('width', '120')
+                .style('height', '30')
+            
         
+        })
+            .on("mousemove", (d)=> tooltipGroup.attr('transform', `translate(${2+ event.offsetX},${event.offsetY-28})`))
+            .on("mouseout", function(){return tooltipGroup.style("visibility", "hidden");});
+  
 
         function createInterpolator(d) {
             // here interpolate is taking two objects (the previous arc object and the new arc object),
