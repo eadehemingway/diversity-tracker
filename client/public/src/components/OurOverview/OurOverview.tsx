@@ -9,9 +9,9 @@ export class OurOverview extends React.Component{
         super(props)
         this.state={
             data: {
-                jan18: {gender: {men: 2, women: 10}, race: {white:2, other:10}, title:"01/18", uuid:"jan18"},
-                jun18: {gender: {men: 4, women: 20}, race: {white:4, other:10}, title:"06/18", uuid:"june18"},
-                jan19: {gender: {men:7, women: 2}, race: {white: 9, other: 7}, title: "01/19", uuid:"jan19"}
+                jan18: {gender: {men: 2, women: 10}, race: {white:2, black: 7, asian: 3, hisp:8, other:10}, title:"01/18", uuid:"jan18"},
+                jun18: {gender: {men: 4, women: 20}, race: {white:4, black: 7, asian: 3, hisp:8,other:10}, title:"06/18", uuid:"june18"},
+                jan19: {gender: {men:7, women: 2}, race: {white: 9, black: 7, asian: 3, hisp:8,other: 7}, title: "01/19", uuid:"jan19"}
             },
             templateDonuts: {
                 june19: {gender: {t: 1}, race: {t:1}, title:"06/19", uuid:"june19"},
@@ -30,6 +30,7 @@ export class OurOverview extends React.Component{
         }
     }
     render(){
+
         return(
             <React.Fragment>
 

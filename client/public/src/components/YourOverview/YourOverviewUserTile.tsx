@@ -22,7 +22,7 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
                 padAngle={0.03}
 
                 ></Donut>
-                {/* <Donut
+                <Donut
                     data={{"Men":1, "Women":0, "Other":0}}
                     donutName="template"
                     donutType={type}
@@ -31,7 +31,7 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
                     template={true}
                 padAngle={0.03}
 
-                ></Donut> */}
+                ></Donut>
     
                 </div>
           

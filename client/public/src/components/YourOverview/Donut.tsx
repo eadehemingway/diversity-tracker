@@ -5,7 +5,7 @@ import { select } from "d3-selection";
 import {interpolate } from "d3-interpolate"
 import 'd3-transition';
 import { DonutState, DonutProps, donutType } from './types';
-import {forEach} from 'lodash'
+import {forEach, keys} from 'lodash'
 
 
 
@@ -13,34 +13,35 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     constructor(props){
         super(props)
         this.state={
-            // data:[{'label':null, 'value': 100}, {'label':null, 'value': 100}],
-            prevData: [{'label':'Men', 'value':0}],
-            data:[{'label':'Men', 'value':0}],
+            prevData: [],
+            data:[],
             padAngle: 0, 
             raceColors: ['#6D7596','rgba(211, 101, 67, 1)', '#9DA3B9', '#D36543','#6D7596', '#9DA3B9'],
-            genderColors: ['#4D577F','#6D7596', '#9DA3B9'],
+            genderColors: ['#4D577F','#6D7596', '#9DA3B9','#4D577F','#6D7596', '#9DA3B9','#4D577F','#6D7596', '#9DA3B9'],
             targetColors: ['rgba( 109, 117, 150,0.3)', 'rgba(211, 101, 67,0.3)','rgba(157, 163, 185,0.3)', 'rgba(77, 87, 127,0.3)'],
-            templateColors: ['hsla(240,100%,50%, 0.03)']
-        }
-    }
-
-
-    componentWillReceiveProps(nextProps){
-        if(nextProps !== this.props){
-            this.updateData(nextProps)
+            templateColors: ['hsla(240,100%,50%, 0.03)'],
+            emptyArcsDrawn: false
 
         }
     }
 
     componentDidMount(){
+        const dataLabels = keys(this.props.data)
+        const emptyArcs =  dataLabels.map(l=> {
+            return {label: 'emptyArc', value:0}
+        })
+        this.setState({data: emptyArcs}, ()=> {
+            this.drawEmptyArcs()
+            this.updateData(this.props)
+        })
 
-        this.updateData(this.props)
-        this.drawFirstDonut()
+
         
     }
 
 
     updateData =(newProps) =>{
+        // console.log('updating data')
         const dataWithNewValues = []
 
         forEach(newProps.data, ( value, key)=> {
@@ -48,7 +49,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             return dataWithNewValues.push(arc)
         })
         
-        const filteredData=  dataWithNewValues.filter(d=>d.value !== 0)
+        const filteredData=  dataWithNewValues.filter(d=>d.value !== 0 && !isNaN(d.value))
 
         const padAngle = filteredData.length > 1 ? this.props.padAngle: 0
 
@@ -56,9 +57,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
         let prevData=this.state.data
 
-        // if(this.state.data.length === 0){
-        //     prevData = [{'label':'Men', 'value':NaN}]
-        // }
+
         this.setState({data:dataWithNewValues, prevData, padAngle}, ()=>{
             this.updateDonut()
 
@@ -66,9 +65,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
     updateDonut = () =>{
-        console.log('update donut')
-        console.log('data', this.state.data)
-        console.log('prevdata', this.state.prevData)
+    
         const {radius } = this.props
         const { raceColors, genderColors, templateColors, padAngle, targetColors} = this.state
         let color;
@@ -100,14 +97,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             return {
                 ...arc,
                 prevArc
-                // {
-                //     data: {label: "label", value: "Men"},
-                //     endAngle: 0.05,
-                //     index: 0,
-                //     padAngle: 0.05,
-                //     startAngle: 0,
-                //     value: NaN
-                // }
             }
         })
 
@@ -122,7 +111,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         const path = select(`#donut-group-${this.props.donutName}`)
             .selectAll('path')
             .data(newDonutWithPrevArc)
-        console.log('path', path)
+
         path.enter()
             .append('g')
             .attr('class', 'arc')
@@ -173,7 +162,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
     }
 
-    drawFirstDonut=()=>{
+    drawEmptyArcs=()=>{
 
         const {radius} = this.props
         const {padAngle} = this.state
@@ -226,16 +215,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .enter()
             .append("text")
             .attr('class', 'tooltip-text')
-        // const tooltip = svg.selectAll(".arc")
-        //     .append('div')
-        //     .style('position', 'absolute')
-        //     .style('visibility', 'hidden')
-        //     .text('ttttttttttttttext')
-
-
-        // select('.arc')
-        //     .on('mouseover', ()=> tooltip.style('visibility', 'visible'))
-
 
     }
             
