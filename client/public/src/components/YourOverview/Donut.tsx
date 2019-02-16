@@ -20,7 +20,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             genderColors: ['#4D577F','#6D7596', '#9DA3B9','#4D577F','#6D7596', '#9DA3B9','#4D577F','#6D7596', '#9DA3B9'],
             targetColors: ['rgba( 109, 117, 150,0.3)', 'rgba(211, 101, 67,0.3)','rgba(157, 163, 185,0.3)', 'rgba(77, 87, 127,0.3)'],
             templateColors: ['hsla(240,100%,50%, 0.03)'],
-            emptyArcsDrawn: false
+
 
         }
     }
@@ -41,6 +41,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
     
     drawEmptyArcs=()=>{
+        console.log('drawingEmpty arcs with data', this.state.data)
         const {radius} = this.props
         const {padAngle} = this.state
         const width = radius * 2;
@@ -91,9 +92,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .append("text")
             .attr('class', 'tooltip-text')
 
-    this.setState({emptyArcsDrawn: true}, ()=> {
-        this.updateData(this.props)
-    })
+
     }
 
     updateData =(newProps) =>{
@@ -114,7 +113,9 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
     updateDonut = () =>{
-        console.log('updating data')
+        console.log('updating donut')
+        console.log('DATA', this.state.data)
+        console.log('PREVDATA', this.state.prevData)
         
         const {radius } = this.props
         const width = radius * 2;
@@ -154,7 +155,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
                 prevArc
             }
         })
-
+        console.log('newdonutwithprevarc', newDonutWithPrevArc)
 
         const theArc = arc()
             .outerRadius(radius)
@@ -180,7 +181,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
 
         
-        path.exit()
+        svg.selectAll('path')
+            .data(newDonutWithPrevArc).exit()
             .remove()
 
         path.transition().duration(1000).attrTween("d", createInterpolator)
