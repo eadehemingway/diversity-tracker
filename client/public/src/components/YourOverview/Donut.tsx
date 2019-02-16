@@ -13,14 +13,23 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     constructor(props){
         super(props)
         this.state={
+            // data:[{'label':null, 'value': 100}, {'label':null, 'value': 100}],
+            // prevData: [{'label':'Men', 'value':0}],
+            // data:[{'label':'Men', 'value':0}],
             prevData: [],
             data:[],
             padAngle: 0, 
             raceColors: ['#6D7596','rgba(211, 101, 67, 1)', '#9DA3B9', '#D36543','#6D7596', '#9DA3B9'],
-            genderColors: ['#4D577F','#6D7596', '#9DA3B9','#4D577F','#6D7596', '#9DA3B9','#4D577F','#6D7596', '#9DA3B9'],
+            genderColors: ['#4D577F','#6D7596', '#9DA3B9'],
             targetColors: ['rgba( 109, 117, 150,0.3)', 'rgba(211, 101, 67,0.3)','rgba(157, 163, 185,0.3)', 'rgba(77, 87, 127,0.3)'],
-            templateColors: ['hsla(240,100%,50%, 0.03)'],
+            templateColors: ['hsla(240,100%,50%, 0.03)']
+        }
+    }
 
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps !== this.props){
+            this.updateData(nextProps)
 
         }
     }
@@ -30,24 +39,24 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         const emptyArcs =  dataLabels.map(l=> {
             return {label: 'emptyArc', value:0}
         })
+
         this.setState({data: emptyArcs}, ()=> {
             this.drawEmptyArcs()
-
+            this.updateData(this.props)
         })
+        
     }
 
-    componentWillReceiveProps(newProps){
-        this.updateData(newProps)
-    }
-    
     drawEmptyArcs=()=>{
-        console.log('drawingEmpty arcs with data', this.state.data)
+
         const {radius} = this.props
         const {padAngle} = this.state
         const width = radius * 2;
         const height = radius * 2;
         const { raceColors, genderColors, templateColors, targetColors} = this.state
         let color;
+   
+
 
         if(this.props.template){
             color=templateColors
@@ -92,20 +101,25 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .append("text")
             .attr('class', 'tooltip-text')
 
-
     }
-
     updateData =(newProps) =>{
-        console.log('updating data')
+        // console.log('updating data')
         const dataWithNewValues = []
+
         forEach(newProps.data, ( value, key)=> {
             const arc = {label: key, value:value}
             return dataWithNewValues.push(arc)
         })
         
         const filteredData=  dataWithNewValues.filter(d=>d.value !== 0 && !isNaN(d.value))
+
         const padAngle = filteredData.length > 1 ? this.props.padAngle: 0
-        let prevData = [...this.state.data]
+
+
+
+        let prevData=this.state.data
+
+
         this.setState({data:dataWithNewValues, prevData, padAngle}, ()=>{
             this.updateDonut()
 
@@ -113,16 +127,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
     updateDonut = () =>{
-        console.log('updating donut')
-        console.log('DATA', this.state.data)
-        console.log('PREVDATA', this.state.prevData)
-        
+    
         const {radius } = this.props
-        const width = radius * 2;
-        const height = radius * 2;
-  
-   
-
         const { raceColors, genderColors, templateColors, padAngle, targetColors} = this.state
         let color;
         if(this.props.template){
@@ -155,55 +161,54 @@ export class Donut extends React.Component<DonutProps, DonutState>{
                 prevArc
             }
         })
-        console.log('newdonutwithprevarc', newDonutWithPrevArc)
+
+
 
         const theArc = arc()
             .outerRadius(radius)
             .innerRadius(radius/1.6);
 
 
-        const svg = select(`#donut-${this.props.donutName}`)
-            .attr('width', width)
-            .attr('height', height)
-            .append('g')
-            .attr('id', `donut-group-${this.props.donutName}`)
-            .attr('transform', 'translate(' + radius + ',' + radius + ')')
 
-        const path = svg.selectAll('path')
+        const path = select(`#donut-group-${this.props.donutName}`)
+            .selectAll('path')
             .data(newDonutWithPrevArc)
-            .enter()
+
+        path.enter()
             .append('g')
             .attr('class', 'arc')
             .append('path')
             .attr('d', theArc)
             .attr('fill', function(d,i){return color[i]})
-        
-
 
         
-        svg.selectAll('path')
-            .data(newDonutWithPrevArc).exit()
+        path.exit()
             .remove()
 
         path.transition().duration(1000).attrTween("d", createInterpolator)
-
-
         const tooltip = select(`#donut-${this.props.donutName}`)
             .append('text')
             .attr('class', 'tooltip-text')
 
+
+    
+
+
         select(`#donut-${this.props.donutName}`)
             .selectAll('path')
             .on('mouseover', (d)=> {
+
                 tooltip.text(`${d.data.label}: ${d.data.value}`)
                 tooltip.style('visibility', 'visible')
                 tooltip.style('fill', '#4D577F')
                 tooltip.attr('dx', `15px`)
                 tooltip.attr('dy', `15px`)
+
             })
             .on('mouseout', (d)=> {
                 tooltip.text(d.data.label)
                 .style('visibility', 'hidden')
+
             })
         
 
@@ -214,14 +219,28 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             return function(d) {
               return theArc(i(d))
             }
+          
           }
+
     }
 
+    
+
+    
+    
             
 
     render(){
+
         return(
+
+
+            
+
                 <svg id={`donut-${this.props.donutName}`} className={`${this.props.className}`}></svg>
+
+
+
         )
     }
 }
