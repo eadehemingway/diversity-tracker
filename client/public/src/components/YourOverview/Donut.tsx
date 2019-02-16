@@ -66,7 +66,9 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
     updateDonut = () =>{
-
+        console.log('update donut')
+        console.log('data', this.state.data)
+        console.log('prevdata', this.state.prevData)
         const {radius } = this.props
         const { raceColors, genderColors, templateColors, padAngle, targetColors} = this.state
         let color;
@@ -120,7 +122,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         const path = select(`#donut-group-${this.props.donutName}`)
             .selectAll('path')
             .data(newDonutWithPrevArc)
-
+        console.log('path', path)
         path.enter()
             .append('g')
             .attr('class', 'arc')
