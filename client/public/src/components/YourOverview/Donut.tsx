@@ -20,7 +20,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             data:[],
             padAngle: 0, 
             raceColors: ['#6D7596','rgba(211, 101, 67, 1)', '#9DA3B9', '#D36543','#6D7596', '#9DA3B9'],
-            genderColors: ['#4D577F','#6D7596', '#9DA3B9'],
+            genderColors: ['#4D577F','#6D7596', '#9DA3B9', '#4D577F','#6D7596', '#9DA3B9'],
             targetColors: ['rgba( 109, 117, 150,0.3)', 'rgba(211, 101, 67,0.3)','rgba(157, 163, 185,0.3)', 'rgba(77, 87, 127,0.3)'],
             templateColors: ['hsla(240,100%,50%, 0.03)']
         }
