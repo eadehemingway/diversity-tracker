@@ -4,7 +4,7 @@ import {donutType } from '../YourOverview/types'
 
 export const OurOverviewTile =({data, template})=> {
 
-        
+        console.log('dataaaaaaaaaaaaaaaaaaa', data.gender, data.race)
         return(
             <React.Fragment>
                 <div  className='O-O-tile'>
