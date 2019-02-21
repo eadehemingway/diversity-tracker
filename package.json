@@ -4,8 +4,7 @@
   "description": "to start: cd client, run npm run build cd server, run npm run build cd server, run npm start",
   "main": "index.js",
   "engines": {
-    "node": ">=8.0.0",
-    "npm": ">=5.0.0"
+    "node": "8.11.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1", 
