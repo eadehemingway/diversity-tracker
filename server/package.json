@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:watch": "tsc -p tsconfig.json --watch",
-    "build": "tsc -p tsconfig.json",
+    "build": "/node_modules/typescript/bin/tsc -p tsconfig.json",
     "start": "node dist/index.js"
   },
   "author": "",
