@@ -1,0 +1,23 @@
+{
+  "name": "diversity-tracker",
+  "version": "1.0.0",
+  "description": "to start: cd client, run npm run build cd server, run npm run build cd server, run npm start",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "build:server": "cd server npm run build",
+    "build:client": "cd client webpack --config webpack.config.js", 
+    "postinstall": "npm run build:server && npm run build:client"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://eadehemingway@github.com/eadehemingway/diversity-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eadehemingway/diversity-tracker/issues"
+  },
+  "homepage": "https://github.com/eadehemingway/diversity-tracker#readme"
+}
