@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p tsconfig.json --watch",
+    "build:watch": "tsc -p tsconfig.json --watch",
+    "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js"
 
   },

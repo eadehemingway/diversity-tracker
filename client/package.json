@@ -6,9 +6,6 @@
   "scripts": {
     "build:watch": "webpack --config webpack.config.js --watch",
     "build": "webpack --config webpack.config.js"
-
-
-
   },
   "dependencies": {
     "@types/node": "^10.12.18",
