@@ -1,10 +1,17 @@
 import * as React from 'react';
-import {FourDonutTile} from "./FourDonutTile"
+
 import { OurHiresTile } from './OurHiresTile';
 
+interface OurAppProps {
+}
 
-
-export class OurApplicationTargets extends React.Component{
+interface OurAppState {
+    diversityCategory: string, 
+    selectedDate: string, 
+    gender: any,
+    race: any
+}
+export class OurApplicationTargets extends React.Component<OurAppProps, OurAppState>{
     constructor(props){
         super(props)
             this.state={

@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { LondonDonutCollumn } from './LondonDonutCollumn';
 import { OurOverviewTile } from './OurOverviewTile';
 import {map} from "lodash";
 
 
-export class OurOverview extends React.Component{
+export class OurOverview extends React.Component<any, any>{
     constructor(props){
         super(props)
         this.state={

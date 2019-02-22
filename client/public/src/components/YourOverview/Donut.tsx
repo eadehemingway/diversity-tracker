@@ -27,7 +27,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps){ // deriveD?
+
         if(nextProps !== this.props){
             this.updateData(nextProps)
 

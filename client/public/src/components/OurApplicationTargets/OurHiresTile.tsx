@@ -4,7 +4,7 @@ import { Donut } from '../YourOverview/Donut';
 
 
 
-export class OurHiresTile extends React.Component{
+export class OurHiresTile extends React.Component<any, any>{
     constructor(props){
         super(props)
 

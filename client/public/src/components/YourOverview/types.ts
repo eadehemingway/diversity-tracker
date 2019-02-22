@@ -28,7 +28,8 @@ export interface DonutState {
     padAngle: number;
     raceColors: string[];
     genderColors: string[];
-    templateColors: string[]
+    templateColors: string[];
+    targetColors: string[];
 
 }
 

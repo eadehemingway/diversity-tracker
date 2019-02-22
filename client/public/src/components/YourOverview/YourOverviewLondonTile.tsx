@@ -13,7 +13,7 @@ export const YourOverviewLondonTile =({type, title, data})=> {
                 <div className= "Y-O-donut-div">
                 <Donut
                     donutName='london'
-                    donutType={}
+                    donutType={donutType.gender}
                     className='donut-svg'
                     radius={80}
                     template={false}
