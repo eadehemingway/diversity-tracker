@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:watch": "tsc -p tsconfig.json --watch",
-    "build": "/node_modules/typescript/bin/tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js"
   },
   "author": "",
@@ -13,11 +13,12 @@
   "dependencies": {
     "@types/node": "^10.12.18",
     "nodemon": "^1.18.9",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
+    "path": "^0.12.7",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "typescript": "^3.2.4"
+  },
+  "devDependencies": {
+
   }
 }
