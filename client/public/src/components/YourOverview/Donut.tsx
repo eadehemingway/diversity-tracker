@@ -84,7 +84,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .attr('height', height)
             .append('g')
             .attr('id', `donut-group-${this.props.donutName}`)
-            .attr('transform', 'translate(' + (radius ) + ',' + (radius *1.7) + ')')
+            .attr('transform', 'translate(' + (radius *1.2 ) + ',' + (radius *1.7) + ')')
 
         svg.selectAll('path')
             .data(donut)
@@ -223,7 +223,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             
         
         })
-            .on("mousemove", (d)=> tooltipGroup.attr('transform', `translate(${event.offsetX-15},${event.offsetY-22})`))
+            .on("mousemove", (d)=> tooltipGroup.attr('transform', `translate(${event.offsetX},${event.offsetY-26})`))
             .on("mouseout", function(){return tooltipGroup.style("visibility", "hidden");});
   
 
