@@ -82,7 +82,7 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
             <h1 className="sub-heading">HIRED</h1>
             </div>
             <OurHiresTile techType='tech' title="TECH" data={data[this.state.selectedDate].tech}></OurHiresTile>
-            <OurHiresTile techType='nonTech' title="NON TECH" data={data[this.state.selectedDate].nonTech}></OurHiresTile>
+            {/* <OurHiresTile techType='nonTech' title="NON TECH" data={data[this.state.selectedDate].nonTech}></OurHiresTile> */}
             </div>
             </div>
             </React.Fragment>
