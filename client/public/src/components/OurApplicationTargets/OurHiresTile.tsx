@@ -20,7 +20,8 @@ export class OurHiresTile extends React.Component<any, any>{
             data={this.props.data.applications}
             template={false}
             padAngle={0.03}
-       
+            width = {280}
+            height = {175}
             >
             
             </Donut>
@@ -30,7 +31,8 @@ export class OurHiresTile extends React.Component<any, any>{
             data={this.props.data.hired}
             template={false}
             padAngle={0.03}
-           
+            width = {280}
+            height = {175}
             
             >
             

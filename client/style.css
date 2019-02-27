@@ -10,7 +10,7 @@ height: 100vh;
 }
 
 .donut-svg {
-margin: 3rem auto ;
+margin:auto ;
 align-content: center;
 display: flex;
 position: absolute;
@@ -135,31 +135,33 @@ z-index: 4;
 
 
 .O-O-vertical-label-container{
-margin-top: 4rem;
 
+padding-right: 1.2rem;
 /* border: 2px solid black; */
 }
 
+.O-O-vertical-label{
+    margin-top: 4.4rem;
+
+    width: 5rem;
+    text-align: right;
+    text-anchor: end;
+    /* border: 2px solid black; */
+    margin-left: 0;
+}
 
 .O-O-donut{
-padding:0.5rem;
+padding-right: 0.5rem;
 }
 
 .O-O-collumn-heading{
 font-size: 1rem;
 text-align: center;
 text-anchor:middle;
+margin-bottom: 0
 }
 
-.O-O-vertical-label{
-height: 69px;
-width: 5rem;
-margin-right:2rem;
-text-align: right;
-text-anchor: end;
-/* border: 2px solid black; */
-margin-left: 0;
-}
+
 
 /* YOUR OVERVIEW ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 

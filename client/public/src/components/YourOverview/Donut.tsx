@@ -51,13 +51,11 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
     drawEmptyArcs=()=>{
 
-        const {radius} = this.props
+        const {radius, width, height} = this.props
         const {padAngle} = this.state
-        const width = radius * 2;
-        const height = radius * 2;
         const { raceColors, genderColors, templateColors, targetColors} = this.state
         let color;
-   
+
 
 
         if(this.props.template){
@@ -86,7 +84,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .attr('height', height)
             .append('g')
             .attr('id', `donut-group-${this.props.donutName}`)
-            .attr('transform', 'translate(' + radius + ',' + radius + ')')
+            .attr('transform', 'translate(' + (radius ) + ',' + (radius *1.7) + ')')
 
         svg.selectAll('path')
             .data(donut)
@@ -203,27 +201,6 @@ export class Donut extends React.Component<DonutProps, DonutState>{
  
 
 
-        const showTooltip = (d) => {
-
-            tooltipGroup.style('visibility', 'visible')
-
-            tooltipText
-                .style('fill', 'black')
-                .style('z-index', '100')
-                .style('font-size', '10px')
-                .attr('dx', `15`)
-                .attr('dy', `15`)
-
-            tooltipRect.attr('fill', 'white')
-                .style('width', '100')
-                .style('height', '15')
-                .style('stroke-width', '3')
-                .style('stroke', 'black')
-                // .attr('x', `10`)
-                // .attr('y', `5`)
-
-        }
-
 
 
         select(`#donut-${this.props.donutName}`)
@@ -246,7 +223,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             
         
         })
-            .on("mousemove", (d)=> tooltipGroup.attr('transform', `translate(${event.offsetX-15},${event.offsetY-31})`))
+            .on("mousemove", (d)=> tooltipGroup.attr('transform', `translate(${event.offsetX-15},${event.offsetY-22})`))
             .on("mouseout", function(){return tooltipGroup.style("visibility", "hidden");});
   
 

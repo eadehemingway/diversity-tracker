@@ -19,6 +19,8 @@ export const YourOverviewLondonTile =({type, title, data})=> {
                     template={false}
                     data={data}
                 padAngle={0.03}
+                width = {320}
+                height = {200}
 
                 ></Donut>
                 </div>
