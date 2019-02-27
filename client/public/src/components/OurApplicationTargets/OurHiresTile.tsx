@@ -54,6 +54,7 @@ export class OurHiresTile extends React.Component<any, any>{
             data={this.props.data.hired}
             template={false}
             padAngle={0.03}
+            className="small-donut"
             width = {width}
             height = {height}
             

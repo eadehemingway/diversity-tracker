@@ -233,13 +233,15 @@ position: relative;
 .O-H-page-container{
     width:80%;
     margin:auto;
-
+    margin-bottom: 8rem;
 
 }
 
-.O-H-tile-container{
-
-    margin: auto;
+.O-H-sticky-titles{
+    position: sticky;
+    top: 100px;
+    z-index: 10;
+    background:	#FFF7F2;
 }
 
 .O-H-tile{
@@ -265,7 +267,7 @@ position: relative;
 }
 
 .O-H-vertical-sub-heading{
-    padding-top: 1rem;
+    padding-top: 4rem;
     text-align: left;
 
 }
