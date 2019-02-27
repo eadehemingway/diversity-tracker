@@ -98,13 +98,14 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .attr('fill', function(d,i){return color[i]})
     
     if(!this.props.template){
-            select(`#donut-${this.props.donutName}`).selectAll('rect')
+        select(`#donut-${this.props.donutName}`).selectAll('rect')
             .data(donut)
             .enter()
             .append('g')
             .attr('class', `tooltip-group-${this.props.donutName}`)
             .append("rect")
             .attr('class', `tooltip-rect-${this.props.donutName}`)
+
 
 
         select(`.tooltip-group-${this.props.donutName}`)
@@ -209,13 +210,15 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             tooltipText
                 .style('fill', 'black')
                 .style('z-index', '100')
-                .style('font-size', '12px')
+                .style('font-size', '10px')
                 .attr('dx', `15`)
-                .attr('dy', `20`)
+                .attr('dy', `15`)
 
             tooltipRect.attr('fill', 'white')
-                .style('width', '120')
-                .style('height', '30')
+                .style('width', '100')
+                .style('height', '15')
+                .style('stroke-width', '3')
+                .style('stroke', 'black')
                 // .attr('x', `10`)
                 // .attr('y', `5`)
 
@@ -231,16 +234,19 @@ export class Donut extends React.Component<DonutProps, DonutState>{
                 tooltipText
                 .style('fill', 'black')
                 .style('z-index', '100')
-                .style('font-size', '12px')
-                .attr('dx', `15`)
-                .attr('dy', `20`)
+                .style('font-size', '10px')
+                .attr('dx', `5`)
+                .attr('dy', `13`)
                 tooltipRect.attr('fill', 'white')
                 .style('width', '120')
-                .style('height', '30')
+                .style('height', '20')
+                .style('stroke-width', '1.5')
+                .style('stroke', 'rgba(0, 0, 0, 0.25)')
+       
             
         
         })
-            .on("mousemove", (d)=> tooltipGroup.attr('transform', `translate(${2+ event.offsetX},${event.offsetY-28})`))
+            .on("mousemove", (d)=> tooltipGroup.attr('transform', `translate(${event.offsetX-15},${event.offsetY-31})`))
             .on("mouseout", function(){return tooltipGroup.style("visibility", "hidden");});
   
 
