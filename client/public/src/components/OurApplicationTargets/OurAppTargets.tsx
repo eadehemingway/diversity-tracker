@@ -21,18 +21,18 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                     jan18: {
                         tech: {
                             applications:{
-                                men: 17, women: 1
+                                Men: 17, Women: 1
                             },
                             hired: {
-                                men: 5, women: 1
+                                Men: 5, Women: 1
                             }
                         },
                     nonTech: {
                             applications:{
-                                men: 22, women: 17
+                                Men: 22, Women: 17
                             },
                             hired: {
-                                men: 1, women: 1
+                                Men: 1, Women: 1
                             }
                         },
                     date:"jan18"
@@ -50,7 +50,7 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                     },
                 nonTech: {
                         applications:{
-                            white:27, mixedEthnic:1, Asian: 2, black: 2
+                            white:27, Mixed:1, Asian: 2, Black: 2
                         },
                         hired: {
                             white:2

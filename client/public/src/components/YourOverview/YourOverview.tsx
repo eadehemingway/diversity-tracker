@@ -16,7 +16,7 @@ export class YourOverview extends React.Component<YourOverviewProps, YourOvervie
     constructor(props){
         super(props)
         this.state={
-            userData: {gender:{"Men":0, "Women":0, "Other":0}},
+            userData: {gender:{Men:0, Women:0, Other:0}},
             londonData: {gender: {Men: 4000000, Women:4100000, other:33000}}
         }
     }
