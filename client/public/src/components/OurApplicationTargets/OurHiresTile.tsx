@@ -17,6 +17,8 @@ export class OurHiresTile extends React.Component<any, any>{
             <h1 className="sub-heading O-H-vertical-sub-heading">{this.props.title}</h1>
             <div className="O-H-tile">
 
+<div style={{position:"relative"}}>
+    
         {/* APPLICATION DONUT */}
             <Donut donutType={donutType.gender}
             donutName={`${this.props.techType}${this.props.data.date}-applications`}
@@ -30,19 +32,21 @@ export class OurHiresTile extends React.Component<any, any>{
             >   </Donut>
         {/* APPLICATION TARGET DONUT */}
             <Donut donutType={donutType.gender}
-                donutName={`two`}
+                donutName={`target-application-${this.props.techType}`}
                 radius={100}
-                data={{
-                    Men: 12, Women: 6
-                }}
+                data={this.props.data.applicationTargets
+                }
                 template={false}
                 className="big-donut"
                 target={true}
                 padAngle={0}
                 width = {300}
                 height = {300}
-                /> 
+                />
+        </div>
 
+
+    <div style={{position:"relative"}}>
         {/* HIRE DONUT */}
             <Donut donutType={donutType.gender}
             donutName={`${this.props.techType}${this.props.data.date}-hired`}
@@ -56,7 +60,20 @@ export class OurHiresTile extends React.Component<any, any>{
             >
             
             </Donut>
-
+        {/* APPLICATION TARGET DONUT */}
+        <Donut donutType={donutType.gender}
+                donutName={`target-hired-${this.props.techType}`}
+                radius={100}
+                data={this.props.data.applicationTargets
+                }
+                template={false}
+                className="big-donut"
+                target={true}
+                padAngle={0}
+                width = {300}
+                height = {300}
+                />
+        </div>
 
             
             </div>

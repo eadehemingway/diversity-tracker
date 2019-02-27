@@ -49,10 +49,8 @@ export class Donut extends React.Component<DonutProps, DonutState>{
 
 
     componentWillReceiveProps(nextProps){ 
-
         if(nextProps !== this.props){
             this.updateData(nextProps)
-
         }
     }
 

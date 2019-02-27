@@ -301,8 +301,8 @@ position: relative;;
 .big-donut{
 position:absolute;
 z-index: 0;
-right: 400px;
-bottom: 105px;
+bottom: -35px;
+right: 16px;
 
 }
 

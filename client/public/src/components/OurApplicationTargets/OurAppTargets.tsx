@@ -25,7 +25,10 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                             },
                             hired: {
                                 Men: 5, Women: 1
-                            }
+                            }, 
+                            applicationTargets: {
+                                Men: 5, Women: 5
+                            }, 
                         },
                     nonTech: {
                             applications:{
@@ -33,7 +36,10 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                             },
                             hired: {
                                 Men: 1, Women: 1
-                            }
+                            },
+                            applicationTargets: {
+                                Men: 5, Women: 5
+                            }, 
                         },
                     date:"jan18"
                     }
@@ -46,7 +52,10 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                         },
                         hired: {
                             white:5
-                        }
+                        },
+                        applicationTargets: {
+                            white:20, NonWhite: 10
+                        },
                     },
                 nonTech: {
                         applications:{
@@ -54,7 +63,10 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                         },
                         hired: {
                             white:2
-                        }
+                        },
+                        applicationTargets: {
+                                white:20, NonWhite: 10
+                            },
                     },
                 title:"jan18"
                 }
@@ -82,7 +94,7 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
             <h1 className="sub-heading">HIRED</h1>
             </div>
             <OurHiresTile techType='tech' title="TECH" data={data[this.state.selectedDate].tech}></OurHiresTile>
-            {/* <OurHiresTile techType='nonTech' title="NON TECH" data={data[this.state.selectedDate].nonTech}></OurHiresTile> */}
+            <OurHiresTile techType='nonTech' title="NON TECH" data={data[this.state.selectedDate].nonTech}></OurHiresTile>
             </div>
             </div>
             </React.Fragment>
