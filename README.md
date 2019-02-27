@@ -7,25 +7,13 @@ cd server, run npm start
 go to localhost:3000
 
 
-next steps:
+# information on data
+The data I have used on the demographic of london have come mostly from the 2011 UK census. 
+I struggled to find a figure for how many non binary people live in london so I have estimated it based on information found on this site: https://practicalandrogyny.com/2014/12/16/how-many-people-in-the-uk-are-nonbinary/
 
-- make transition smooth (I have just added prevData to the state so that we can know what the transition is from to)
-- add comparison tiles of london/ other companies their size...
+I am currently dividing diversity categories fairly crudely, (e.g. Gender and Race) which doesnt account for intersectionality. I intend to develop the app further in the future to address this. 
 
-
-
-- find the readme i wrote for the starter pack (on other laptop)
-
-
-- implement appropriate enter / exit / update functions
-
-- understand what each bit is doing...
+I welcome feedback and ideas on how I could improve the app. 
 
 
 
-
-## deploying to heroku
-
-cant have type errors
-make sure all dependencies are in dependencies (and not dev dependencies)
-make sure there is a package json with a start script that does everything it needs to do to start the app
