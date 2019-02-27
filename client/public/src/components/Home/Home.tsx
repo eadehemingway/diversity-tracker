@@ -16,10 +16,11 @@ export class Home extends React.Component{
         return(
             <React.Fragment>
 
-            <h1  className="title">HOME</h1>
+            <h1  className="H-title">DIVERSITY<br/>TRACKER</h1>
+
             <div style={{marginLeft: '16rem', position:'relative', width:'200px', height:'200px'}}>
 
-                <Donut donutType={donutType.gender}
+                {/* <Donut donutType={donutType.gender}
                 donutName={`one`}
                 radius={70}
                 data={{
@@ -39,7 +40,7 @@ export class Home extends React.Component{
                 className="big-donut"
                 target={true}
                 padAngle={0}
-                />
+                /> */}
 
 
             </div>

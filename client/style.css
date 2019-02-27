@@ -29,8 +29,6 @@ justify-content: center;
 margin: 0 auto;
 padding-top:3rem;
 padding-bottom: 3rem;
-/* position: sticky;
-top: 100px; */
 background:	#FFF7F2;
 z-index: 10;
 }
@@ -91,6 +89,17 @@ opacity: 0.5
     z-index: 4;
 
 }
+
+/* HOME ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.H-title {
+    width: 18.5rem;
+    padding-top: 14rem;
+    border-bottom: 6px solid #D36543;
+    padding-bottom: 1rem;
+    margin: 0 auto;
+    font-size: 3.5rem;
+}
+
 
 /* OUR OVERVIEW ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 

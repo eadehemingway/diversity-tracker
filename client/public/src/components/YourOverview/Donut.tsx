@@ -17,6 +17,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             // prevData: [{'label':'Men', 'value':0}],
             // data:[{'label':'Men', 'value':0}],
             prevData: [],
+            
             data:[],
             padAngle: 0, 
             raceColors: ['#6D7596','rgba(211, 101, 67, 1)', '#9DA3B9', '#D36543','#6D7596', '#9DA3B9'],

@@ -20,3 +20,12 @@ next steps:
 - implement appropriate enter / exit / update functions
 
 - understand what each bit is doing...
+
+
+
+
+## deploying to heroku
+
+cant have type errors
+make sure all dependencies are in dependencies (and not dev dependencies)
+make sure there is a package json with a start script that does everything it needs to do to start the app
