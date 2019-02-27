@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { donutType } from '../YourOverview/types';
-import { Donut } from '../YourOverview/Donut';
-
+import { Donut, donutType } from '../YourOverview/Donut';
 
 
 export class OurHiresTile extends React.Component<any, any>{

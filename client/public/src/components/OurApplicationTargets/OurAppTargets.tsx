@@ -38,7 +38,7 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                     date:"jan18"
                     }
                 },
-            race: {
+                race: {
                 jan18: {
                     tech: {
                         applications:{
@@ -58,12 +58,13 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                     },
                 title:"jan18"
                 }
-            }
-        }
+                }
+             }
     }
     render(){
         const data = this.state.diversityCategory === 'Gender' ?  this.state.gender : this.state.race
-
+        const genderFocused = this.state.diversityCategory === 'Gender' ? 'O-H-focused-tab' : '';
+        const raceFocused = this.state.diversityCategory === 'Race' ? 'O-H-focused-tab': '';
         return(
             <React.Fragment>
 
@@ -72,8 +73,8 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
             <div className="O-H-tile-container">
             <div className="O-H-diversity-category-tab-container">
 
-            <button className="O-H-diversity-category-tab" onClick={()=>this.setState({diversityCategory:"Gender"})}>GENDER</button>
-            <button className="O-H-diversity-category-tab" onClick={()=>this.setState({diversityCategory:"Race"})}>RACE</button>
+            <button className={`O-H-diversity-category-tab ${genderFocused}`} onClick={()=>this.setState({diversityCategory:"Gender"})}>GENDER</button>
+            <button className={`O-H-diversity-category-tab ${raceFocused}`} onClick={()=>this.setState({diversityCategory:"Race"})}>RACE</button>
             </div>
 
             <div className="O-H-horizontal-sub-headings">

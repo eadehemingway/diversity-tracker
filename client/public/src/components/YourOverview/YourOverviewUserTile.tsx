@@ -4,9 +4,6 @@ import {Donut} from './Donut'
 import {Form} from './Form'
 
 export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
-
-        const valuesNotEqualToZero = values(data).filter(v=> v !== 0)
-        const template = data.template === 1
         const radius = 80 
         const diameter = radius * 2
         const width = radius * 4

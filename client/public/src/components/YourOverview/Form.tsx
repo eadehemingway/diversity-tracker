@@ -1,7 +1,10 @@
 import * as React from 'react'
-import { FormProps } from './types';
 import {DebounceInput} from 'react-debounce-input';
 
+export interface FormProps {
+    labels: any[];
+    updateUserData: (value:number, key:string, diversityCategory:string)=> void
+}
 
 export const Form =({type, labels, updateUserData}) => {
  

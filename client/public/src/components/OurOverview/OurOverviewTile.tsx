@@ -1,11 +1,10 @@
 import * as React from 'react';
-import {Donut} from '../YourOverview/Donut'
-import {donutType } from '../YourOverview/types'
+import {Donut, donutType} from '../YourOverview/Donut'
 
 export const OurOverviewTile =({data, template})=> {
 const radius = 30
 const diameter = radius *2
-const additionalClass = template? 'template': null
+const width = diameter * 4
         return(
             <React.Fragment>
                 <div  className='O-O-tile'>
@@ -18,7 +17,7 @@ const additionalClass = template? 'template': null
                 data={data.gender}
                 template={template}
                 padAngle={0.03}
-                width = {diameter*2}
+                width = {width}
                 height = {81}
 
                 ></Donut>
@@ -30,7 +29,7 @@ const additionalClass = template? 'template': null
                 data={data.race}
                 template={template}
                 padAngle={0.03}
-                width = {diameter*2}
+                width = {width}
                 height = {81}
 
                 ></Donut>

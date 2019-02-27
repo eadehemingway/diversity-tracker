@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { YourOverviewLondonTile } from './YourOverviewLondonTile';
 import { YourOverviewUserTile } from './YourOverviewUserTile';
-import { donutType } from './types';
+import { donutType } from './Donut';
 
 interface YourOverviewProps {
 

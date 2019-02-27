@@ -276,11 +276,14 @@ position: relative;
 
 .O-H-diversity-category-tab{
 border: none;
-border-bottom: 2px solid #D36543;
+
 background: #FFF7F2;
 margin-right: 0.5rem;
 }
 
+.O-H-focused-tab{
+    border-bottom: 2px solid #D36543;
+}
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 

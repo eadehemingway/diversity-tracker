@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {Donut} from './Donut'
-import {Form} from './Form'
-import { GenderTileState, donutType } from './types';
+import {Donut, donutType} from './Donut'
 import { map } from 'lodash'
 
 export const YourOverviewLondonTile =({type, title, data})=> {
