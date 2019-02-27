@@ -5,7 +5,9 @@ import { GenderTileState, donutType } from './types';
 import { map } from 'lodash'
 
 export const YourOverviewLondonTile =({type, title, data})=> {
-
+const radius = 80
+const diameter = radius * 2
+const width = radius * 3
         return(
             <React.Fragment>
                 <div className='Y-O-tile'>
@@ -14,13 +16,12 @@ export const YourOverviewLondonTile =({type, title, data})=> {
                 <Donut
                     donutName='london'
                     donutType={donutType.gender}
-                    className='donut-svg'
-                    radius={80}
+                    radius={radius}
                     template={false}
                     data={data}
-                padAngle={0.03}
-                width = {320}
-                height = {200}
+                    padAngle={0.03}
+                    width = {width}
+                    height = {diameter * 2}
 
                 ></Donut>
                 </div>

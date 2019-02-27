@@ -9,14 +9,6 @@ margin:0;
 height: 100vh;
 }
 
-.donut-svg {
-margin:auto ;
-align-content: center;
-display: flex;
-position: absolute;
-bottom: 5px;
-right: 50px;
-}
 
 .svg{
 margin: auto;
@@ -233,7 +225,11 @@ position: relative;
     height: 18rem;  
 }
 
-
+.Y-O-template-donut{
+    display: flex;
+    position: absolute;
+    bottom: -50px;
+    }
 
 /* OUR HIRES TO APPLICATIONS ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -255,7 +251,7 @@ position: relative;
     margin-left: 8rem;
     display:flex;
     justify-content: space-around;
-    padding: 4rem;
+    padding: 0 4rem;
     /* box-shadow: 2px 5px 3px 10px black; */
     /* background:  */
 }
