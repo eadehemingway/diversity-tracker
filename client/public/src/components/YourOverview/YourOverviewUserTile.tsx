@@ -9,7 +9,7 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
         const template = data.template === 1
         const radius = 80 
         const diameter = radius * 2
-        const width = radius * 3
+        const width = radius * 4
         const height = diameter * 1.5
 
         return(

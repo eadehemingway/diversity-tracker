@@ -7,7 +7,7 @@ import { map } from 'lodash'
 export const YourOverviewLondonTile =({type, title, data})=> {
 const radius = 80
 const diameter = radius * 2
-const width = radius * 3
+const width = radius * 4
         return(
             <React.Fragment>
                 <div className='Y-O-tile'>

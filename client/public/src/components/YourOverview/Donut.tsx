@@ -192,21 +192,27 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .remove()
 
         path.transition().duration(1000).attrTween("d", createInterpolator)
+
+
+
+
+
+
+
+
+
+        // TOOLTIP
         const tooltipText = select(`.tooltip-${this.props.donutName}`)
         const tooltipRect = select(`.tooltip-rect-${this.props.donutName}`)
         const tooltipGroup = select(`.tooltip-group-${this.props.donutName}`)
 
-
-
- 
-
-
-
-
         select(`#donut-${this.props.donutName}`)
             .selectAll('path')
             .on("mouseover", function(d){
-                tooltipText.text(`${d.data.label}: ${d.data.value}`)
+                const label = `${d.data.label}: ${d.data.value}`
+                const labelLength = label.length
+                const rectWidth = (labelLength * 5) + 20
+                tooltipText.text(label)
                 tooltipGroup.style("visibility", "visible")
                 tooltipText
                 .style('fill', 'black')
@@ -215,7 +221,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
                 .attr('dx', `5`)
                 .attr('dy', `13`)
                 tooltipRect.attr('fill', 'white')
-                .style('width', '120')
+                .style('width', rectWidth)
                 .style('height', '20')
                 .style('stroke-width', '1.5')
                 .style('stroke', 'rgba(0, 0, 0, 0.25)')
