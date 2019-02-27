@@ -8,9 +8,9 @@ export class OurOverview extends React.Component<any, any>{
         super(props)
         this.state={
             data: {
-                jan18: {gender: {men: 2, women: 10}, race: {white:2, black: 7, asian: 3, hisp:8, other:10}, title:"01/18", uuid:"jan18"},
-                jun18: {gender: {men: 4, women: 20}, race: {white:4, black: 7, asian: 3, hisp:8,other:10}, title:"06/18", uuid:"june18"},
-                jan19: {gender: {men:7, women: 2}, race: {white: 9, black: 7, asian: 3, hisp:8,other: 7}, title: "01/19", uuid:"jan19"}
+                jan18: {gender: {men: 3}, race: {white:3}, title:"01/18", uuid:"jan18"},
+                jun18: {gender: {men: 5}, race: {white:5}, title:"06/18", uuid:"june18"},
+                jan19: {gender: {men:7, women: 2}, race: {white: 9}, title: "01/19", uuid:"jan19"}
             },
             templateDonuts: {
                 june19: {gender: {t: 1}, race: {t:1}, title:"06/19", uuid:"june19"},
@@ -24,7 +24,7 @@ export class OurOverview extends React.Component<any, any>{
                 june23: {gender: {t:1}, race: {t:1}, title: "06/23", uuid:"june23"}
             },
             londonData: {
-                gender: {men: 2, women: 10}, race: {white:2, other:10}, title:"LONDON", uuid:"LONDON"
+                gender: {men: 4000000, women: 4100000, other: 33000}, race: {white:4887435, mixedEthnic:405279, Asian: 1511546, black: 1088640, other:281041}, title:"LONDON", uuid:"LONDON"
             }
         }
     }
