@@ -248,10 +248,10 @@ position: relative;
 
 .O-H-tile{
     /* width:70%; */
-    margin-left: 8rem;
+    margin-left: 16.5rem;
     display:flex;
     justify-content: space-around;
-    padding: 0 4rem;
+
     /* box-shadow: 2px 5px 3px 10px black; */
     /* background:  */
 }
