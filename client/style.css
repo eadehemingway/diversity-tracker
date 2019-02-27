@@ -9,7 +9,9 @@ margin:0;
 height: 100vh;
 }
 
-
+p{
+    margin: 0.6rem 0;
+}
 .svg{
 margin: auto;
 align-content: center;
@@ -22,8 +24,8 @@ margin: 0 auto;
 padding-top:3rem;
 padding-bottom: 3rem;
 background:	#FFF7F2;
-/* position: sticky;
-top: 100px; */
+position: sticky;
+top: 100px;
 z-index: 10;
 }
 
@@ -157,23 +159,23 @@ margin-left: 0.3rem;
 
 .Y-O-page-container{
 margin:auto;
-
 width:80%;
 
 }
 .Y-O-tile-container{
-display: flex;
-width:70%;
-justify-content: space-between;
+width:100%;
+}
+
+.Y-O-gender-container,
+.Y-O-race-container{
+    display: flex;
 }
 
 .Y-O-tile{
-/* background: #F3EAE5; */
 padding: 1rem 1rem 1rem 0;
-margin: 0 9rem 0rem 0rem;
+margin: 0 8rem 15rem 0rem;
 width: 15rem;
 height: 22rem;
-/* border: 1px solid 	#4D577F; */
 position: relative;
 
 }
@@ -189,12 +191,7 @@ position: relative;
 
 .Y-O-form{
     border-top: 3px solid #4D577F;
-    /* background: #F3EAE5;
-    padding: 1rem 1rem;
-    margin:  0rem 2rem;
-    width: 15rem;
-    height: 7rem;
-    position: relative; */
+    padding-top: 1rem;
 }
 
 .Y-O-input {
@@ -217,6 +214,7 @@ position: relative;
     justify-content: space-between;
     width: 50%;
     margin:0.5rem;
+
 }
 
 .Y-O-donut-div{

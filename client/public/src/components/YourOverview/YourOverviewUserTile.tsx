@@ -8,14 +8,15 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
         const diameter = radius * 2
         const width = radius * 4
         const height = diameter * 1.5
-
+        const labels = Object.keys(data)
+        
         return(
                 <div className='Y-O-tile'>
                 <h1 className="Y-O-tile-title"> USER<br/> {title}<br/> DEMOGRAPHIC</h1>
                 <div className= "Y-O-donut-div">
                 <Donut
                     data={data}
-                    donutName="userGender"
+                    donutName={`user${type}`}
                     donutType={type}
                     radius={radius}
                     template={false}
@@ -25,7 +26,7 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
                 ></Donut>
                 <Donut
                     data={{"Men":1, "Women":0, "Other":0}}
-                    donutName="template"
+                    donutName={`template${type}`}
                     donutType={type}
                     radius={radius}
                     className='Y-O-template-donut template-donut'
@@ -39,7 +40,7 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
           
                  <Form 
                     updateUserData={updateUserData}
-                    labels={['Men', 'Women', 'Other']}
+                    labels={labels}
                     type={type}
                 ></Form>
                 </div>

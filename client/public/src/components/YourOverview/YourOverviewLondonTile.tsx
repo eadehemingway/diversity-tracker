@@ -12,7 +12,7 @@ const width = radius * 4
                 <h1 className="Y-O-tile-title">LONDONS <br/>{title} <br/>DEMOGRAPHIC</h1>
                 <div className= "Y-O-donut-div">
                 <Donut
-                    donutName='london'
+                    donutName={`london${type}`}
                     donutType={donutType.gender}
                     radius={radius}
                     template={false}
