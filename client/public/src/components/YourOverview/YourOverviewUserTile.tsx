@@ -10,6 +10,7 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
         const radius = 80 
         const diameter = radius * 2
         const width = radius * 3
+        const height = diameter * 1.5
 
         return(
                 <div className='Y-O-tile'>
@@ -23,7 +24,7 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
                     template={false}
                     padAngle={0.03}
                     width = {width}
-                    height = {diameter * 2}
+                    height = {height}
                 ></Donut>
                 <Donut
                     data={{"Men":1, "Women":0, "Other":0}}
@@ -34,7 +35,7 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
                     template={true}
                     padAngle={0.03}
                     width = {width}
-                height = {diameter * 2}
+                    height = {height}
                 ></Donut>
     
                 </div>

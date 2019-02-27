@@ -21,7 +21,7 @@ const width = radius * 3
                     data={data}
                     padAngle={0.03}
                     width = {width}
-                    height = {diameter * 2}
+                    height = {diameter * 1.5}
 
                 ></Donut>
                 </div>

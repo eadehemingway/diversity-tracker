@@ -172,7 +172,7 @@ justify-content: space-between;
 .Y-O-tile{
 /* background: #F3EAE5; */
 padding: 1rem 1rem 1rem 0;
-margin: 0 2rem 0rem 0rem;
+margin: 0 9rem 0rem 0rem;
 width: 15rem;
 height: 22rem;
 /* border: 1px solid 	#4D577F; */
@@ -228,7 +228,7 @@ position: relative;
 .Y-O-template-donut{
     display: flex;
     position: absolute;
-    bottom: -50px;
+    bottom: 30px;
     }
 
 /* OUR HIRES TO APPLICATIONS ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
