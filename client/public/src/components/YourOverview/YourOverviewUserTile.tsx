@@ -1,4 +1,4 @@
-import {values} from 'lodash'
+
 import * as React from 'react';
 import {Donut} from './Donut'
 import {Form} from './Form'
