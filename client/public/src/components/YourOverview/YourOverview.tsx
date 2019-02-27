@@ -9,15 +9,15 @@ interface YourOverviewProps {
 
 
 interface YourOverviewState {
-    userData: {gender: {}},
-    londonData: {gender: {}}
+    userData: {gender: {}, race: {}},
+    londonData: {gender: {}, race: {}}
 }
 export class YourOverview extends React.Component<YourOverviewProps, YourOverviewState>{
     constructor(props){
         super(props)
         this.state={
             userData: {gender:{Men:0, Women:0, Other:0}, race: {White:0, Mixed:0, Asian: 0, Black: 0, Other:0}},
-            londonData: {gender: {Men: 4000000, Women: 4100000, Other: 33000}, race: {White:4887435, Mixed:405279, Asian: 1511546, Black: 1088640, Other:281041}, title:"LONDON", uuid:"LONDON"}
+            londonData: {gender: {Men: 4000000, Women: 4100000, Other: 33000}, race: {White:4887435, Mixed:405279, Asian: 1511546, Black: 1088640, Other:281041}}
 
         }
     }

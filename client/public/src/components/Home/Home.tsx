@@ -17,32 +17,6 @@ export class Home extends React.Component{
 
             <h1  className="H-title">DIVERSITY<br/>TRACKER</h1>
 
-            <div style={{marginLeft: '16rem', position:'relative', width:'200px', height:'200px'}}>
-
-                {/* <Donut donutType={donutType.gender}
-                donutName={`one`}
-                radius={70}
-                data={{
-                    Men: 12, Women: 2
-                }}
-                template={false}
-                className="small-donut"
-                padAngle={0}
-                />
-                <Donut donutType={donutType.gender}
-                donutName={`two`}
-                radius={100}
-                data={{
-                    Men: 12, Women: 6
-                }}
-                template={false}
-                className="big-donut"
-                target={true}
-                padAngle={0}
-                /> */}
-
-
-            </div>
             </React.Fragment>
 
         )

@@ -48,11 +48,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
 
-    componentWillReceiveProps(nextProps){ 
-        if(nextProps !== this.props){
-            this.updateData(nextProps)
-        }
-    }
+
 
     componentDidMount(){
         const {template, target} = this.props
@@ -76,20 +72,24 @@ export class Donut extends React.Component<DonutProps, DonutState>{
         
     }
 
-    drawEmptyArcs=()=>{
+    componentWillReceiveProps(nextProps){ 
+        if(nextProps !== this.props){
+            this.updateData(nextProps)
+        }
+    }
 
+
+    // this is needed for the transitions... this draws an invisible empty arc so that a new arc can come out of this one ( i think)
+    drawEmptyArcs=()=>{
+        
         const {radius, width, height} = this.props
         const {padAngle, colors} = this.state
-
-
         const donut = pie()
             .padAngle(padAngle)
             .value(function(d){
                 return d.value
             })
             (this.state.data)
-
-
 
         const theArc = arc()
         .outerRadius(radius)
@@ -114,6 +114,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .attr('fill', function(d,i){return colors[i]})
     
     if(!this.props.template){
+        // only add tooltips to donuts that arent templates
         select(`#donut-${this.props.donutName}`).selectAll('rect')
             .data(donut)
             .enter()
@@ -158,15 +159,12 @@ export class Donut extends React.Component<DonutProps, DonutState>{
                 return d.value
             })(this.state.prevData)
         
-
-
         const newDonut = pie()
         .padAngle(padAngle)
             .value(function(d){
                 return d.value
                 })
                 (this.state.data)
-
 
         const newDonutWithPrevArc = newDonut.map((arc, i)=>{
             const prevArc = oldDonut[i]
@@ -176,13 +174,9 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             }
         })
 
-
-
         const theArc = arc()
             .outerRadius(radius)
             .innerRadius(radius/1.6);
-
-
 
         const path = select(`#donut-group-${this.props.donutName}`)
             .selectAll('path')
@@ -195,16 +189,10 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             .attr('d', theArc)
             .attr('fill', function(d,i){return colors[i]})
 
-        
         path.exit()
             .remove()
 
         path.transition().duration(1000).attrTween("d", createInterpolator)
-
-
-
-
-
 
 
 
@@ -223,24 +211,21 @@ export class Donut extends React.Component<DonutProps, DonutState>{
                 tooltipText.text(label)
                 tooltipGroup.style("visibility", "visible")
                 tooltipText
-                .style('fill', 'black')
+                .style('fill', '#4D577F')
                 .style('z-index', '100')
                 .style('font-size', '10px')
                 .attr('dx', `5`)
                 .attr('dy', `13`)
-                tooltipRect.attr('fill', 'white')
+                tooltipRect.attr('fill', '#FFF7F2')
                 .style('width', rectWidth)
                 .style('height', '20')
                 .style('stroke-width', '1.5')
                 .style('stroke', 'rgba(0, 0, 0, 0.25)')
        
-            
-        
         })
             .on("mousemove", (d)=> tooltipGroup.attr('transform', `translate(${event.offsetX},${event.offsetY-26})`))
             .on("mouseout", function(){return tooltipGroup.style("visibility", "hidden");});
   
-
         function createInterpolator(d) {
             // here interpolate is taking two objects (the previous arc object and the new arc object),
             // it can then use these to determine a sort of scale ...
@@ -248,27 +233,13 @@ export class Donut extends React.Component<DonutProps, DonutState>{
             return function(d) {
               return theArc(i(d))
             }
-          
           }
-
-    }
-
-    
-
-    
-    
-            
+    } 
 
     render(){
-
         return(
 
-
-            
-
                 <svg id={`donut-${this.props.donutName}`} className={`${this.props.className}`}></svg>
-
-
 
         )
     }
