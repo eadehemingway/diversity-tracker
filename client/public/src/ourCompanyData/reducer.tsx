@@ -1,75 +1,72 @@
+import { OurApplicationTargets } from "../components/OurApplicationTargets/OurAppTargets";
+import { GenderData, RaceData } from "../commonTypes";
+import { staffDemographicOverTimeData, hiringStatisticsData } from "./data";
 
 
 
 
+export interface TemplateDonut{
+    gender: {t:number}, race: {t:number}, title:string, uuid: string
+}
 
-// gender: {
-//     jan18: {
-//         tech: {
-//             applications:{
-//                 Men: 17, Women: 1
-//             },
-//             hired: {
-//                 Men: 5, Women: 1
-//             }, 
-//             applicationTargets: {
-//                 Men: 5, Women: 5
-//             }, 
-//         },
-//     nonTech: {
-//             applications:{
-//                 Men: 22, Women: 17
-//             },
-//             hired: {
-//                 Men: 1, Women: 1
-//             },
-//             applicationTargets: {
-//                 Men: 5, Women: 5
-//             }, 
-//         },
-//     date:"jan18"
-//     }
-// },
-// race: {
-//     jan18: {
-//     tech: {
-//         applications:{
-//             white:20, Asian: 1
-//         },
-//         hired: {
-//             white:5
-//         },
-//         applicationTargets: {
-//             white:20, NonWhite: 10
-//         },
-//     },
-// nonTech: {
-//         applications:{
-//             white:27, Mixed:1, Asian: 2, Black: 2
-//         },
-//         hired: {
-//             white:2
-//         },
-//         applicationTargets: {
-//                 white:20, NonWhite: 10
-//             },
-//     },
-// title:"jan18"
-// }
-// }
-// }
+export interface TemplateDonutsForFuture {
+    june19:TemplateDonut;
+    jan20:TemplateDonut;
+    june20: TemplateDonut;
+    jan21:TemplateDonut;
+    june21:TemplateDonut;
+    jan22: TemplateDonut;
+    june22:TemplateDonut;
+    jan23:TemplateDonut;
+    june23: TemplateDonut;
+}
+interface StaffDemographic{
+    gender: GenderData, race: RaceData, title:string, uuid: string
+}
+
+export interface StaffDemographicPastData {
+    jan18: StaffDemographic,
+    jun18: StaffDemographic,
+    jan19: StaffDemographic
+}
+
+export interface StaffDemographicOverTime {
+    staffDemographicPastData: StaffDemographicPastData,
+    templateDonuts: TemplateDonutsForFuture
+}
+export interface GenderHireStats {
+    applications: {Men: number, Women:number},
+    hired: {Men: number, Women:number},
+    applicationTargets: {Men: number, Women:number}
+}
+
+export interface RaceHireStats {
+    applications: {White: number, NonWhite?:number},
+    hired: {White: number, NonWhite?:number},
+    applicationTargets: {White: number, NonWhite?:number}
+}
+interface OurHiringStatistics {
+    gender: {tech:GenderHireStats, nonTech: GenderHireStats},
+    race: {tech: RaceHireStats, nonTech: RaceHireStats}
+}
+
+
+export class OurCompanyDataState {
+    constructor(
+        public staffDemographicOverTime: StaffDemographicOverTime = staffDemographicOverTimeData,
+        public ourHiringStatistics: OurHiringStatistics = hiringStatisticsData
+    ){}
+
+}
+
 
 
     export function ourCompanyDataReducer(
-        state = null,
+        state = new OurCompanyDataState(),
         action
       ) {
    
         switch (action.type) {
-        //   case CalendarActions.CalendarNext: {
-
-      
-        //   }
           default :
           return state
         }

@@ -6,6 +6,10 @@ cd server, run npm start
 
 go to localhost:3000
 
+to start in dev mode: 
+cd client, run npm run build:watch
+cd server, run npm run build:watch
+cd server, run npm start
 
 # information on data
 The data I have used on the demographic of london have come mostly from the 2011 UK census. 

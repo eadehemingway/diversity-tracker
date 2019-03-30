@@ -1,30 +1,31 @@
 import * as React from 'react';
 import { OurOverviewTile } from './OurOverviewTile';
 import {map} from "lodash";
+import { AppState } from '../../commonTypes';
+import { connect} from 'react-redux'
+import { LondonDataState } from '../../londonData/reducer';
+import { StaffDemographicOverTime, StaffDemographicPastData, TemplateDonut, TemplateDonutsForFuture } from '../../ourCompanyData/reducer';
 
 
-export class OurOverview extends React.Component<any, any>{
+interface OurOverviewProps {
+    staffDemographicPastData: StaffDemographicPastData,
+    templateDonuts: TemplateDonutsForFuture
+    londonData: LondonDataState;
+}
+
+interface LondonDataWithUUID extends LondonDataState {
+    title:string,
+    uuid:string
+}
+interface OurOverviewState {
+    londonData: LondonDataWithUUID
+}
+export class OurOverview extends React.Component<OurOverviewProps, OurOverviewState>{
     constructor(props){
         super(props)
         this.state={
-            data: {
-                jan18: {gender: {Men: 3}, race: {White:3}, title:"01/18", uuid:"jan18"},
-                jun18: {gender: {Men: 5}, race: {White:5}, title:"06/18", uuid:"june18"},
-                jan19: {gender: {Men:7, Women: 2}, race: {White: 9}, title: "01/19", uuid:"jan19"}
-            },
-            templateDonuts: {
-                june19: {gender: {t: 1}, race: {t:1}, title:"06/19", uuid:"june19"},
-                jan20: {gender: {t:1}, race: {t:1}, title:"01/20", uuid:"jan20"},
-                june20: {gender: {t:1}, race: {t:1}, title: "06/20", uuid:"june20"},
-                jan21: {gender: {t:1}, race: {t:1}, title:"01/21", uuid:"jan21"},
-                june21: {gender: {t:1}, race: {t:1}, title:"06/21", uuid:"june21"},
-                jan22: {gender: {t:1}, race: {t:1}, title: "01/22", uuid:"jan22"},
-                june22: {gender: {t:1}, race: {t:1}, title:"06/22", uuid:"june22"},
-                jan23: {gender: {t:1}, race: {t:1}, title:"01/23", uuid:"jan23"},
-                june23: {gender: {t:1}, race: {t:1}, title: "06/23", uuid:"june23"}
-            },
             londonData: {
-                gender: {Men: 4000000, Women: 4100000, Other: 33000}, race: {White:4887435, Mixed:405279, Asian: 1511546, Black: 1088640, Other:281041}, title:"LONDON", uuid:"LONDON"
+                ...this.props.londonData, title:"LONDON", uuid:"LONDON"
             }
         }
     }
@@ -40,8 +41,8 @@ export class OurOverview extends React.Component<any, any>{
                 <h1 className="sub-heading O-O-vertical-label">GENDER</h1>
                 <h1 className="sub-heading O-O-vertical-label">RACE</h1>
             </div>
-             {map(this.state.data, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={false}/>)}
-             {map(this.state.templateDonuts, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={true}/>)}
+             {map(this.props.staffDemographicPastData, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={false}/>)}
+             {map(this.props.templateDonuts, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={true}/>)}
              
              <div className="O-O-london-donut-collumn" >
             <OurOverviewTile data={this.state.londonData} template={false}/>
@@ -53,3 +54,16 @@ export class OurOverview extends React.Component<any, any>{
         )
     }
 }
+
+
+
+
+export const OurOverviewConnected = connect<{}, {}>(
+    (appState: AppState)=>({
+        londonData: appState.londonData,
+        staffDemographicPastData: appState.ourCompanyData.staffDemographicOverTime.staffDemographicPastData,
+        templateDonuts: appState.ourCompanyData.staffDemographicOverTime.templateDonuts
+
+    }),
+    (dispatch)=>({
+    }))(OurOverview)

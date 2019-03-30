@@ -1,76 +1,28 @@
 import * as React from 'react';
 
 import { OurHiresTile } from './OurHiresTile';
+import { AppState } from '../../commonTypes';
+import { connect} from 'react-redux'
+import { GenderHireStats, RaceHireStats } from '../../ourCompanyData/reducer';
 
 interface OurAppProps {
+    ourCompanyDataGender:  {tech:GenderHireStats, nonTech: GenderHireStats},
+    ourCompanyDataRace:  {tech: RaceHireStats, nonTech: RaceHireStats}
 }
 
 interface OurAppState {
-    diversityCategory: string, 
-    gender: any,
-    race: any
-}
+    diversityCategory: string
+};
 export class OurApplicationTargets extends React.Component<OurAppProps, OurAppState>{
     constructor(props){
         super(props)
             this.state={
                 diversityCategory:"Gender",
-                gender: {
-                        tech: {
-                            applications:{
-                                Men: 17, Women: 1
-                            },
-                            hired: {
-                                Men: 5, Women: 1
-                            }, 
-                            applicationTargets: {
-                                Men: 5, Women: 5
-                            }, 
-                        },
-                    nonTech: {
-                            applications:{
-                                Men: 22, Women: 17
-                            },
-                            hired: {
-                                Men: 1, Women: 1
-                            },
-                            applicationTargets: {
-                                Men: 5, Women: 5
-                            }, 
-                        },
-             
-                },
-                race: {
-                   
-                    tech: {
-                        applications:{
-                            white:20, Asian: 1
-                        },
-                        hired: {
-                            white:5
-                        },
-                        applicationTargets: {
-                            white:20, NonWhite: 10
-                        },
-                    },
-                nonTech: {
-                        applications:{
-                            white:27, Mixed:1, Asian: 2, Black: 2
-                        },
-                        hired: {
-                            white:2
-                        },
-                        applicationTargets: {
-                                white:20, NonWhite: 10
-                            },
-                    
-             
-                }
-                }
              }
     }
     render(){
-        const data = this.state.diversityCategory === 'Gender' ?  this.state.gender : this.state.race
+
+        const data = this.state.diversityCategory === 'Gender' ?  this.props.ourCompanyDataGender : this.props.ourCompanyDataRace
         const genderFocused = this.state.diversityCategory === 'Gender' ? 'O-H-focused-tab' : '';
         const raceFocused = this.state.diversityCategory === 'Race' ? 'O-H-focused-tab': '';
         return(
@@ -101,3 +53,15 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
         )
     }
 }
+
+
+
+
+export const OurApplicationTargetsConnected = connect<{}, {}>(
+    (appState: AppState)=>({
+        ourCompanyDataGender: appState.ourCompanyData.ourHiringStatistics.gender,
+        ourCompanyDataRace: appState.ourCompanyData.ourHiringStatistics.race
+
+    }),
+    (dispatch)=>({
+    }))(OurApplicationTargets)

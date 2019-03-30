@@ -1,30 +1,31 @@
 import { GenderData, RaceData } from "../commonTypes";
 
 
-
-
-
-
-
-
-
-
-interface userCompanyDataState {
-    gender: GenderData,
-    race: RaceData
+export class UserCompanyDataState {
+    constructor(
+        public gender: GenderData = {Men:0, Women:0, Other:0},
+        public race: RaceData = {White:0, Mixed:0, Asian: 0, Black: 0, Other:0}
+    ){}
 }
 
 
+
     export function userCompanyDataReducer(
-        state:userCompanyDataState = null,
+        state = new UserCompanyDataState(),
         action
       ) {
    
         switch (action.type) {
-        //   case CalendarActions.CalendarNext: {
-
-      
-        //   }
+          case "UpdateUserDataAction": {
+             const updatedState = {...state, 
+                [action.diversityCategory]: {      
+                    ...state[action.diversityCategory],
+                    [action.label]: action.value
+                }
+                }
+            console.log('reducer updated state', updatedState)
+            return updatedState
+          }
           default :
           return state
         }

@@ -1,9 +1,9 @@
 
 import * as React from 'react';
 import {Donut} from './Donut'
-import {Form} from './Form'
+import {FormConnected} from './Form'
 
-export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
+export const YourOverviewUserTile =({ type, title, data})=> {
         const radius = 80 
         const diameter = radius * 2
         const width = radius * 4
@@ -38,11 +38,10 @@ export const YourOverviewUserTile =({updateUserData, type, title, data})=> {
     
                 </div>
           
-                 <Form 
-                    updateUserData={updateUserData}
+                 <FormConnected 
                     labels={labels}
-                    type={type}
-                ></Form>
+                    diversityCategory={type}
+                ></FormConnected>
                 </div>
                 
 

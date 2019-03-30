@@ -1,27 +1,24 @@
 import { GenderData, RaceData } from "../commonTypes";
+import { londonGenderData, londonRaceData } from "./data";
 
 
 
-
-
-
-interface londonDataState {
-    gender: GenderData,
-    race: RaceData
+export class LondonDataState {
+    constructor(
+       public gender: GenderData = londonGenderData,
+       public race: RaceData = londonRaceData
+    ){}
 }
 
 
 
+
     export function londonDataReducer(
-        state:londonDataState = null,
+        state = new LondonDataState(),
         action
       ) {
    
         switch (action.type) {
-        //   case CalendarActions.CalendarNext: {
-
-      
-        //   }
           default :
           return state
         }

@@ -27,11 +27,15 @@ export const store = createStore(
 )
 
 
+const AppWithRedux: React.FunctionComponent = (): JSX.Element => (
+    <Provider store={store}>
+      <App/>
+    </Provider>
+  );
 
 
 
 
 
 
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AppWithRedux />, document.getElementById('root'));

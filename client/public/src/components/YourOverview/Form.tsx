@@ -1,21 +1,24 @@
 import * as React from 'react'
 import {DebounceInput} from 'react-debounce-input';
+import { connect} from 'react-redux'
+import { AppState } from '../../commonTypes';
+
 
 export interface FormProps {
     labels: any[];
     updateUserData: (value:number, key:string, diversityCategory:string)=> void
 }
 
-export const Form =({type, labels, updateUserData}) => {
+const Form =({diversityCategory, labels, updateUserData}) => {
  
         return(
             <React.Fragment>
 
                     <form onSubmit={e=> e.preventDefault() } className="Y-O-form">
-                    {labels.map(l=> (
-                    <div className="Y-O-input-label-pair" key={l}>
+                    {labels.map(label=> (
+                    <div className="Y-O-input-label-pair" key={label}>
 
-                    <label key={l} className="Y-O-input-labels">{l}
+                    <label key={label} className="Y-O-input-labels">{label}
                     </label>
                         <DebounceInput 
                         type="text"  
@@ -23,7 +26,7 @@ export const Form =({type, labels, updateUserData}) => {
                         debounceTimeout = {200}
                         onChange={(e)=>{
                             const value = parseFloat(e.target.value)
-                            updateUserData(value, l, type)
+                            updateUserData(value, label, diversityCategory)
                         }}></DebounceInput>
                         </div>
                     ))}
@@ -33,3 +36,9 @@ export const Form =({type, labels, updateUserData}) => {
             </React.Fragment>
         )
     }
+
+export const FormConnected = connect(
+   null,
+    (dispatch)=>({
+        updateUserData: (value, label, diversityCategory)=>dispatch({type:"UpdateUserDataAction", value, label, diversityCategory})
+    }))(Form)
