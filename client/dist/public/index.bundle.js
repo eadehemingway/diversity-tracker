@@ -3012,7 +3012,7 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar ReactDOM = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar App_1 = __webpack_require__(/*! ./src/components/App */ \"./public/src/components/App.tsx\");\nReactDOM.render(React.createElement(App_1.App, null), document.getElementById('root'));\n\n\n//# sourceURL=webpack:///./public/index.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar ReactDOM = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar App_1 = __webpack_require__(/*! ./src/components/App */ \"./public/src/components/App.tsx\");\n// //REDUCERS\n// // import { ourOverviewReducer} from './src/components/OurOverview/reducer'\n// import { yourOverviewReducer} from './src/components/YourOverview/reducer'\n// // import { ourTargetsReducer} from './src/components/ourApplicationTargets/reducer'\n// //STYLES\n// export const allReducers = combineReducers({\n//     // ourOverview: ourOverviewReducer,\n//     yourOverview: yourOverviewReducer,\n//     // ourTargets: ourTargetsReducer\n// })\n// export const store = createStore(\n//     allReducers\n// )\nReactDOM.render(React.createElement(App_1.App, null), document.getElementById('root'));\n\n\n//# sourceURL=webpack:///./public/index.tsx?");
 
 /***/ }),
 

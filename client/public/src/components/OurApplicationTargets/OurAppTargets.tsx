@@ -45,7 +45,7 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                     }
                 },
                 race: {
-                jan18: {
+                    jan18: {
                     tech: {
                         applications:{
                             white:20, Asian: 1
