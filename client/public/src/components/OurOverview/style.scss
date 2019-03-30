@@ -1,20 +1,15 @@
-
-/* OUR OVERVIEW ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+@import '../variables.scss';
 
 .O-O-page-container {
     width:80%;
     margin:auto;
-    /* border: 3px solid pink; */
-
-
-    
     }
+
 .O-O-tile-container {
     position: relative;
-    /* border: 3px solid pink; */
     height: 20rem;
     margin-top:3rem;
-    display: flex;
+    @include flexbox;
     overflow: hidden;
     }
     
@@ -25,13 +20,13 @@
         
 .O-O-london-donut-collumn{
 width: 5rem;
-border-left: 5px solid #D36543;
+border-left: 5px solid $sienna;
 padding-left: 2rem;
 padding-right:5rem;
 position: absolute;
 right: 0rem;
 top: 0rem;
-background:#FFF7F2;
+background:$background;
 z-index: 4;
 }
 
@@ -41,8 +36,6 @@ z-index: 4;
 .O-O-vertical-label-container{
 margin-top: 0.5rem;
 margin-right: 3.5rem;
-
-
 }
 
 .O-O-vertical-label{
@@ -51,7 +44,6 @@ margin-right: 3.5rem;
     width: 5rem;
     margin-left: 0;
     text-align: end;
-
 }
 
 

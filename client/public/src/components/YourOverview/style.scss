@@ -1,72 +1,68 @@
+@import '../variables.scss';
 
-/* YOUR OVERVIEW ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 .Y-O-page-container{
     margin:auto;
     width:80%;
-    
     }
-    .Y-O-tile-container{
+
+.Y-O-tile-container{
     width:100%;
     }
     
-    .Y-O-gender-container,
-    .Y-O-race-container{
-        display: flex;
-    }
-    
-    .Y-O-tile{
+.Y-O-gender-container,
+.Y-O-race-container{
+    @include flexbox;
+}
+
+.Y-O-tile{
     padding: 1rem 1rem 1rem 0;
     margin: 0 13rem 15rem 0rem;
     width: 15rem;
     height: 22rem;
     position: relative;
+}
+
+.Y-O-tile-title{
+    text-align: left;
+    font-size: 1.35rem;
+    margin-top: 0;
+    width: 11rem;
+    border-bottom: 3px solid $darkBlue;
+    padding-bottom: 0.5rem;
+    }
+
+.Y-O-form{
+    border-top: 3px solid $darkBlue;
+    padding-top: 1rem;
+}
+
+.Y-O-input {
+    width: 2rem;
+    height: 1rem;
+
+}
+
+.Y-O-input-labels {
+    display: block;
     
     }
     
-    .Y-O-tile-title{
-        text-align: left;
-        font-size: 1.35rem;
-        margin-top: 0;
-        width: 11rem;
-        border-bottom: 3px solid #4D577F;
-        padding-bottom: 0.5rem;
-        }
-    
-    .Y-O-form{
-        border-top: 3px solid #4D577F;
-        padding-top: 1rem;
+
+.Y-O-input-label-pair{
+    @include flexbox;
+    justify-content: space-between;
+    width: 50%;
+    margin:0.5rem;
+
+}
+
+.Y-O-donut-div{
+    height: 18rem;  
+}
+
+.Y-O-template-donut{
+    @include flexbox;
+    position: absolute;
+    bottom: 30px;
     }
-    
-    .Y-O-input {
-        width: 2rem;
-        height: 1rem;
-        /* border: 2px solid red */
-    
-    }
-    
-    .Y-O-input-labels {
-        /* border: 2px solid green; */
-        display: block;
-        /* padding:1rem; */
-        
-        }
-        
-    
-    .Y-O-input-label-pair{
-        display: flex;
-        justify-content: space-between;
-        width: 50%;
-        margin:0.5rem;
-    
-    }
-    
-    .Y-O-donut-div{
-        height: 18rem;  
-    }
-    
-    .Y-O-template-donut{
-        display: flex;
-        position: absolute;
-        bottom: 30px;
-        }

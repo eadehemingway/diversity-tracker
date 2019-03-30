@@ -1,100 +1,91 @@
+@import './variables.scss';
 
 
-
-/* GENERAL */
 body{
-    background:	#FFF7F2;
+    background:	$background;
     font-family: sans-serif;
-    color: 	#4D577F;
+    color: $darkBlue;
     max-width:100%;
     margin:0;
-    }
-    
-    p{
-        margin: 0.6rem 0;
-    }
-    .svg{
-    margin: auto;
-    align-content: center;
-    justify-content: center;
-    
-    }
-    
-    .title {
-    margin: 0 auto;
-    padding-top:3rem;
-    padding-bottom: 3rem;
-    background:	#FFF7F2;
-    position: sticky;
-    top: 100px;
-    z-index: 10;
-    }
-    
-    
-    .sub-heading{
-    font-size: 1rem;
-    margin-top: 0;
-    width: 8rem;
-    }
-    
-    .navbar{
-    position:fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    border-bottom: 3px solid hsla(228, 25%, 40%, 0.4);
-    background: #FFF7F2;
-    z-index: 20;
-    
-    }
-    
-    .navbar-link{
-    text-decoration: none;
-    margin: 1rem;
-    font-family: sans-serif;
-    color: hsla(228, 25%, 40%, 0.5);
-    font-size: 0.9rem;
-    padding: 0.5rem;
-    text-align: right;
-    display:flex;
-    align-items: flex-end;
-    }
-    
-    
-    #root{
-    margin-top: 6rem;
-    /* position: relative; */
-    
-    }
-    
-    .arc:hover{
-    opacity: 0.5
-    }
-    
-    
-    .template-donut{
-        z-index: -1;
-    }
-    
-    
+}
+
+p{
+    margin: 0.6rem 0;
+}
+
+.svg{
+margin: auto;
+align-content: center;
+justify-content: center;
+
+}
+
+.title {
+margin: 0 auto;
+padding-top:3rem;
+padding-bottom: 3rem;
+background:$background;
+position: sticky;
+top: 100px;
+z-index: 10;
+}
 
 
+.sub-heading{
+font-size: 1rem;
+margin-top: 0;
+width: 8rem;
+}
+
+.navbar{
+position:fixed;
+top: 0;
+width: 100%;
+display: flex;
+justify-content: flex-end;
+border-bottom: 3px solid $navBarGrey;
+background: $background;
+z-index: 20;
+
+}
+
+.navbar-link{
+text-decoration: none;
+margin: 1rem;
+font-family: sans-serif;
+color: $navBarGrey;
+font-size: 0.9rem;
+padding: 0.5rem;
+text-align: right;
+display:flex;
+align-items: flex-end;
+}
 
 
+#root{
+margin-top: 6rem;
 
+}
+
+.arc:hover{
+opacity: 0.5
+}
+
+
+.template-donut{
+    z-index: -1;
+}
 
 .small-donut{
-    z-index: 5;
-    position: relative;;
-    }
-    
-    .big-donut{
-    position:absolute;
-    z-index: 0;
-    bottom: -35px;
-    right: 16px;
-    
-    }
-    
-    
+z-index: 5;
+position: relative;;
+}
+
+.big-donut{
+position:absolute;
+z-index: 0;
+bottom: -35px;
+right: 16px;
+
+}
+
