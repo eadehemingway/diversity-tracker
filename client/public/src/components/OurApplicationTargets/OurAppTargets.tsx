@@ -7,7 +7,6 @@ interface OurAppProps {
 
 interface OurAppState {
     diversityCategory: string, 
-    selectedDate: string, 
     gender: any,
     race: any
 }
@@ -16,9 +15,7 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
         super(props)
             this.state={
                 diversityCategory:"Gender",
-                selectedDate: "jan18",
                 gender: {
-                    jan18: {
                         tech: {
                             applications:{
                                 Men: 17, Women: 1
@@ -41,11 +38,10 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                                 Men: 5, Women: 5
                             }, 
                         },
-                    date:"jan18"
-                    }
+             
                 },
                 race: {
-                    jan18: {
+                   
                     tech: {
                         applications:{
                             white:20, Asian: 1
@@ -67,8 +63,8 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                         applicationTargets: {
                                 white:20, NonWhite: 10
                             },
-                    },
-                title:"jan18"
+                    
+             
                 }
                 }
              }
@@ -96,8 +92,8 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                         <h1 className="sub-heading">HIRED</h1>
                     </div>
             </div>
-                <OurHiresTile techType='tech' title="TECH" data={data[this.state.selectedDate].tech}></OurHiresTile>
-                <OurHiresTile techType='nonTech' title="NON TECH" data={data[this.state.selectedDate].nonTech}></OurHiresTile>
+                <OurHiresTile techType='tech' title="TECH" data={data.tech}></OurHiresTile>
+                <OurHiresTile techType='nonTech' title="NON TECH" data={data.nonTech}></OurHiresTile>
                 </div>
 
             </React.Fragment>
