@@ -1,4 +1,4 @@
-# diversity
+# diversity-tracker
 to start:
 cd client, run npm run build
 cd server, run npm run build
