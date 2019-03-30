@@ -1,6 +1,6 @@
 # diversity-tracker
 
-![Uploading Screenshot 2019-03-30 at 16.33.53.png…]()
+<img width="1440" alt="Screenshot 2019-03-30 at 16 33 53" src="https://user-images.githubusercontent.com/32163243/55278897-38d87900-530a-11e9-93d1-0c326936d0d1.png">
 
 
 
