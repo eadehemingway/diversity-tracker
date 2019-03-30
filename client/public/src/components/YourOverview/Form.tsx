@@ -3,10 +3,6 @@ import {DebounceInput} from 'react-debounce-input';
 import { connect} from 'react-redux'
 
 
-export interface FormProps {
-    labels: any[];
-    updateUserData: (value:number, key:string, diversityCategory:string)=> void
-}
 
 const Form =({diversityCategory, labels, updateUserData}) => (
         <React.Fragment>
@@ -29,9 +25,11 @@ const Form =({diversityCategory, labels, updateUserData}) => (
             </form>
         </React.Fragment>
 )
-    
+interface MapDispatchToFormProps {
+    updateUserData: ()=> void
+}
 
-export const FormConnected = connect(
+export const FormConnected = connect<null, MapDispatchToFormProps>(
    null,
     (dispatch)=>({
         updateUserData: (value, label, diversityCategory)=>dispatch({type:"UpdateUserDataAction", value, label, diversityCategory})

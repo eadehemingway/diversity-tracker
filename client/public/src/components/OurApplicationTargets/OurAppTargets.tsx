@@ -55,11 +55,9 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
 
 
 
-export const OurApplicationTargetsConnected = connect<{}, {}>(
+export const OurApplicationTargetsConnected = connect<OurAppProps>(
     (appState: AppState)=>({
         ourCompanyDataGender: appState.ourCompanyData.ourHiringStatistics.gender,
         ourCompanyDataRace: appState.ourCompanyData.ourHiringStatistics.race
 
-    }),
-    (dispatch)=>({
     }))(OurApplicationTargets)

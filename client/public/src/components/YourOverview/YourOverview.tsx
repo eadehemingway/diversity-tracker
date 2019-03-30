@@ -4,6 +4,8 @@ import { YourOverviewUserTile } from './YourOverviewUserTile';
 import { donutType } from './../Donut';
 import { AppState } from '../../commonTypes';
 import { connect} from 'react-redux'
+import { LondonDataState } from '../../londonData/reducer';
+import { UserCompanyDataState } from '../../userCompanyData/reducer';
 
 export const YourOverview = ({userCompanyData, londonData})=> (
         <React.Fragment>
@@ -24,7 +26,12 @@ export const YourOverview = ({userCompanyData, londonData})=> (
 
 )
 
-export const YourOverviewConnected= connect<{}, {}>(
+interface MapStateToYourOverviewProps{
+    londonData: LondonDataState,
+    userCompanyData: UserCompanyDataState
+}
+
+export const YourOverviewConnected= connect<{}>(
     (appState: AppState)=>({
         londonData: appState.londonData,
         userCompanyData: appState.userCompanyData
