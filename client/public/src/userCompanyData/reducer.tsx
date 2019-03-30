@@ -10,11 +10,10 @@ export class UserCompanyDataState {
 
 
 
-    export function userCompanyDataReducer(
+export function userCompanyDataReducer(
         state = new UserCompanyDataState(),
         action
       ) {
-   
         switch (action.type) {
           case "UpdateUserDataAction": {
              const updatedState = {...state, 
@@ -23,11 +22,11 @@ export class UserCompanyDataState {
                     [action.label]: action.value
                 }
                 }
-            console.log('reducer updated state', updatedState)
+
             return updatedState
           }
-          default :
-          return state
-        }
+        default :
+        return state
     }
+}
       

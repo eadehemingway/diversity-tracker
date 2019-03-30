@@ -4,14 +4,10 @@ import {map} from "lodash";
 import { AppState } from '../../commonTypes';
 import { connect} from 'react-redux'
 import { LondonDataState } from '../../londonData/reducer';
-import { StaffDemographicOverTime, StaffDemographicPastData, TemplateDonut, TemplateDonutsForFuture } from '../../ourCompanyData/reducer';
+import { StaffDemographicPastData, TemplateDonutsForFuture } from '../../ourCompanyData/reducer';
 
 
-interface OurOverviewProps {
-    staffDemographicPastData: StaffDemographicPastData,
-    templateDonuts: TemplateDonutsForFuture
-    londonData: LondonDataState;
-}
+
 
 interface LondonDataWithUUID extends LondonDataState {
     title:string,
@@ -20,50 +16,45 @@ interface LondonDataWithUUID extends LondonDataState {
 interface OurOverviewState {
     londonData: LondonDataWithUUID
 }
-export class OurOverview extends React.Component<OurOverviewProps, OurOverviewState>{
-    constructor(props){
-        super(props)
-        this.state={
+export class OurOverview extends React.Component<MapStateToProps, OurOverviewState>{
+        state={
             londonData: {
                 ...this.props.londonData, title:"LONDON", uuid:"LONDON"
-            }
-        }
-    }
+        }}
     render(){
 
         return(
             <React.Fragment>
-
             <div className="O-O-page-container">
-            <h1 className="title">OUR <br/> OVERVIEW</h1>
-            <div className="O-O-tile-container">
-            <div  className="O-O-tile O-O-vertical-label-container">
-                <h1 className="sub-heading O-O-vertical-label">GENDER</h1>
-                <h1 className="sub-heading O-O-vertical-label">RACE</h1>
-            </div>
-             {map(this.props.staffDemographicPastData, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={false}/>)}
-             {map(this.props.templateDonuts, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={true}/>)}
-             
-             <div className="O-O-london-donut-collumn" >
-            <OurOverviewTile data={this.state.londonData} template={false}/>
-
-            </div>
-            </div>
+                <h1 className="title">OUR <br/> OVERVIEW</h1>
+                    <div className="O-O-tile-container">
+                        <div  className="O-O-tile O-O-vertical-label-container">
+                            <h1 className="sub-heading O-O-vertical-label">GENDER</h1>
+                            <h1 className="sub-heading O-O-vertical-label">RACE</h1>
+                        </div>
+                    {map(this.props.staffDemographicPastData, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={false}/>)}
+                    {map(this.props.templateDonuts, (col, i)=>  <OurOverviewTile data={col} key={col.title} template={true}/>)}
+                    <div className="O-O-london-donut-collumn" >
+                        <OurOverviewTile data={this.state.londonData} template={false}/>
+                    </div>
+                </div>
             </div>
             </React.Fragment>
         )
     }
 }
 
+interface MapStateToProps {
+    londonData: LondonDataState
+    staffDemographicPastData: StaffDemographicPastData,
+    templateDonuts: TemplateDonutsForFuture
+}
 
 
-
-export const OurOverviewConnected = connect<{}, {}>(
+export const OurOverviewConnected = connect<MapStateToProps>(
     (appState: AppState)=>({
         londonData: appState.londonData,
         staffDemographicPastData: appState.ourCompanyData.staffDemographicOverTime.staffDemographicPastData,
         templateDonuts: appState.ourCompanyData.staffDemographicOverTime.templateDonuts
 
-    }),
-    (dispatch)=>({
     }))(OurOverview)

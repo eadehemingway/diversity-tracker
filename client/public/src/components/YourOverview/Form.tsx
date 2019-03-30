@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {DebounceInput} from 'react-debounce-input';
 import { connect} from 'react-redux'
-import { AppState } from '../../commonTypes';
 
 
 export interface FormProps {
@@ -9,13 +8,10 @@ export interface FormProps {
     updateUserData: (value:number, key:string, diversityCategory:string)=> void
 }
 
-const Form =({diversityCategory, labels, updateUserData}) => {
- 
-        return(
-            <React.Fragment>
-
-                    <form onSubmit={e=> e.preventDefault() } className="Y-O-form">
-                    {labels.map(label=> (
+const Form =({diversityCategory, labels, updateUserData}) => (
+        <React.Fragment>
+            <form onSubmit={e=> e.preventDefault() } className="Y-O-form">
+                {labels.map(label=> (
                     <div className="Y-O-input-label-pair" key={label}>
 
                     <label key={label} className="Y-O-input-labels">{label}
@@ -27,15 +23,13 @@ const Form =({diversityCategory, labels, updateUserData}) => {
                         onChange={(e)=>{
                             const value = parseFloat(e.target.value)
                             updateUserData(value, label, diversityCategory)
-                        }}></DebounceInput>
+                        }}/>
                         </div>
                     ))}
-                    </form>
-
-
-            </React.Fragment>
-        )
-    }
+            </form>
+        </React.Fragment>
+)
+    
 
 export const FormConnected = connect(
    null,

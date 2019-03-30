@@ -79,7 +79,7 @@ export class Donut extends React.Component<DonutProps, DonutState>{
     }
 
 
-    // this is needed for the transitions... this draws an invisible empty arc so that a new arc can come out of this one ( i think)
+    // this is needed for the transitions... this draws an invisible empty arc so that a new arc can come out of this one 
     drawEmptyArcs=()=>{
         
         const {radius, width, height} = this.props

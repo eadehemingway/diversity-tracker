@@ -9,6 +9,7 @@ export const YourOverviewUserTile =({ type, title, data})=> {
         const width = radius * 4
         const height = diameter * 1.5
         const labels = Object.keys(data)
+        const padAngle = 0.03
         
         return(
                 <div className='Y-O-tile'>
@@ -20,7 +21,7 @@ export const YourOverviewUserTile =({ type, title, data})=> {
                     donutType={type}
                     radius={radius}
                     template={false}
-                    padAngle={0.03}
+                    padAngle={padAngle}
                     width = {width}
                     height = {height}
                 ></Donut>
@@ -31,7 +32,7 @@ export const YourOverviewUserTile =({ type, title, data})=> {
                     radius={radius}
                     className='Y-O-template-donut template-donut'
                     template={true}
-                    padAngle={0.03}
+                    padAngle={padAngle}
                     width = {width}
                     height = {height}
                 ></Donut>

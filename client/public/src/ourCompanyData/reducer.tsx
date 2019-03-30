@@ -1,4 +1,4 @@
-import { OurApplicationTargets } from "../components/OurApplicationTargets/OurAppTargets";
+
 import { GenderData, RaceData } from "../commonTypes";
 import { staffDemographicOverTimeData, hiringStatisticsData } from "./data";
 
@@ -61,7 +61,7 @@ export class OurCompanyDataState {
 
 
 
-    export function ourCompanyDataReducer(
+export function ourCompanyDataReducer(
         state = new OurCompanyDataState(),
         action
       ) {
@@ -70,5 +70,5 @@ export class OurCompanyDataState {
           default :
           return state
         }
-    }
+}
       

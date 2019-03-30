@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { OurHiresTile } from './OurHiresTile';
 import { AppState } from '../../commonTypes';
 import { connect} from 'react-redux'
@@ -34,7 +33,6 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                 <h1  className="title">OUR <br/> APPLICATION <br/> TARGETS</h1>
 
                     <div className="O-H-diversity-category-tab-container">
-
                         <button className={`O-H-diversity-category-tab ${genderFocused}`} onClick={()=>this.setState({diversityCategory:"Gender"})}>GENDER</button>
                         <button className={`O-H-diversity-category-tab ${raceFocused}`} onClick={()=>this.setState({diversityCategory:"Race"})}>RACE</button>
                     </div>
@@ -43,10 +41,10 @@ export class OurApplicationTargets extends React.Component<OurAppProps, OurAppSt
                         <h1 className="sub-heading">APPLICATIONS</h1>
                         <h1 className="sub-heading">HIRED</h1>
                     </div>
-            </div>
-                <OurHiresTile techType='tech' title="TECH" data={data.tech}></OurHiresTile>
-                <OurHiresTile techType='nonTech' title="NON TECH" data={data.nonTech}></OurHiresTile>
-                </div>
+                    </div>
+                        <OurHiresTile techType='tech' title="TECH" data={data.tech}></OurHiresTile>
+                        <OurHiresTile techType='nonTech' title="NON TECH" data={data.nonTech}></OurHiresTile>
+                    </div>
 
             </React.Fragment>
       
