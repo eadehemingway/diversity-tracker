@@ -6,7 +6,7 @@ export const YourOverviewLondonTile =({type, title, data})=> {
 const radius = 80
 const diameter = radius * 2
 const width = radius * 4
-const padAngle = 0.3
+const padAngle = 0.03
 const height = diameter * 1.5
         return(
             <React.Fragment>

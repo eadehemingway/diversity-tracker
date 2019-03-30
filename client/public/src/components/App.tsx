@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './../../../style.css'
 import { BrowserRouter ,  Route} from 'react-router-dom'
 import {YourOverviewConnected } from './YourOverview/YourOverview'
 import {OurOverviewConnected} from './OurOverview/OurOverview'

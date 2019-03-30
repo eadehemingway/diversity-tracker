@@ -31,7 +31,11 @@
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "sass-loader": "^7.1.0",
+    "postcss-scss": "^2.0.0"
+  },
   "author": "",
   "license": "ISC"
+
 }

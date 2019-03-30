@@ -1,0 +1,61 @@
+
+/* OUR HIRES TO APPLICATIONS ///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+.O-H-page-container{
+    width:80%;
+    margin:auto;
+    margin-bottom: 8rem;
+
+}
+
+.O-H-sticky-titles{
+    position: sticky;
+    top: 100px;
+    z-index: 10;
+    background:	#FFF7F2;
+}
+
+.O-H-tile{
+    /* width:70%; */
+    margin-left: 16rem;
+    display:flex;
+    justify-content: space-around;
+
+    /* box-shadow: 2px 5px 3px 10px black; */
+    /* background:  */
+}
+    
+
+.O-H-horizontal-sub-headings{
+
+    padding-left: 12rem;
+    display:flex;
+    justify-content: space-around;
+    /* padding-bottom: 0.5rem; */
+    border-bottom: 5px solid #D36543;
+    padding-right:4rem;
+
+}
+
+.O-H-vertical-sub-heading{
+    padding-top: 4rem;
+    text-align: left;
+
+}
+
+.O-H-diversity-category-tab-container{
+    padding-bottom:2rem;
+}
+
+.O-H-diversity-category-tab{
+border: none;
+
+background: #FFF7F2;
+margin-right: 0.5rem;
+}
+
+.O-H-focused-tab{
+    border-bottom: 2px solid #D36543;
+}
+
