@@ -7,8 +7,7 @@ import { londonDataReducer } from './src/londonData/reducer';
 import { ourCompanyDataReducer } from './src/ourCompanyData/reducer';
 import { userCompanyDataReducer } from './src/userCompanyData/reducer';
 
-import './src/components/style.scss';
-
+import "./src/components/style.scss";
 export const allReducers = combineReducers({
     londonData: londonDataReducer,
     ourCompanyData: ourCompanyDataReducer,
