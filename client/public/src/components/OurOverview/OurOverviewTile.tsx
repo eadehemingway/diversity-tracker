@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Donut, donutType} from '../YourOverview/Donut'
+import {Donut, donutType} from '../Donut'
 
 export const OurOverviewTile =({data, template})=> {
 const radius = 30

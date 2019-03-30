@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import {Donut} from './Donut'
+import {Donut} from './../Donut'
 import {FormConnected} from './Form'
 
 export const YourOverviewUserTile =({ type, title, data})=> {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { YourOverviewLondonTile } from './YourOverviewLondonTile';
 import { YourOverviewUserTile } from './YourOverviewUserTile';
-import { donutType } from './Donut';
+import { donutType } from './../Donut';
 import { AppState } from '../../commonTypes';
 import { connect} from 'react-redux'
 

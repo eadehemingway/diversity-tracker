@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Donut, donutType} from './Donut'
+import {Donut, donutType} from './../Donut'
 import { map } from 'lodash'
 
 export const YourOverviewLondonTile =({type, title, data})=> {
