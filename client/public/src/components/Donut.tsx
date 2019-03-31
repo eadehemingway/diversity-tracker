@@ -72,7 +72,7 @@ export class Donut extends React.Component<DonutProps, DonutState> {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillUpdate(nextProps) {
     if (nextProps !== this.props) {
       this.updateData(nextProps);
     }
@@ -138,14 +138,14 @@ export class Donut extends React.Component<DonutProps, DonutState> {
   updateData = newProps => {
     const dataWithNewValues = [];
     forEach(newProps.data, (value, key) => {
-      const arc = { label: key, value: value };
+      const arc = { label: key, value };
       return dataWithNewValues.push(arc);
     });
     const filteredData = dataWithNewValues.filter(
       d => d.value !== 0 && !isNaN(d.value)
     );
     const padAngle = filteredData.length > 1 ? this.props.padAngle : 0;
-    let prevData = this.state.data;
+    const prevData = this.state.data;
     this.setState({ data: dataWithNewValues, prevData, padAngle }, () => {
       this.updateDonut();
     });
