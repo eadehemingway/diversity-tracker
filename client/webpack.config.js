@@ -1,36 +1,49 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + '/index.html',
-  filename: 'index.html'
+  template: __dirname + "/index.html",
+  filename: "index.html"
 });
 module.exports = {
-  entry: __dirname + '/public/index.tsx',
+  entry: __dirname + "/public/index.tsx",
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        loader: 'awesome-typescript-loader',
+        loader: "awesome-typescript-loader",
         exclude: /node_modules/
       },
       {
-        test:/\.(scss|css)$/,
-        loader:[
-          'style-loader',
-          'css-loader',
+        test: /\.(ts|tsx)$/,
+        enforce: "pre",
+        use: [
+          {
+            loader: "tslint-loader",
+            options: {
+              configFile: "./tslint.json"
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(scss|css)$/,
+        loader: [
+          "style-loader",
+          "css-loader",
           "postcss-loader?parser=postcss-scss",
-          "sass-loader" ]
-    }
+          "sass-loader"
+        ]
+      }
     ]
   },
 
-  mode: 'development',
+  mode: "development",
   output: {
-    path: __dirname + '/dist/public',
-    filename: 'index.bundle.js'
+    path: __dirname + "/dist/public",
+    filename: "index.bundle.js"
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.css', '.scss']
+    extensions: [".ts", ".tsx", ".js", ".css", ".scss"]
   },
   plugins: [HTMLWebpackPluginConfig]
 };
