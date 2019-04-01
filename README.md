@@ -9,14 +9,9 @@ This app visualises the race and gender diversity at my work. It shows informati
 ## to start:
 
 ```
+(in root)
 npm i 
-npm start 
-go to localhost:3000
-```
 
-to start in dev mode: 
-```
-npm i 
 cd client 
 npm i
 npm run build:watch
@@ -25,6 +20,8 @@ npm run build:watch
 cd server
 npm i 
 npm run build:watch
+
+(in another terminal)
 cd server
 run npm start
 ```
