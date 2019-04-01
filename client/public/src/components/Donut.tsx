@@ -51,9 +51,7 @@ export class Donut extends React.Component<DonutProps, DonutState> {
   componentDidMount() {
     const { template, target, data } = this.props;
     const dataLabels = keys(data);
-    const emptyArcs = dataLabels.map(l => {
-      return { label: "emptyArc", value: 0 };
-    });
+    const emptyArcs = dataLabels.map(l => ({ label: "emptyArc", value: 0 }));
 
     let colors = this.state.colors;
     if (template) {
@@ -113,9 +111,7 @@ export class Donut extends React.Component<DonutProps, DonutState> {
       .attr("class", () => (template ? null : "arc"))
       .append("path")
       .attr("d", theArc)
-      .attr("fill", (d, i) => {
-        return colors[i];
-      });
+      .attr("fill", (_, i) => colors[i]);
 
     if (!template) {
       // only add tooltips to donuts that arent templates
@@ -192,7 +188,7 @@ export class Donut extends React.Component<DonutProps, DonutState> {
       .attr("class", () => (template ? null : "arc"))
       .append("path")
       .attr("d", theArc)
-      .attr("fill", (d, i) => colors[i]);
+      .attr("fill", (_, i) => colors[i]);
 
     path.exit().remove();
 
@@ -205,21 +201,22 @@ export class Donut extends React.Component<DonutProps, DonutState> {
     const tooltipText = select(`.tooltip-${donutName}`);
     const tooltipRect = select(`.tooltip-rect-${donutName}`);
     const tooltipGroup = select(`.tooltip-group-${donutName}`);
-
+    const tooltipPadding = 26;
     select(`#donut-${donutName}`)
       .selectAll("path")
       .on("mouseover", d => {
         const label = `${d.data.label}: ${d.data.value}`;
-        const labelLength = label.length;
-        const rectWidth = labelLength * 5 + 20;
+        const labelLength = label.length * 5;
+        const labelPadding = 20;
+        const rectWidth = labelLength + labelPadding;
         tooltipText.text(label);
         tooltipGroup.style("visibility", "visible");
         tooltipText
           .style("fill", "rgb(77,87,127)")
           .style("z-index", "100")
           .style("font-size", "10px")
-          .attr("dx", `5`)
-          .attr("dy", `13`);
+          .attr("dx", "5")
+          .attr("dy", "13");
         tooltipRect
           .attr("fill", "rgb(255,247,242)")
           .style("width", rectWidth)
@@ -230,7 +227,7 @@ export class Donut extends React.Component<DonutProps, DonutState> {
       .on("mousemove", d =>
         tooltipGroup.attr(
           "transform",
-          `translate(${event.offsetX},${event.offsetY - 26})`
+          `translate(${event.offsetX},${event.offsetY - tooltipPadding})`
         )
       )
       .on("mouseout", () => tooltipGroup.style("visibility", "hidden"));
