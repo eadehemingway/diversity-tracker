@@ -8,9 +8,5 @@ export class LondonDataState {
   ) {}
 }
 
-export const londonDataReducer = (state = new LondonDataState(), action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+export const londonDataReducer = (state = new LondonDataState(), action) =>
+  state;

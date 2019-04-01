@@ -28,6 +28,7 @@ export class OurOverview extends React.Component<
     }
   };
   render() {
+    const { londonData } = this.state;
     return (
       <React.Fragment>
         <div className="O-O-page-container">
@@ -36,8 +37,8 @@ export class OurOverview extends React.Component<
           </h1>
           <div className="O-O-tile-container">
             <div className="O-O-tile O-O-vertical-label-container">
-              <h1 className="sub-heading O-O-vertical-label">GENDER</h1>
-              <h1 className="sub-heading O-O-vertical-label">RACE</h1>
+              <h2 className="sub-heading O-O-vertical-label">GENDER</h2>
+              <h2 className="sub-heading O-O-vertical-label">RACE</h2>
             </div>
             {map(this.props.staffDemographicPastData, (col, i) => (
               <OurOverviewTile data={col} key={col.title} template={false} />
@@ -46,7 +47,7 @@ export class OurOverview extends React.Component<
               <OurOverviewTile data={col} key={col.title} template={true} />
             ))}
             <div className="O-O-london-donut-collumn">
-              <OurOverviewTile data={this.state.londonData} template={false} />
+              <OurOverviewTile data={londonData} template={false} />
             </div>
           </div>
         </div>

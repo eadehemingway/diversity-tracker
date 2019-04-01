@@ -23,14 +23,15 @@ export class OurApplicationTargets extends React.Component<
     };
   }
   render() {
+    const { diversityCategory } = this.state;
+    const { ourCompanyDataGender, ourCompanyDataRace } = this.props;
     const data =
-      this.state.diversityCategory === "Gender"
-        ? this.props.ourCompanyDataGender
-        : this.props.ourCompanyDataRace;
+      diversityCategory === "Gender"
+        ? ourCompanyDataGender
+        : ourCompanyDataRace;
     const genderFocused =
-      this.state.diversityCategory === "Gender" ? "O-H-focused-tab" : "";
-    const raceFocused =
-      this.state.diversityCategory === "Race" ? "O-H-focused-tab" : "";
+      diversityCategory === "Gender" ? "O-H-focused-tab" : "";
+    const raceFocused = diversityCategory === "Race" ? "O-H-focused-tab" : "";
     return (
       <React.Fragment>
         <div className="O-H-page-container">
@@ -55,8 +56,8 @@ export class OurApplicationTargets extends React.Component<
             </div>
 
             <div className="O-H-horizontal-sub-headings">
-              <h1 className="sub-heading">APPLICATIONS</h1>
-              <h1 className="sub-heading">HIRED</h1>
+              <h2 className="sub-heading">APPLICATIONS</h2>
+              <h2 className="sub-heading">HIRED</h2>
             </div>
           </div>
           <OurHiresTile techType="tech" title="TECH" data={data.tech} />

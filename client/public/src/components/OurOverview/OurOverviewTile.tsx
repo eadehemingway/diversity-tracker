@@ -7,6 +7,7 @@ export const OurOverviewTile = ({ data, template }) => {
   const diameter = radius * 2;
   const width = diameter * 4;
   const padAngle = 0.03;
+  const { race, gender } = donutType;
   return (
     <React.Fragment>
       <div className="O-O-tile">
@@ -14,7 +15,7 @@ export const OurOverviewTile = ({ data, template }) => {
           {data.title}
         </h1>
         <Donut
-          donutType={donutType.gender}
+          donutType={gender}
           donutName={`gender-${data.uuid}`}
           className="O-O-donut"
           radius={radius}
@@ -25,7 +26,7 @@ export const OurOverviewTile = ({ data, template }) => {
           height={height}
         />
         <Donut
-          donutType={donutType.race}
+          donutType={race}
           donutName={`race-${data.uuid}`}
           className="O-O-donut"
           radius={radius}

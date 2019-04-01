@@ -24,6 +24,7 @@ interface DonutProps {
 }
 
 interface DonutState {
+  innerRadius: number;
   data: any[];
   prevData: any[];
   padAngle: number;
@@ -33,29 +34,30 @@ export class Donut extends React.Component<DonutProps, DonutState> {
   constructor(props) {
     super(props);
     this.state = {
+      innerRadius: this.props.radius / 1.6,
       prevData: [],
       data: [],
       padAngle: 0,
       colors: [
-        "#4D577F",
+        "rgb(77,87,127)",
         "rgba(211, 101, 67,0.7)",
-        "#AD5337",
-        "#D36543",
-        "#DB8165"
+        "rgb(173,83,55)",
+        "rgb(211,101,67)",
+        "rgb(219,129,101)"
       ]
     };
   }
 
   componentDidMount() {
-    const { template, target } = this.props;
-    const dataLabels = keys(this.props.data);
+    const { template, target, data } = this.props;
+    const dataLabels = keys(data);
     const emptyArcs = dataLabels.map(l => {
       return { label: "emptyArc", value: 0 };
     });
 
     let colors = this.state.colors;
     if (template) {
-      colors = ["hsla(240,100%,50%, 0.03)"];
+      colors = ["rgba(0, 0, 255, 0.03)"];
     }
     if (target) {
       colors = [
@@ -80,59 +82,58 @@ export class Donut extends React.Component<DonutProps, DonutState> {
 
   // this is needed for the transitions... this draws an invisible empty arc so that a new arc can come out of this one
   drawEmptyArcs = () => {
-    const { radius, width, height } = this.props;
-    const { padAngle, colors } = this.state;
+    const { radius, width, height, donutName, template } = this.props;
+    const { padAngle, colors, innerRadius, data } = this.state;
     const donut = pie()
       .padAngle(padAngle)
       .value(d => {
         return d.value;
-      })(this.state.data);
+      })(data);
 
     const theArc = arc()
       .outerRadius(radius)
-      .innerRadius(radius / 1.6);
+      .innerRadius(innerRadius);
 
-    const svg = select(`#donut-${this.props.donutName}`)
+    const leftPadding = radius * 1.2;
+    const topPadding = radius * 1.7;
+    const svg = select(`#donut-${donutName}`)
       .attr("width", width)
       .attr("height", height)
       .append("g")
-      .attr("id", `donut-group-${this.props.donutName}`)
+      .attr("id", `donut-group-${donutName}`)
       // if we transform it just by radius in each direction the edges of top and left of donut will be
       // the corner of the svg, but we need it in a bit so the tooltips arent cut off
-      .attr(
-        "transform",
-        "translate(" + radius * 1.2 + "," + radius * 1.7 + ")"
-      );
+      .attr("transform", "translate(" + leftPadding + "," + topPadding + ")");
 
     svg
       .selectAll("path")
       .data(donut)
       .enter()
       .append("g")
-      .attr("class", () => (this.props.template ? null : "arc"))
+      .attr("class", () => (template ? null : "arc"))
       .append("path")
       .attr("d", theArc)
       .attr("fill", (d, i) => {
         return colors[i];
       });
 
-    if (!this.props.template) {
+    if (!template) {
       // only add tooltips to donuts that arent templates
-      select(`#donut-${this.props.donutName}`)
+      select(`#donut-${donutName}`)
         .selectAll("rect")
         .data(donut)
         .enter()
         .append("g")
-        .attr("class", `tooltip-group-${this.props.donutName}`)
+        .attr("class", `tooltip-group-${donutName}`)
         .append("rect")
-        .attr("class", `tooltip-rect-${this.props.donutName}`);
+        .attr("class", `tooltip-rect-${donutName}`);
 
-      select(`.tooltip-group-${this.props.donutName}`)
+      select(`.tooltip-group-${donutName}`)
         .selectAll("text")
         .data(donut)
         .enter()
         .append("text")
-        .attr("class", `tooltip-${this.props.donutName}`);
+        .attr("class", `tooltip-${donutName}`);
     }
   };
   updateData = newProps => {
@@ -152,17 +153,17 @@ export class Donut extends React.Component<DonutProps, DonutState> {
   };
 
   updateDonut = () => {
-    const { radius } = this.props;
-    const { colors, padAngle } = this.state;
+    const { radius, donutName, template, padAngle } = this.props;
+    const { colors, innerRadius, data, prevData } = this.state;
     const oldDonut = pie()
       .padAngle(padAngle)
       .value(d => {
         return d.value;
-      })(this.state.prevData);
+      })(prevData);
 
     const newDonut = pie()
       .padAngle(padAngle)
-      .value(d => d.value)(this.state.data);
+      .value(d => d.value)(data);
 
     const newDonutWithPrevArc = newDonut.map((arc, i) => {
       const prevArc = oldDonut[i];
@@ -179,16 +180,16 @@ export class Donut extends React.Component<DonutProps, DonutState> {
     };
     const theArc = arc()
       .outerRadius(radius)
-      .innerRadius(radius / 1.6);
+      .innerRadius(innerRadius);
 
-    const path = select(`#donut-group-${this.props.donutName}`)
+    const path = select(`#donut-group-${donutName}`)
       .selectAll("path")
       .data(newDonutWithPrevArc);
 
     path
       .enter()
       .append("g")
-      .attr("class", () => (this.props.template ? null : "arc"))
+      .attr("class", () => (template ? null : "arc"))
       .append("path")
       .attr("d", theArc)
       .attr("fill", (d, i) => colors[i]);
@@ -201,11 +202,11 @@ export class Donut extends React.Component<DonutProps, DonutState> {
       .attrTween("d", createInterpolator);
 
     // TOOLTIP
-    const tooltipText = select(`.tooltip-${this.props.donutName}`);
-    const tooltipRect = select(`.tooltip-rect-${this.props.donutName}`);
-    const tooltipGroup = select(`.tooltip-group-${this.props.donutName}`);
+    const tooltipText = select(`.tooltip-${donutName}`);
+    const tooltipRect = select(`.tooltip-rect-${donutName}`);
+    const tooltipGroup = select(`.tooltip-group-${donutName}`);
 
-    select(`#donut-${this.props.donutName}`)
+    select(`#donut-${donutName}`)
       .selectAll("path")
       .on("mouseover", d => {
         const label = `${d.data.label}: ${d.data.value}`;
@@ -214,13 +215,13 @@ export class Donut extends React.Component<DonutProps, DonutState> {
         tooltipText.text(label);
         tooltipGroup.style("visibility", "visible");
         tooltipText
-          .style("fill", "#4D577F")
+          .style("fill", "rgb(77,87,127)")
           .style("z-index", "100")
           .style("font-size", "10px")
           .attr("dx", `5`)
           .attr("dy", `13`);
         tooltipRect
-          .attr("fill", "#FFF7F2")
+          .attr("fill", "rgb(255,247,242)")
           .style("width", rectWidth)
           .style("height", "20")
           .style("stroke-width", "1.5")
@@ -236,11 +237,7 @@ export class Donut extends React.Component<DonutProps, DonutState> {
   };
 
   render() {
-    return (
-      <svg
-        id={`donut-${this.props.donutName}`}
-        className={`${this.props.className}`}
-      />
-    );
+    const { className, donutName } = this.props;
+    return <svg id={`donut-${donutName}`} className={`${className}`} />;
   }
 }

@@ -59,12 +59,5 @@ export class OurCompanyDataState {
   ) {}
 }
 
-export const ourCompanyDataReducer = (
-  state = new OurCompanyDataState(),
-  action
-) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+export const ourCompanyDataReducer = (state = new OurCompanyDataState()) =>
+  state;

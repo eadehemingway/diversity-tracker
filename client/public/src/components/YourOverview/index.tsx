@@ -7,42 +7,45 @@ import { connect } from "react-redux";
 import { LondonDataState } from "../../londonData/reducer";
 import { UserCompanyDataState } from "../../userCompanyData/reducer";
 
-export const YourOverview = ({ userCompanyData, londonData }) => (
-  <React.Fragment>
-    <div className="Y-O-page-container">
-      <h1 className="title">
-        YOUR
-        <br /> OVERVIEW
-      </h1>
-      <div className="Y-O-tile-container">
-        <div className="Y-O-gender-container">
-          <YourOverviewUserTile
-            type={donutType.gender}
-            title="GENDER"
-            data={userCompanyData.gender}
-          />
-          <YourOverviewLondonTile
-            type={donutType.gender}
-            title="GENDER"
-            data={londonData.gender}
-          />
-        </div>
-        <div className="Y-O-race-container">
-          <YourOverviewUserTile
-            type={donutType.race}
-            title="RACE"
-            data={userCompanyData.race}
-          />
-          <YourOverviewLondonTile
-            type={donutType.race}
-            title="RACE"
-            data={londonData.race}
-          />
+export const YourOverview = ({ userCompanyData, londonData }) => {
+  const { gender, race } = donutType;
+  return (
+    <React.Fragment>
+      <div className="Y-O-page-container">
+        <h1 className="title">
+          YOUR
+          <br /> OVERVIEW
+        </h1>
+        <div className="Y-O-tile-container">
+          <div className="Y-O-gender-container">
+            <YourOverviewUserTile
+              type={gender}
+              title="GENDER"
+              data={userCompanyData.gender}
+            />
+            <YourOverviewLondonTile
+              type={gender}
+              title="GENDER"
+              data={londonData.gender}
+            />
+          </div>
+          <div className="Y-O-race-container">
+            <YourOverviewUserTile
+              type={race}
+              title="RACE"
+              data={userCompanyData.race}
+            />
+            <YourOverviewLondonTile
+              type={race}
+              title="RACE"
+              data={londonData.race}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  </React.Fragment>
-);
+    </React.Fragment>
+  );
+};
 
 interface MapStateToYourOverviewProps {
   londonData: LondonDataState;
